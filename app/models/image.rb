@@ -20,7 +20,7 @@ class Image < ActiveRecord::Base
 
   # save the w,h of the original image (from which others can be calculated)
   after_post_process :find_dimensions
-  MAIN_LOGO = 'logo'
+  MAIN_LOGO = 'loop_logo'
 
   # this will be called after an image is uploaded.
   # => it will set the width and height of the image.
