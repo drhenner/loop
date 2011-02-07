@@ -77,3 +77,8 @@ ReturnCondition::CONDITIONS.each do |value|
     ReturnCondition.create(:label => value, :description => value )
   end
 end
+
+
+Color::TYPES.each do |color|
+  color.find_or_create_by_name(color)
+end
