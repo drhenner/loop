@@ -12,6 +12,7 @@ class Variant < ActiveRecord::Base
 
   belongs_to :product
   belongs_to :brand
+  belongs_to :color
 
   #validates :name,        :presence => true
   validates :price,       :presence => true

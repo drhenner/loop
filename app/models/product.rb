@@ -26,6 +26,9 @@ class Product < ActiveRecord::Base
   belongs_to :shipping_category
   belongs_to :tax_status
 
+  has_many :product_colors
+  has_many :colors,          :through => :product_colors
+
   has_many :product_properties
   has_many :properties,          :through => :product_properties
 
