@@ -1,0 +1,44 @@
+<div id="header_wrapper" class='bp'>
+  <div class="container logged-in" id="header">
+    <h1 id="logo">
+      <%= link_to image_tag( "logos/#{Image::MAIN_LOGO}.png", :alt => 'hadean image.'), root_path %>
+    </h1>
+    <ul id="menu-main">
+      <li id="menu-main-discover">
+        <a href="/"> <strong> Flash Sales </strong> <span>Get it while it's hot</span> </a>
+      </li>
+
+      <li class="" id="menu-main-cart">
+          <%= link_to(shopping_cart_items_path, :id => 'cart_items_buttons') do %>
+              <strong> My Account </strong> <span> details</span>
+          <% end %>
+      </li>
+      <li class="" id="menu-main-wish">
+          <%= link_to(wish_items_path, :id => 'wish_items_button') do %>
+              <strong> Philosophy </strong> <span> about us.</span>
+          <% end %>
+      </li>
+
+      <li class="" id="menu-main-user">
+        <div>
+          <% unless most_likely_user %>
+            <strong><%= link_to 'Login',  login_path %></strong> or
+            <span><%= link_to 'Sign up', signup_path %></span>
+          <% else %>
+            <strong>Hi <%= most_likely_user.first_name %></strong>
+            <span>(<%= link_to 'not you?', logout_path %>)</span>
+          <% end %>
+        </div>
+      </li>
+
+    </ul>
+
+    <%= form_for search_product, :html => {:class => 'search'} do %>
+      <div class="field search">
+        <span class="icon-search"></span>
+        <%= text_field_tag 'q', nil , :class => 'input-search text', :id => 'term' %>
+        <%= submit_tag 'Go',          :class => 'button spade' %>
+      </div>
+    <% end %>
+  </div>
+</div>
