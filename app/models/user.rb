@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
   belongs_to :account
 
   has_one     :store_credit
+  has_one     :measurement
+
   has_many    :orders
   has_many    :phones,                    :dependent => :destroy,
                                           :as => :phoneable
