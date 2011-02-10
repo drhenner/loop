@@ -18,10 +18,9 @@
       <%= stylesheet_link_tag 'ie6.css', :media => 'screen, projection' %>
   <![endif]-->
   <%= csrf_meta_tag %>
-  <%#= javascript_include_tag :defaults %>
+
   <%= javascript_include_tag 'jquery-1.4.2.min', 'rails', 'jquery-ui-1.8.5.custom.min','application' %>
-  <%#, :cache => 'all_1' %>
-  <%#= javascript_include_tag 'jquery-1.4.2.min', 'jquery-ujs/src/rails', 'jquery-ui-1.8.5.custom.min','application' %>
+
   <%= yield :head %>
 
 </head>
@@ -32,61 +31,7 @@
   </div>
 
 
-
-
-    <div class=" bp">
-      <div id="header_wrapper" class='bp'>
-        <div class="container logged-in" id="header">
-          <h1 id="logo">
-            <%= link_to image_tag( "logos/#{Image::MAIN_LOGO}.png", :alt => 'hadean image.'), root_path %>
-            <%#= link_to 'RoR Ecommerce', root_path %>
-          </h1>
-          <ul id="menu-main">
-            <li id="menu-main-discover">
-              <a href="/"><strong>Commerce</strong> <span>that scales</span></a>
-            </li>
-
-            <li class="" id="menu-main-cart">
-                <%= link_to(shopping_cart_items_path, :id => 'cart_items_buttons') do %>
-                    <strong> Cart </strong> <span>view your stuff.</span>
-                <% end %>
-            </li>
-            <li class="" id="menu-main-wish">
-                <%= link_to(wish_items_path, :id => 'wish_items_button') do %>
-                    <strong> Wish List </strong> <span>what you want.</span>
-                <% end %>
-            </li>
-
-            <li class="" id="menu-main-user">
-              <div>
-                <% unless most_likely_user %>
-                  <strong><%= link_to 'Login',  login_path %></strong> or
-                  <span><%= link_to 'Sign up', signup_path %></span>
-                <% else %>
-                  <strong>Hi <%= most_likely_user.first_name %></strong>
-                  <span>(<%= link_to 'not you?', logout_path %>)</span>
-                <% end %>
-              </div>
-            </li>
-
-          </ul>
-
-          <%= form_for search_product, :html => {:class => 'search'} do %>
-            <div class="field search">
-              <span class="icon-search"></span>
-              <%= text_field_tag 'q', nil , :class => 'input-search text', :id => 'term' %>
-              <%= submit_tag 'Go',          :class => 'button spade' %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div id="sub_header_wrapper" class='bp'>
-        <div id="sub_sub_header_wrapper" class='container'>
-          <%= render 'shared/main_product_tabs' %>
-        </div>
-      </div>
-    </div>
-
+    <%= render 'shared/main_header' %>
 
     <div id='content_wrapper' class='container'>
       <%= yield %>
