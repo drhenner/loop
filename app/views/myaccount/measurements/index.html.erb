@@ -1,17 +1,30 @@
 <h1> Measurements </h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
-  <% for measurement in @measurements %>
-    <tr>
-      <td><%= measurement.name %></td>
-      <td><%= link_to "Show", myaccount_measurement_path(measurement) %></td>
-      <td><%= link_to "Edit", edit_myaccount_measurement_path(measurement) %></td>
-      <td><%= link_to "Destroy", myaccount_measurement_path(measurement), :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<p>
+  <strong>Shirt Size:</strong>
+  <%= @measurement.shirt_size %>
+</p>
 
-<p><%= link_to "New Measurement", new_myaccount_measurement_path, :class => 'button' %></p>
+<p>
+  <strong>Dress Size:</strong>
+  <%= @measurement.dress_size %>
+</p>
+
+<p>
+  <strong>Waist:</strong>
+  <%= @measurement.waist %>
+</p>
+
+<p>
+  <strong>Pant Length:</strong>
+  <%= @measurement.pant_length %>
+</p>
+
+<p>
+  <strong>Shoe Size:</strong>
+  <%= @measurement.shoe_size %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_myaccount_measurement_path(@measurement), :class => 'button' %>
+</p>
