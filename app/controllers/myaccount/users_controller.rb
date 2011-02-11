@@ -1,15 +1,15 @@
-class Myaccount::UsersController < ApplicationController
+class Myaccount::UsersController < Myaccount::BaseController
   def show
-    @user = User.find(params[:id])
+    @user = current_user
   end
-  
+
   def edit
     form_info
-    @user = User.find(params[:id])
+    @user = current_user
   end
-  
+
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update_attributes(params[:user])
       flash[:notice] = "Successfully updated user."
       redirect_to myaccount_user_url(@user)
@@ -18,10 +18,10 @@ class Myaccount::UsersController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
   private
-  
+
   def form_info
-    
+
   end
 end

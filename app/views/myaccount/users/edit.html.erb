@@ -1,7 +1,7 @@
-<h1> Edit User </h1>
+<h1> Edit your Details </h1>
 
 <%= form_for(@user, :url => myaccount_user_path(@user)) do |f| %>
   <%= render :partial => 'form', :locals => {:f => f} %>
 <% end %>
 
-  <%= link_to 'Show', myaccount_user_path( @user ), :class => 'button' %> |
+  <%= link_to 'Back', myaccount_user_path( @user ), :class => 'b-link' %>

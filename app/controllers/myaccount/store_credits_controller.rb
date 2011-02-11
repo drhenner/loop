@@ -1,4 +1,4 @@
-class Myaccount::StoreCreditsController < ApplicationController
+class Myaccount::StoreCreditsController < Myaccount::BaseController
 
   before_filter :require_user
 

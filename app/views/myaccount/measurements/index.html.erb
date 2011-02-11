@@ -1,30 +1,42 @@
 <h1> Measurements </h1>
 
-<p>
-  <strong>Shirt Size:</strong>
-  <%= @measurement.shirt_size %>
-</p>
+<% if @measurement %>
+  <p>
+    <strong>Shirt Size:</strong>
+    <%= @measurement.shirt_size %>
+  </p>
 
-<p>
-  <strong>Dress Size:</strong>
-  <%= @measurement.dress_size %>
-</p>
+  <p>
+    <strong>Dress Size:</strong>
+    <%= @measurement.dress_size %>
+  </p>
 
-<p>
-  <strong>Waist:</strong>
-  <%= @measurement.waist %>
-</p>
+  <p>
+    <strong>Waist:</strong>
+    <%= @measurement.waist %>
+  </p>
 
-<p>
-  <strong>Pant Length:</strong>
-  <%= @measurement.pant_length %>
-</p>
+  <p>
+    <strong>Pant Length:</strong>
+    <%= @measurement.pant_length %>
+  </p>
 
-<p>
-  <strong>Shoe Size:</strong>
-  <%= @measurement.shoe_size %>
-</p>
+  <p>
+    <strong>Shoe Size:</strong>
+    <%= @measurement.shoe_size %>
+  </p>
 
-<p>
-  <%= link_to "Edit", edit_myaccount_measurement_path(@measurement), :class => 'button' %>
-</p>
+  <p>
+    <%= link_to "Edit", edit_myaccount_measurement_path(@measurement), :class => 'b-link' %>
+  </p>
+
+<% else %>
+
+  <p>
+    You currently don't have your measurements entered.
+  </p>
+
+  <p>
+    <%= link_to "New Measurements", new_myaccount_measurement_path(), :class => 'b-link' %>
+  </p>
+<% end %>

@@ -34,6 +34,9 @@ class User < ActiveRecord::Base
   has_one     :measurement
 
   has_many    :orders
+  has_many    :completed_orders,          :class_name => 'Order',
+                                          :conditions => {:orders => { :state => 'complete'}}
+
   has_many    :phones,                    :dependent => :destroy,
                                           :as => :phoneable
 
@@ -185,6 +188,10 @@ class User < ActiveRecord::Base
   # @return [ none ]  sets birth_date for the user
   def format_birth_date(b_date)
     self.birth_date = Date.strptime(b_date, "%m/%d/%Y") if b_date.present?
+  end
+
+  def display_birth_date
+    self.birth_date? ? self.birth_date.strftime("%m/%d/%Y") : 'N/A'
   end
 
   ##  This method will one day grow into the products a user most likely likes.

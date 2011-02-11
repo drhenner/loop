@@ -6,5 +6,15 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_myaccount_user_path(@user), :class => 'button' %> |
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Birth Date:</strong>
+  <%= @user.display_birth_date %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_myaccount_user_path(@user), :class => 'b-link' %>
 </p>

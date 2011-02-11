@@ -9,9 +9,15 @@
       </li>
 
       <li class="" id="menu-main-cart">
-          <%= link_to(shopping_cart_items_path, :id => 'cart_items_buttons') do %>
+        <% if current_user %>
+          <%= link_to(myaccount_user_path, :id => 'cart_items_buttons') do %>
               <strong> My Account </strong> <span> details</span>
           <% end %>
+        <% else %>
+          <%= link_to(shopping_cart_items_path, :id => 'cart_items_buttons') do %>
+              <strong> About Us </strong> <span> </span>
+          <% end %>
+        <% end %>
       </li>
       <li class="" id="menu-main-wish">
           <%= link_to(wish_items_path, :id => 'wish_items_button') do %>
