@@ -3,18 +3,25 @@ require  'spec_helper'
 describe Myaccount::UsersController do
   render_views
 
+  before(:each) do
+    activate_authlogic
+
+    @user = Factory(:user)
+    login_as(@user)
+  end
+
   it "show action should render show template" do
     @user = Factory(:user)
     get :show, :id => @user.id
     response.should render_template(:show)
   end
-  
+
   it "edit action should render edit template" do
     @user = Factory(:user)
     get :edit, :id => @user.id
     response.should render_template(:edit)
   end
-  
+
   it "update action should render edit template when model is invalid" do
     @user = Factory(:user)
     User.any_instance.stubs(:valid?).returns(false)
