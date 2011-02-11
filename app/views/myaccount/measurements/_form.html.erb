@@ -12,27 +12,27 @@
 
   <div class="field">
     <%= f.label :shirt_size %><br />
-    <%= f.text_field :shirt_size %>
+    <%= f.select :shirt_size, Measurement::SHIRT_SIZES, :include_blank => true %>
   </div>
 
   <div class="field">
     <%= f.label :dress_size %><br />
-    <%= f.text_field :dress_size %>
+    <%= f.select :dress_size, Measurement::DRESS_SIZES, :include_blank => true %>
   </div>
 
   <div class="field">
     <%= f.label :waist %><br />
-    <%= f.text_field :waist %>
+    <%= f.select :waist, Measurement::WAIST_SIZES, :include_blank => true %>
   </div>
 
   <div class="field">
     <%= f.label :pant_length %><br />
-    <%= f.text_field :pant_length %>
+    <%= f.select :pant_length, Measurement::PANT_LENGTHS, :include_blank => true %>
   </div>
 
   <div class="field">
     <%= f.label :shoe_size %><br />
-    <%= f.text_field :shoe_size %>
+    <%= f.select :shoe_size, Measurement::SHOE_SIZES, :include_blank => true %>
   </div>
 
   <div class="actions">
