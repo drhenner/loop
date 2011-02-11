@@ -29,7 +29,7 @@ Hadean::Application.routes.draw do # |map|
     resources :addresses
     resources :credit_cards
     resource  :user,          :only => [:show, :edit, :update]
-    resource  :measurement
+    resources :measurements
     resource  :store_credit,  :only => [:show]
   end
 

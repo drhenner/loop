@@ -22,9 +22,9 @@ states_list   = YAML::load( File.open( file_to_load ) )
 states_list.each_pair do |key,state|
   s = State.find_by_abbreviation_and_country_id(state['attributes']['abbreviation'], state['attributes']['country_id'])
   State.create(state['attributes']) unless s
-end 
+end
 
-roles = Role::ROLES 
+roles = Role::ROLES
 roles.each do |role|
   Role.find_or_create_by_name(role)
 end
@@ -80,5 +80,5 @@ end
 
 
 Color::TYPES.each do |color|
-  color.find_or_create_by_name(color)
+  Color.find_or_create_by_name(color)
 end

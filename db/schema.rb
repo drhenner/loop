@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110205065803) do
+ActiveRecord::Schema.define(:version => 20110210071139) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",                                                           :null => false
@@ -189,6 +189,17 @@ ActiveRecord::Schema.define(:version => 20110205065803) do
     t.datetime "updated_at"
   end
 
+  create_table "measurements", :force => true do |t|
+    t.integer  "user_id"
+    t.decimal  "shoe_size",   :precision => 10, :scale => 0
+    t.decimal  "waist",       :precision => 10, :scale => 0
+    t.integer  "pant_length"
+    t.integer  "dress_size"
+    t.string   "shirt_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "order_items", :force => true do |t|
     t.decimal  "price",            :precision => 8, :scale => 2
     t.decimal  "total",            :precision => 8, :scale => 2
@@ -292,6 +303,11 @@ ActiveRecord::Schema.define(:version => 20110205065803) do
     t.datetime "completed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "product_colors", :force => true do |t|
+    t.integer "color_id",   :null => false
+    t.integer "product_id", :null => false
   end
 
   create_table "product_properties", :force => true do |t|
@@ -650,9 +666,11 @@ ActiveRecord::Schema.define(:version => 20110205065803) do
     t.datetime "updated_at"
     t.string   "name"
     t.integer  "brand_id"
+    t.integer  "color_id"
   end
 
   add_index "variants", ["brand_id"], :name => "index_variants_on_brand_id"
+  add_index "variants", ["color_id"], :name => "index_variants_on_color_id"
   add_index "variants", ["product_id"], :name => "index_variants_on_product_id"
   add_index "variants", ["sku"], :name => "index_variants_on_sku"
 

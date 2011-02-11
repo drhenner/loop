@@ -1,4 +1,4 @@
-class Myaccount::MeasurementsController < ApplicationController
+class Myaccount::MeasurementsController < Myaccount::BaseController
 
   def index
     @measurement = current_user.measurement
@@ -6,14 +6,15 @@ class Myaccount::MeasurementsController < ApplicationController
 
   def new
     form_info
-    @measurement = current_user.measurement.new
+    @measurement = Measurement.new
   end
 
   def create
-    @measurement = current_user.measurement.new(params[:measurement])
+    @measurement = Measurement.new(params[:measurement])
+    @measurement.user = current_user
     if @measurement.save
       flash[:notice] = "Successfully created measurement."
-      redirect_to myaccount_measurement_url(@measurement)
+      redirect_to myaccount_measurements_url()
     else
       form_info
       render :action => 'new'
@@ -22,14 +23,15 @@ class Myaccount::MeasurementsController < ApplicationController
 
   def edit
     form_info
-    @measurement = current_user.measurement.find(params[:id])
+    @measurement = Measurement.where(:user_id => current_user.id).find(params[:id])
+
   end
 
   def update
-    @measurement = current_user.measurement.find(params[:id])
-    if @measurement.update_attributes(params[:measurement])
+    @measurement = Measurement.where(:user_id => current_user.id).find(params[:id])
+    if @measurement.user_id == current_user.id && @measurement.update_attributes(params[:measurement])
       flash[:notice] = "Successfully updated measurement."
-      redirect_to myaccount_measurement_url(@measurement)
+      redirect_to myaccount_measurements_url()
     else
       form_info
       render :action => 'edit'
