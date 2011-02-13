@@ -1,0 +1,8 @@
+<h1> Customer Service </h1>
+
+<p>We value your feedback.  Please ask us question you may have</p>
+
+
+<%= form_for(@customer_services, :as => :customer_service_feedback,:url => loop_sell_here_path()) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>

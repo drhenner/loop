@@ -1,0 +1,3 @@
+class CustomerServiceFeedback < Feedback
+
+end

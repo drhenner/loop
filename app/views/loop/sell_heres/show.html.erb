@@ -1,0 +1,8 @@
+<h1> Sell Here </h1>
+
+<p>Are you an independent Designer?  Are you interested in selling your designs on Loop de Luxe?  Send us your information and we will get back to you as soon as possible.</p>
+
+
+<%= form_for(@feedback, :as => :seller_feedback, :url => loop_sell_here_path()) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>

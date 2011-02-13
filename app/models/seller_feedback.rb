@@ -1,0 +1,3 @@
+class SellerFeedback < Feedback
+
+end

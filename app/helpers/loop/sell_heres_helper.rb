@@ -1,0 +1,2 @@
+module Loop::SellHeresHelper
+end

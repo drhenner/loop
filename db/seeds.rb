@@ -82,3 +82,21 @@ end
 Color::TYPES.each do |color|
   Color.find_or_create_by_name(color)
 end
+
+
+  u = User.find_by_first_name('Anonymous')
+  unless u
+    uu = User.new(  :first_name   => 'Anonymous',
+                    :last_name    => 'User',
+                    :email        => 'anonymous@user.com',
+                    :password               => 'lloopp678',
+                    :password_confirmation  => 'lloopp678')
+
+    uu.save
+    uuu = User.create(  :first_name => 'Loop de Luxe',
+                        :last_name  => 'System',
+                        :email        => 'anonymous@user.com',
+                        :password               => 'lloopp678',
+                        :password_confirmation  => 'lloopp678')
+  end
+

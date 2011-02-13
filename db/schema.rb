@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110210071139) do
+ActiveRecord::Schema.define(:version => 20110212193457) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",                                                           :null => false
@@ -148,6 +148,22 @@ ActiveRecord::Schema.define(:version => 20110210071139) do
     t.boolean  "combine",                                     :default => false
     t.datetime "starts_at"
     t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "feedbacks", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "type"
+    t.string   "title"
+    t.string   "name"
+    t.text     "content"
+    t.string   "email"
+    t.string   "website"
+    t.string   "user_ip"
+    t.string   "permalink"
+    t.string   "user_agent"
+    t.string   "referrer"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

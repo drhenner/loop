@@ -24,6 +24,13 @@ Hadean::Application.routes.draw do # |map|
     resources :registrations
   end
 
+  namespace :loop do
+    resource  :about, :only => [:show]
+    resources :terms, :only => [:index]
+    resource :customer_service, :only => [:show, :new, :create]
+    resource :sell_here, :only => [:show, :new, :create]
+  end
+
   namespace :myaccount do
     resources :orders, :only => [:index]
     resources :addresses

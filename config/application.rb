@@ -48,6 +48,14 @@ module Hadean
 
     #config.session_store = ::Ripple::SessionStore
 
+    #Rakismet
+    #Akismet (http://akismet.com/) is a collaborative spam filtering service.
+    #Rakismet is easy Akismet integration with Rails and rack apps.
+    #TypePad's AntiSpam service and generic Akismet endpoints are supported.
+    config.rakismet.key  = 'a5637d679510'
+    config.rakismet.url  = 'http://www.ror-e.com/posts'
+    config.rakismet.host = 'rest.akismet.com'
+
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password,
                                   :password_confirmation,

@@ -1,0 +1,2 @@
+module Loop::AboutsHelper
+end

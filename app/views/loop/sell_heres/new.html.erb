@@ -1,0 +1,5 @@
+<h1> Sell Here </h1>
+
+<%= form_for(@feedback, :as => :seller_feedback, :url => loop_sell_here_path()) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
