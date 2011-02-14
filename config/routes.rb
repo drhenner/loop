@@ -57,6 +57,11 @@ Hadean::Application.routes.draw do # |map|
 
   end
 
+  match 'seller_admin'   => 'seller_admin/overviews#show'
+  namespace :seller_admin do
+    resource :overview, :only => [:show]
+  end
+
   namespace :admin do
     resources :users
     resources :overviews, :only => [:index]
