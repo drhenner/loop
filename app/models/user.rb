@@ -174,6 +174,14 @@ class User < ActiveRecord::Base
     role?(:super_administrator)
   end
 
+  # returns true or false if the user is an seller_admin or not
+  #
+  # @param [none]
+  # @return [ Boolean ]
+  def seller_admin?
+    role?(:seller_admin) || role?(:administrator) || role?(:super_administrator)
+  end
+
   # returns your last cart or nil
   #
   # @param [none]
