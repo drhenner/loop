@@ -1,5 +1,6 @@
 class Feedback < ActiveRecord::Base
   include Rakismet::Model
+
   rakismet_attrs :author        => :name,
                  :author_email  => :email,
                  :author_url    => :website
