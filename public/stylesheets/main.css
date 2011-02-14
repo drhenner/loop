@@ -358,6 +358,40 @@ a:visited {
   padding-left: 0;
 }
 
+/* line 1, ../../app/stylesheets/_main_footer.scss */
+#footer_wrapper {
+  font-variant: small-caps;
+  font-weight: bold;
+  font-size: 106%;
+  border-bottom: 1px solid #ECECEC;
+  background: url("../../images/header/bg-header-wrap.png") repeat-x scroll center bottom white;
+  text-align: left;
+  margin-top: 50px;
+}
+/* line 13, ../../app/stylesheets/_main_footer.scss */
+#footer_wrapper li {
+  display: inline;
+  list-style: none;
+  color: #AA5555;
+  padding: 3px;
+}
+/* line 18, ../../app/stylesheets/_main_footer.scss */
+#footer_wrapper li a {
+  color: #828282;
+}
+/* line 21, ../../app/stylesheets/_main_footer.scss */
+#footer_wrapper li a:hover {
+  color: #AA4444;
+}
+/* line 24, ../../app/stylesheets/_main_footer.scss */
+#footer_wrapper li .selected {
+  color: #AA4444 !important;
+}
+/* line 28, ../../app/stylesheets/_main_footer.scss */
+#footer_wrapper li:hover {
+  color: #AA5555;
+}
+
 /* line 1, ../../app/stylesheets/_main_product_tabs.scss */
 #main-product-type-tabs {
   font-variant: small-caps;

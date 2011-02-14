@@ -1,0 +1,20 @@
+<%
+loop_footer_tabs = {
+  'Terms & Conditions' => loop_terms_path,
+  'Sell Here' => loop_sell_here_path,
+  'About'  => loop_about_path,
+  'Customer Service'  => loop_customer_service_path
+}
+%>
+
+
+
+<div id="footer_wrapper" class='bp'>
+  <div class="container" id="footer">
+    <ul id='main-footer-tabs'>
+      <% loop_footer_tabs.each_pair do |tab_name, tab_path| %>
+        <li> <%= link_to_unless_current tab_name, tab_path %> </li> <%= '|' unless tab_name == 'Customer Service' %>
+      <% end %>
+    </ul>
+  </div>
+</div>
