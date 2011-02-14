@@ -36,8 +36,10 @@
     <div id='content_wrapper' class='container'>
       <%= yield %>
     </div>
-  </div>
 
+  <div id='footer_wrapper'>
+    <%= render 'shared/main_footer' %>
+  </div>
   <%= yield :bottom %>
 
   <script>
