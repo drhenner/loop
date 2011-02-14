@@ -1,0 +1,19 @@
+<%
+my_account_tabs = {
+  'Details'       => myaccount_user_path,
+  'Addresses'     => myaccount_addresses_path,
+  'Order History' => myaccount_orders_path,
+  'Store Credits' => myaccount_store_credit_path,
+  'Credit Cards'  => myaccount_credit_cards_path,
+  'Measurements'  => myaccount_measurements_path
+}
+%>
+
+
+
+
+<ul id='main-product-type-tabs'>
+  <% my_account_tabs.each_pair do |tab_name, tab_path| %>
+    <li> <%= link_to_unless_current tab_name, tab_path %> </li>
+  <% end %>
+</ul>
