@@ -28,6 +28,7 @@ end
 
 Factory.define :seller_admin_user, :parent => :user do |f|
   f.roles     { [Role.find_by_name('seller_admin')] }
+  f.company   { Factory(:company)}
 end
 
 

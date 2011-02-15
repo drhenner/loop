@@ -5,6 +5,8 @@ class CreateProductColors < ActiveRecord::Migration
       t.integer :product_id,  :null => false
 
     end
+    add_index :product_colors, :color_id
+    add_index :product_colors, :product_id
   end
 
   def self.down

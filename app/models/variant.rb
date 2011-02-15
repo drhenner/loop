@@ -10,6 +10,10 @@ class Variant < ActiveRecord::Base
   has_many   :purchase_order_variants
   has_many   :purchase_orders, :through => :purchase_order_variants
 
+  has_many :images, :as         => :imageable,
+                    :order      => :position,
+                    :dependent  => :destroy
+
   belongs_to :product
   belongs_to :brand
   belongs_to :color

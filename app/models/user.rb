@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :openid_identifier, :birth_date, :role_ids, :address_attributes, :phone_attributes
 
   belongs_to :account
+  belongs_to :company
 
   has_one     :store_credit
   has_one     :measurement
