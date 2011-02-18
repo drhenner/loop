@@ -5,15 +5,6 @@ describe Product, ".instance methods with images" do
     @product = Factory(:product_with_image)
   end
 
-  context "featured_image" do
-    pending "test for featured_image"
-    #it 'should return an image url' do
-      # @your_model.should_receive(:save_attached_files).and_return(true)
-      # Image.new :photo => File.new(Rails.root + 'spec/fixtures/images/rails.png')
-    #  @product.featured_image.should_not be_nil
-    #end
-
-  end
 end
 
 

@@ -45,6 +45,14 @@ class Variant < ActiveRecord::Base
     (count_on_hand - count_pending_to_customer) <= LOW_STOCK_QTY
   end
 
+  # Image that is featured for your product
+  #
+  # @param [Optional Symbol] the size of the image expected back
+  # @return [String] name of the file to show from the public folder
+  def featured_image(image_size = :small)
+    images.first ? images.first.photo.url(image_size) : "no_image_#{image_size.to_s}.jpg"
+  end
+
   # returns "(Sold Out)" or "(Low Stock)" or "" depending on if the variant is out of stock / low stock or has enough stock.
   #
   # @param [Optional String]

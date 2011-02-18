@@ -41,6 +41,14 @@ describe Variant, " instance methods" do
       end
   end
 
+  context "featured_image" do
+
+    it 'should return no_image url' do
+      @variant.featured_image.should        == 'no_image_small.jpg'
+      @variant.featured_image(:mini).should == 'no_image_mini.jpg'
+    end
+  end
+
   context ".display_stock_status(start = '(', finish = ')')" do
     it 'should be low stock' do
       @variant.count_on_hand             = 100
