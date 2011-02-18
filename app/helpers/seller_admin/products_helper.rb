@@ -1,0 +1,2 @@
+module SellerAdmin::ProductsHelper
+end

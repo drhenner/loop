@@ -1,0 +1,15 @@
+<h1> Products </h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for product in @products %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= image_tag(product.featured_image(:small)) %></td>
+      <td><%= link_to "Show", seller_admin_product_path(product) %></td>
+    </tr>
+  <% end %>
+</table>
+

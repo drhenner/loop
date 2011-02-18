@@ -325,6 +325,20 @@ class User < ActiveRecord::Base
     grid.paginate({:page => params[:page],:per_page => params[:rows]})
   end
 
+  # results from the seller_admin's products
+  #
+  # @param [none]
+  # @return [ Array[Product] ] Array of seller's products
+  def seller_products(params)
+    if company_id
+      Product.includes(:variants).where(["varaints.brand_id IN (?)", company.brand_ids] ).
+                                  paginate({:page => params[:page],:per_page => params[:rows]})
+    elsif admin?
+      Product.includes(:variants).paginate({:page => params[:page],:per_page => params[:rows]})
+    end
+  end
+
+
   private
 
   def start_store_credits
