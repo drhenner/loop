@@ -6,12 +6,18 @@
 </p>
 
 <p>
-  <strong>Images:</strong>
+  <strong>Product Images:</strong>
   <%= @product.images.each do |image| %>
     <%= image_tag(image.photo.url(:product)) %>
   <% end %>
 </p>
 
+<p>
+  <strong>Product Images:</strong>
+  <%= @product.variants.each do |variant| %>
+    <%= image_tag(variant.featured_image) %>
+  <% end %>
+</p>
 <p>
   <%= link_to "View All", seller_admin_products_path, :class => 'button' %>
 </p>
