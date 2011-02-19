@@ -174,7 +174,7 @@ class Variant < ActiveRecord::Base
   #
   # @param [Boolean] reload the object from the DB
   # @return [Integer] number available to purchase
-  def count_available(reload_variant = true)
+  def count_available(reload_variant = false)
     self.reload if reload_variant
     count_on_hand - count_pending_to_customer
   end

@@ -14,9 +14,16 @@
 
 <p>
   <strong>Product Images:</strong>
-  <%= @product.variants.each do |variant| %>
-    <%= image_tag(variant.featured_image) %>
-  <% end %>
+  <ul>
+    <%= @product.variants.each do |variant| %>
+      <li>
+        <%= image_tag(variant.featured_image) %><br/>
+        Qty in Stock: <%= variant.count_on_hand %><br/>
+        Qty pending to customer: <%= variant.count_pending_to_customer %><br/>
+        Qty available to sell: <%= variant.count_available %>
+      </li>
+    <% end %>
+  </ul>
 </p>
 <p>
   <%= link_to "View All", seller_admin_products_path, :class => 'button' %>
