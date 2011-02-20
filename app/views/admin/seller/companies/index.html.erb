@@ -1,3 +1,4 @@
+<%= render :partial => '/admin/seller/sub_header'%>
 <h1> Companies </h1>
 
 <table>
@@ -9,7 +10,6 @@
       <td><%= company.name %></td>
       <td><%= link_to "Show", admin_seller_company_path(company) %></td>
       <td><%= link_to "Edit", edit_admin_seller_company_path(company) %></td>
-      <td><%= link_to "Destroy", admin_seller_company_path(company), :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>

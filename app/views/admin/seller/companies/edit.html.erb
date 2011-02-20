@@ -1,4 +1,5 @@
-<h1> Edit Company </h1>
+<%= render :partial => '/admin/seller/sub_header'%>
+<h1> Edit <%= @company.name %> </h1>
 
 <%= form_for(@company, :url => admin_seller_company_path(@company)) do |f| %>
   <%= render :partial => 'form', :locals => {:f => f} %>
