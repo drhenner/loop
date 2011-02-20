@@ -5,4 +5,6 @@ class Company < ActiveRecord::Base
                     :order      => :position,
                     :dependent  => :destroy
   has_many :owners
+
+  accepts_nested_attributes_for :images, :reject_if => lambda { |t| t['photo'].nil? }
 end

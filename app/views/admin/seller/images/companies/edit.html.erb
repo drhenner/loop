@@ -1,0 +1,7 @@
+<h1> Edit Company </h1>
+
+<%= form_for(@company, :url => admin_seller_images_company_path(@company)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Show', admin_seller_images_company_path( @company ), :class => 'button' %> |

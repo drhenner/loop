@@ -1,0 +1,7 @@
+<h1> Edit Owner </h1>
+
+<%= form_for(@owner, :url => admin_seller_images_owner_path(@owner)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Show', admin_seller_images_owner_path( @owner ), :class => 'button' %> |

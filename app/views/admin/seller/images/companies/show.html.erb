@@ -1,0 +1,9 @@
+<h1><%= @company.name %> Images</h1>
+
+<% @company.images.each do |image| %>
+  <%= image.photo_file_name %><%= image_tag image.photo.url(:small) %><br/>
+<% end %>
+
+<p>
+  <%= link_to "Edit", edit_admin_seller_images_company_path(@company), :class => 'button' %>
+</p>

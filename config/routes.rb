@@ -73,10 +73,12 @@ Hadean::Application.routes.draw do # |map|
     resources :overviews, :only => [:index]
 
     namespace :seller do
-      resources :companies do
-        resources :images
-      end
+      resources :companies
       resources :owners
+      namespace :images do
+        resources :companies
+        resources :owners
+      end
     end
 
     namespace :rma do
