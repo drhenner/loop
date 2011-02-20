@@ -331,13 +331,27 @@ class User < ActiveRecord::Base
   # @return [ Array[Product] ] Array of seller's products
   def seller_products(params)
     if company_id
-      Product.includes(:variants).where(["varaints.brand_id IN (?)", company.brand_ids] ).
+      Product.includes(:variants).where(["variants.brand_id IN (?)", company.brand_ids] ).
                                   paginate({:page => params[:page],:per_page => params[:rows]})
     elsif admin?
       Product.includes(:variants).paginate({:page => params[:page],:per_page => params[:rows]})
     end
   end
 
+  # results from the seller_admin's orders
+  #
+  # @param [none]
+  # @return [ Array[Order] ] Array of seller's products
+  def seller_orders(params = nil, id = nil)
+    if company_id
+      o = Order.includes([{:order_items => :variant} ]).where(["variants.brand_id IN (?)", company.brand_ids] )
+      o = o.paginate({:page => params[:page],:per_page => params[:rows]}) if params
+    elsif admin?
+      o = Order.includes(:order_items)
+      o = o.paginate({:page => params[:page],:per_page => params[:rows]}) if params
+    end
+    o = o.find(id) if id
+  end
 
   private
 

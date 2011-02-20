@@ -21,3 +21,7 @@ end
 Factory.define :complete_order, :parent => :order do |u|
   u.state           'complete'
 end
+
+Factory.define :order_with_an_item, :parent => :order do |f|
+  f.order_items     { |c| [c.association(:order_item)] }
+end

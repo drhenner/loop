@@ -1,0 +1,7 @@
+<h1> Edit Order Item </h1>
+
+<%= form_for(@order_item, :url => seller_admin_current_order_item_path(@order, @order_item)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Show', seller_admin_current_order_order_item_path( @order, @order_item ), :class => 'button' %> |

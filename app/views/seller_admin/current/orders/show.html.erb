@@ -1,0 +1,11 @@
+<h1> Order </h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @order.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_seller_admin_current_order_path(@order), :class => 'button' %> |
+  <%= link_to "View All", seller_admin_current_orders_path, :class => 'button' %>
+</p>

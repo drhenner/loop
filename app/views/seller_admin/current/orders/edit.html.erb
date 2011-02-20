@@ -1,0 +1,8 @@
+<h1> Edit Order </h1>
+
+<%= form_for(@order, :url => seller_admin_current_order_path(@order)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Show', seller_admin_current_order_path( @order ), :class => 'button' %> |
+  <%= link_to 'View All', seller_admin_current_orders_path, :class => 'button' %>

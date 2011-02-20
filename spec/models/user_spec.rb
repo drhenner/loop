@@ -15,6 +15,15 @@ describe User do
 end
 
 
+
+describe User, ".seller_products" do
+  it "should return the admins products"
+end
+
+describe User, ".seller_orders" do
+  it "should return the admins orders"
+end
+
 describe User, ".name" do
   it "should return the correct name" do
     user = Factory.build(:registered_user)

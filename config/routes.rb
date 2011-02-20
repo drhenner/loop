@@ -61,6 +61,11 @@ Hadean::Application.routes.draw do # |map|
   namespace :seller_admin do
     resource  :overview, :only => [:show]
     resources :products, :only => [:index, :show]
+    namespace :current do
+      resources :orders, :only => [:index, :show] do
+        resource :order_item, :only => [:show, :edit, :update]
+      end
+    end
   end
 
   namespace :admin do
