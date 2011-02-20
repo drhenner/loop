@@ -42,6 +42,6 @@ class Admin::Merchandise::BrandsController < Admin::BaseController
   private
 
   def form_info
-
+    @companies = Company.all
   end
 end

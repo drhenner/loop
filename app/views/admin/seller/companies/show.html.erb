@@ -1,0 +1,12 @@
+<h1> Company </h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @company.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_seller_company_path(@company), :class => 'button' %> |
+  <%= link_to "Destroy", admin_seller_company_path(@company), :confirm => 'Are you sure?', :method => :delete, :class => 'button' %> |
+  <%= link_to "View All", admin_seller_companies_path, :class => 'button' %>
+</p>
