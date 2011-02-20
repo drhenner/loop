@@ -7,4 +7,6 @@ class Brand < ActiveRecord::Base
 
   validates :name,  :presence => true#,
                     #:format   => { :with => CustomValidators::Names.name_validator }
+
+  accepts_nested_attributes_for :images, :reject_if => lambda { |t| t['photo'].nil? }
 end
