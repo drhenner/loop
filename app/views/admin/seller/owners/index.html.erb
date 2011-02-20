@@ -1,0 +1,17 @@
+<%= render :partial => '/admin/seller/sub_header'%>
+<h1> Owners </h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for owner in @owners %>
+    <tr>
+      <td><%= owner.name %></td>
+      <td><%= link_to "Show", admin_seller_owner_path(owner) %></td>
+      <td><%= link_to "Edit", edit_admin_seller_owner_path(owner) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Owner", new_admin_seller_owner_path, :class => 'button' %></p>

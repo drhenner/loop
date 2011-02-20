@@ -1,0 +1,36 @@
+<% if @owner.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@owner.errors.count, "error") %> prohibited this owner from being saved:</h2>
+
+    <ul>
+    <% @owner.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :brief_description %><br />
+    <%= f.text_area :brief_description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :full_description %><br />
+    <%= f.text_area :full_description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :company %><br />
+    <%= f.select :company, @companies %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>

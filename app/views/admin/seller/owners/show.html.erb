@@ -1,0 +1,12 @@
+<%= render :partial => '/admin/seller/sub_header'%>
+<h1> Owner </h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @owner.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_seller_owner_path(@owner), :class => 'button' %> |
+  <%= link_to "View All", admin_seller_owners_path, :class => 'button' %>
+</p>

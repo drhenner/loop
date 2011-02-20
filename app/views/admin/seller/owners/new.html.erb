@@ -1,0 +1,8 @@
+<%= render :partial => '/admin/seller/sub_header'%>
+<h1> New Owner" </h1>
+
+<%= form_for(@owner, :url => admin_seller_owners_path(@owner)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Back to List', admin_seller_owners_path, :class => 'button' %>

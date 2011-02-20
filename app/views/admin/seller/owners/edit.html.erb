@@ -1,0 +1,9 @@
+<%= render :partial => '/admin/seller/sub_header'%>
+<h1> Edit <%= @owner.name %> </h1>
+
+<%= form_for(@owner, :url => admin_seller_owner_path(@owner)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Show', admin_seller_owner_path( @owner ), :class => 'button' %> |
+  <%= link_to 'View All', admin_seller_owners_path, :class => 'button' %>
