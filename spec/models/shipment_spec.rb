@@ -167,7 +167,7 @@ describe Shipment, '#create_shipments_with_items(order)' do
       order    = Order.find(@order.id)
       shipment = Shipment.create_shipments_with_items(order)
       order.reload
-      order.shipments.size.should == 1
+      order.shipments.size.should == 2
     end
   end
 end
