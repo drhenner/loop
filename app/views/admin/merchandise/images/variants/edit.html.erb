@@ -1,0 +1,7 @@
+<h1> Edit Variant </h1>
+
+<%= form_for(@variant, :url => admin_merchandise_images_variant_path(@variant)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Show', admin_merchandise_images_variant_path( @variant ), :class => 'button' %> |

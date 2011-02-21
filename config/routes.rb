@@ -142,6 +142,7 @@ Hadean::Application.routes.draw do # |map|
       namespace :images do
         resources :products
         resources :brands
+        resources :variants
       end
       resources :properties
       resources :prototypes
