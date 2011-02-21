@@ -1,0 +1,8 @@
+<h1> Edit User </h1>
+
+<%= form_for(@user, :url => admin_seller_user_path(@user)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Show', admin_seller_user_path( @user ), :class => 'button' %> |
+  <%= link_to 'View All', admin_seller_users_path, :class => 'button' %>

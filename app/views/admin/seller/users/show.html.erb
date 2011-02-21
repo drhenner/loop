@@ -1,0 +1,11 @@
+<h1> <%= @user.name %> </h1>
+
+<p>
+  <strong>Company:</strong>
+  <%= @user.company_name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_seller_user_path(@user), :class => 'button' %> |
+  <%= link_to "View All", admin_seller_users_path, :class => 'button' %>
+</p>

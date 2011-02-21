@@ -241,6 +241,14 @@ class User < ActiveRecord::Base
     (first_name? && last_name?) ? [first_name.capitalize, last_name.capitalize ].join(" ") : email
   end
 
+  # gives the user's comany name or ''
+  #
+  # @param [none]
+  # @return [ String ]
+  def company_name
+    (company_id) ? company.name  : ''
+  end
+
   # sanitizes the saving of data.  removes white space and assigns a free account type if one doesn't exist
   #
   # @param  [ none ]

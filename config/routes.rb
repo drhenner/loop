@@ -75,6 +75,7 @@ Hadean::Application.routes.draw do # |map|
     namespace :seller do
       resources :companies
       resources :owners
+      resources :users
       namespace :images do
         resources :companies
         resources :owners

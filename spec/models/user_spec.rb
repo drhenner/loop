@@ -56,21 +56,34 @@ describe User, "instance methods" do
   end
 
   context ".admin?" do
-    it 'ahould be an admin' do
+    it 'should be an admin' do
       user = Factory(:admin_user)
       user.admin?.should be_true
     end
 
-    it 'ahould be an admin' do
+    it 'should be an admin' do
       user = Factory(:super_admin_user)
       user.admin?.should be_true
     end
 
-    it 'ahould not be an admin' do
+    it 'should not be an admin' do
       user = Factory(:user)
       user.admin?.should be_false
     end
   end
+
+  context ".company_name" do
+    it 'should return the companys name' do
+      user = Factory(:seller_admin_user)
+      user.company_name.should_not be_blank
+    end
+
+    it 'should not return the companys name' do
+      user = Factory(:user)
+      user.company_name.should == ''
+    end
+  end
+
 end
 
 describe User, "instance methods" do
