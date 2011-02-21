@@ -111,38 +111,65 @@ describe Shipment, '#create_shipments_with_items(order)' do
     #@shipment = Factory.build(:shipment, :order => order, :state => 'pending')
   end
 
-  it 'should create shipments with the items in the order'do
-    order_item = Factory(:order_item, :order => @order)
-    order_item2 = Factory(:order_item, :order => @order)
-    @order.order_items.push(order_item)
-    @order.order_items.push(order_item2)
-    @order.save
+  context 'same brand_ids' do
+    before(:each) do
+      @variant = Factory(:variant, :brand_id => 1)
+      @variant2 = Factory(:variant, :brand_id => 1)
+    end
 
-    order    = Order.find(@order.id)
-    shipment = Shipment.create_shipments_with_items(order)
-    order.reload
-    order.shipments.size.should == 2
-    #shipment.order_item_ids.should == order.order_item_ids
+    it 'should create shipments with the items in the order'do
+      order_item = Factory(:order_item, :order => @order, :variant => @variant)
+      order_item2 = Factory(:order_item, :order => @order, :variant => @variant2)
+      @order.order_items.push(order_item)
+      @order.order_items.push(order_item2)
+      @order.save
+
+      order    = Order.find(@order.id)
+      shipment = Shipment.create_shipments_with_items(order)
+      order.reload
+      order.shipments.size.should == 2
+      #shipment.order_item_ids.should == order.order_item_ids
+    end
+  #shipping_method_id
+
+    it 'should create 1 shipment with items with the same shipping method'do
+      shipping_rate = Factory(:shipping_rate)
+
+      order_item  = Factory(:order_item, :order => @order, :shipping_rate => shipping_rate, :variant => @variant)
+      order_item2 = Factory(:order_item, :order => @order, :shipping_rate => shipping_rate, :variant => @variant2)
+      @order.order_items.push(order_item)
+      @order.order_items.push(order_item2)
+      @order.save
+
+      order    = Order.find(@order.id)
+      shipment = Shipment.create_shipments_with_items(order)
+      order.reload
+      order.shipments.size.should == 1
+    end
   end
-#shipping_method_id
 
-  it 'should create 1 shipment with items with the same shipping method'do
-    #shipping_method = Factory(:shipping_method)
-    shipping_rate = Factory(:shipping_rate)
+  context 'different brand_ids' do
+    before(:each) do
+      @variant = Factory(:variant, :brand_id => 1)
+      @variant2 = Factory(:variant, :brand_id => 2)
+    end
 
-    order_item  = Factory(:order_item, :order => @order, :shipping_rate => shipping_rate)
-    order_item2 = Factory(:order_item, :order => @order, :shipping_rate => shipping_rate)
-    @order.order_items.push(order_item)
-    @order.order_items.push(order_item2)
-    @order.save
+    it 'should create 2 shipments with two brands in the order'do
+      #shipping_method = Factory(:shipping_method)
+      shipping_rate = Factory(:shipping_rate)
 
-    order    = Order.find(@order.id)
-    shipment = Shipment.create_shipments_with_items(order)
-    order.reload
-    order.shipments.size.should == 1
-    #shipment.order_item_ids.should == order.order_item_ids
+      order_item  = Factory(:order_item, :order => @order, :shipping_rate => shipping_rate, :variant => @variant)
+      order_item2 = Factory(:order_item, :order => @order, :shipping_rate => shipping_rate, :variant => @variant2)
+      @order.order_items.push(order_item)
+      @order.order_items.push(order_item2)
+      @order.save
+
+      order    = Order.find(@order.id)
+      shipment = Shipment.create_shipments_with_items(order)
+      order.reload
+      order.shipments.size.should == 1
+    end
   end
-
 end
 
 describe Shipment, 'Class Methods' do
