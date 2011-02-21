@@ -1,0 +1,7 @@
+<h1> Edit Brand </h1>
+
+<%= form_for(@brand, :url => admin_merchandise_images_brand_path(@brand)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Show', admin_merchandise_images_brand_path( @brand ), :class => 'button' %> |
