@@ -25,6 +25,8 @@ class Variant < ActiveRecord::Base
 
   accepts_nested_attributes_for :variant_properties
 
+  accepts_nested_attributes_for :images, :reject_if => lambda { |t| t['photo'].nil? }
+
   OUT_OF_STOCK_QTY    = 2
   LOW_STOCK_QTY       = 6
   MONTHLY_BILLING_ID  = 1
