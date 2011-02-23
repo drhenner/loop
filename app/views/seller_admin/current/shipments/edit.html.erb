@@ -1,0 +1,8 @@
+<h1> Edit Shipment (<%= @shipment.number %>) </h1>
+
+<%= form_for(@shipment, :url => seller_admin_current_shipment_path(@shipment)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Show', seller_admin_current_shipment_path( @shipment ), :class => 'button' %> |
+  <%= link_to 'View All', seller_admin_current_shipments_path, :class => 'button' %>
