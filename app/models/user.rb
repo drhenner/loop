@@ -361,6 +361,14 @@ class User < ActiveRecord::Base
     o = o.find(id) if id
   end
 
+  def brand_ids
+    if company_id
+      company.brand_ids
+    elsif admin?
+      Brand.select(:id).all
+    end
+  end
+
   private
 
   def start_store_credits

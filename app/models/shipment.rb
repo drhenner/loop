@@ -93,6 +93,10 @@ class Shipment < ActiveRecord::Base
     end
   end
 
+  def self.seller_shipments(brand_ids)
+    Shipment.includes({:order_items => :variant}).where(["variants.brand_id IN (?)",brand_ids])
+  end
+
   # Addresses that the user has to ship to
   #
   # @param [none]

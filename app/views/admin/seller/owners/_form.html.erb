@@ -26,8 +26,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :company %><br />
-    <%= f.select :company, @companies %>
+    <%= f.label :company_id %><br />
+    <%= f.select :company_id, @companies, :include_blank => true %>
   </div>
 
 

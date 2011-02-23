@@ -42,6 +42,6 @@ class Admin::Seller::OwnersController < Admin::Seller::BaseController
   private
 
   def form_info
-    @companies = Company.all
+    @companies = Company.all.collect{|c| [c.name, c.id]}
   end
 end

@@ -62,6 +62,11 @@ Hadean::Application.routes.draw do # |map|
     resource  :overview, :only => [:show]
     resources :products, :only => [:index, :show]
     namespace :current do
+      resources :shipments, :only => [:index, :show, :edit, :update, :ship] do
+        member do
+          put :ship
+        end
+      end
       resources :orders, :only => [:index, :show] do
         resource :order_item, :only => [:show, :edit, :update]
       end
