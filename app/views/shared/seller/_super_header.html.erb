@@ -4,9 +4,6 @@
       <%= link_to image_tag( "logos/#{Image::MAIN_LOGO}.png", :alt => 'hadean image.'), root_path %>
     </h1>
     <ul id="menu-main">
-      <li id="menu-main-discover">
-        <a href="/"> <strong> Flash Sales </strong> <span>Get it while it's hot</span> </a>
-      </li>
 
       <li class="" id="menu-main-cart">
         <% if current_user %>
@@ -18,11 +15,6 @@
               <strong> About Us </strong> <span> </span>
           <% end %>
         <% end %>
-      </li>
-      <li class="" id="menu-main-wish">
-          <%= link_to(wish_items_path, :id => 'wish_items_button') do %>
-              <strong> Philosophy </strong> <span> about us.</span>
-          <% end %>
       </li>
 
       <li class="" id="menu-main-user">
