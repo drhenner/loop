@@ -4,7 +4,18 @@
   <strong>Name:</strong>
   <%= @order.name %>
 </p>
-
+<h3> Order Items</h3>
+<% if @order.order_items.empty? %>
+  No Items.
+<% else %>
+  <ul>
+    <% @order.order_items.each do |item| %>
+      <% if current_user.brand_ids.any?{|id| id == item.variant.brand_id } %>
+        <li><%= link_to item.variant.product_name, seller_admin_current_order_item_path(item) %></li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
 <p>
   <%= link_to "Edit", edit_seller_admin_current_order_path(@order), :class => 'button' %> |
   <%= link_to "View All", seller_admin_current_orders_path, :class => 'button' %>

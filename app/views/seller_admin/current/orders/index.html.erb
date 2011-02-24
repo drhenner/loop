@@ -1,15 +1,18 @@
 <h1> Orders </h1>
 
+<% if !@orders.blank? %>
 <table>
   <tr>
-    <th>Name</th>
+    <th>Number</th>
   </tr>
   <% for order in @orders %>
     <tr>
-      <td><%= order.name %></td>
+      <td><%= order.number %></td>
       <td><%= link_to "Show", seller_admin_current_order_path(order) %></td>
       <td><%= link_to "Edit", edit_seller_admin_current_order_path(order) %></td>
     </tr>
   <% end %>
 </table>
-
+<% else %>
+  There are currently no orders to view.
+<% end %>

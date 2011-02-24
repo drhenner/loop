@@ -5,6 +5,18 @@
   <%= @shipment.number %>
 </p>
 
+<% if @shipment.order_items.empty? %>
+  No Items.
+<% else %>
+  <ul>
+    <% @shipment.order_items.each do |item| %>
+      <% if current_user.brand_ids.any?{|id| id == item.variant.brand_id } %>
+        <li><%= item.variant.product_name %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <%= link_to "Ship", ship_seller_admin_current_shipment_path(@shipment), :class => 'button', :method => :put %>
+<% end %>
 <p>
   <%= link_to "Edit", edit_seller_admin_current_shipment_path(@shipment), :class => 'button' %> |
   <%= link_to "View All", seller_admin_current_shipments_path, :class => 'button' %>
