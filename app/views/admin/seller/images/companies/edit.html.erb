@@ -1,7 +1,13 @@
 <h1> Edit Company </h1>
 
-<%= form_for(@company, :url => admin_seller_images_company_path(@company)) do |f| %>
+<%= form_for(@company, :url => admin_seller_images_company_path(@company),
+                        :html => {:class => 'prepend-4', :multipart => true}) do |f| %>
   <%= render :partial => 'form', :locals => {:f => f} %>
+  <div class="button generic_submit_button">
+    <%= submit_tag "Create",
+                    :class  => "button",
+                    :id     => "create_company_button" %>
+  </div>
 <% end %>
 
   <%= link_to 'Show', admin_seller_images_company_path( @company ), :class => 'button' %> |
