@@ -13,11 +13,12 @@
 </p>
 
 <p>
-  <strong>Product Images:</strong>
+  <strong>Variant Details:</strong>
   <ul>
     <%= @product.variants.each do |variant| %>
       <li>
         <%= image_tag(variant.featured_image) %><br/>
+        Brand: <%= variant.brand_name %><br/>
         Qty in Stock: <%= variant.count_on_hand %><br/>
         Qty pending to customer: <%= variant.count_pending_to_customer %><br/>
         Qty available to sell: <%= variant.count_available %>
@@ -25,6 +26,17 @@
     <% end %>
   </ul>
 </p>
+
+<h3> Keywords </h3>
+<p>
+  <%= raw @product.set_keywords %>
+</p>
+
+<h3> Description </h3>
+<p>
+  <%= raw @product.description %>
+</p>
+
 <p>
   <%= link_to "View All", seller_admin_products_path, :class => 'button' %>
 </p>
