@@ -2,6 +2,7 @@
 Factory.define :variant do |f|
   f.sku           '345-98765-0987'
   f.product       { |c| c.association(:product) }
+  f.color       { |c| c.association(:color) }
   f.brand       { |c| c.association(:brand) }
   f.price  11.00
   f.cost          8.00
