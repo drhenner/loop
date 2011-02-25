@@ -337,12 +337,21 @@ class User < ActiveRecord::Base
   #
   # @param [none]
   # @return [ Array[Product] ] Array of seller's products
-  def seller_products(params)
+  def seller_products(params = {})
+    params[:page] ||= 1
+    params[:rows] ||= 20
+    all_seller_products.paginate({:page => params[:page],:per_page => params[:rows]})
+  end
+
+  # results from the seller_admin's products
+  #
+  # @param [none]
+  # @return [ Array[Product] ] Array of seller's products
+  def all_seller_products
     if company_id
-      Product.includes(:variants).where(["variants.brand_id IN (?)", company.brand_ids] ).
-                                  paginate({:page => params[:page],:per_page => params[:rows]})
+      Product.includes(:variants).where(["variants.brand_id IN (?)", company.brand_ids] )
     elsif admin?
-      Product.includes(:variants).paginate({:page => params[:page],:per_page => params[:rows]})
+      Product.includes(:variants)
     end
   end
 

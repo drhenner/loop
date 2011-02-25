@@ -7,7 +7,7 @@ class SellerAdmin::ProductsController < SellerAdmin::BaseController
   end
 
   def show
-    @product = current_user.seller_products.find(params[:id])
+    @product = current_user.all_seller_products.find(params[:id])
   end
 
   private
