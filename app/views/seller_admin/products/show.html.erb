@@ -6,16 +6,17 @@
 </p>
 
 <p>
-  <strong>Product Images:</strong>
-  <%= @product.images.each do |image| %>
+  <strong>Product Images:</strong><br/>
+  <% @product.images.each do |image| %>
     <%= image_tag(image.photo.url(:product)) %>
+    <br/>
   <% end %>
 </p>
 
 <p>
   <strong>Variant Details:</strong>
   <ul>
-    <%= @product.variants.each do |variant| %>
+    <% @product.variants.each do |variant| %>
       <li>
         <%= image_tag(variant.featured_image) %><br/>
         Brand: <%= variant.brand_name %><br/>
