@@ -25,7 +25,7 @@ class SellerAdmin::Current::ShipmentsController < SellerAdmin::BaseController
   end
 
   def ship
-    load_info
+    #load_info
     @shipment = Shipment.seller_shipments(current_user.brand_ids).find(params[:id])
 
     respond_to do |format|
