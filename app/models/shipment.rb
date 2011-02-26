@@ -11,6 +11,7 @@ class Shipment < ActiveRecord::Base
   validates :order_id,            :presence => true
   validates :address_id,          :presence => true
   validates :shipping_method_id,  :presence => true
+  validates :tracking,  :length => { :maximum => 255 }
 
   CHARACTERS_SEED = 20
   NUMBER_SEED     = 2002002002000
