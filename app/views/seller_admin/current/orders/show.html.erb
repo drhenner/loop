@@ -1,22 +1,44 @@
-<h1> Order </h1>
+<h1> Order (<%= @order.number %>) </h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
-<h3> Order Items</h3>
 <% if @order.order_items.empty? %>
   No Items.
 <% else %>
+  <h3> Order User </h3>
+    <% if @order.user_id %>
+        Name: <%= @order.name %><br/>
+        Email: <%= @order.email %><br/>
+        <% if @order.user.email && @order.user.email != @order.email %>
+          User Email: <%= @order.user.email %><br/>
+        <% end %>
+    <% else %>
+        <%= @order.email %>
+    <% end %>
+
+  <h3> Order Address </h3>
+
+  <p>
+    <% if @order.ship_address_id %>
+      <%= render :partial => '/shared/compact_address', :locals => { :shopping_address => @order.ship_address } %>
+    <% else %>
+      No Address associated.  Please call Loop de Luxe to resolve this issue.
+    <% end %>
+  </p>
+
+  <h3> Order Items </h3>
   <ul>
     <% @order.order_items.each do |item| %>
-      <% if current_user.brand_ids.any?{|id| id == item.variant.brand_id } %>
-        <li><%= link_to item.variant.product_name, seller_admin_current_order_item_path(item) %></li>
+      <% if current_user.admin? || current_user.brand_ids.any?{|id| id == item.variant.brand_id } %>
+        <li>
+          <%= link_to item.variant.name_with_sku, seller_admin_current_order_item_path(item) %><br/>
+          Shipping #: <%= item.shipment.try(:number) %><br/>
+          Tracking #: <%= item.shipment.try(:tracking) %><br/>
+          Status: <%= item.shipment.try(:state) %>
+        </li>
       <% end %>
     <% end %>
   </ul>
 <% end %>
 <p>
-  <%= link_to "Edit", edit_seller_admin_current_order_path(@order), :class => 'button' %> |
+  <%#= link_to "Edit", edit_seller_admin_current_order_path(@order), :class => 'button' %> |
   <%= link_to "View All", seller_admin_current_orders_path, :class => 'button' %>
 </p>

@@ -1,10 +1,25 @@
 <h1> <%= @order_item.variant.product_name %> </h1>
 
 <p>
-  <strong>Total:</strong>
-  <%= @order_item.total %>
+  <strong>Price:</strong>
+  <%= @order_item.price %>
 </p>
 
+  <p>
+    <strong>Total:</strong>
+    <%= @order_item.total %>
+  </p>
+
+  <p>
+    <strong>Shipping Rate:</strong>
+    <%= number_to_currency @order_item.shipping_rate.rate %>
+  </p>
+
+  <p>
+    <strong>Shipping Method:</strong>
+    <%= @order_item.shipping_method.name %>
+  </p>
+
 <p>
-  <%= link_to "Edit", edit_seller_admin_current_order_order_item_path(@order, @order_item), :class => 'button' %> |
+  <%= link_to "Order", seller_admin_current_order_path(@order), :class => 'button' %>
 </p>
