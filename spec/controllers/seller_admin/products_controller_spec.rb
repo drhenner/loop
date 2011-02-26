@@ -18,7 +18,7 @@ describe SellerAdmin::ProductsController do
 
   it "show action should render show template" do
     @product = Factory(:product)
-    User.any_instance.stubs(:seller_products).returns([@product])
+    User.any_instance.stubs(:all_seller_products).returns([@product])
     Array.any_instance.stubs(:find).returns(@product)
     get :show, :id => @product.id
     response.should render_template(:show)
