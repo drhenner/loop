@@ -78,18 +78,18 @@ class Shipment < ActiveRecord::Base
   # @param [Order]
   # @return [ none ]
   def self.create_shipments_with_items(order)
-
-    ## TODO: group by seller company and shipping_method
     order.order_items.group_by(&:brand_id).each do |brand_id, items|
       items.group_by(&:shipping_method_id).each do |shipping_method_id, order_items|
         shipment = Shipment.new(:shipping_method_id => shipping_method_id,
                                 :address_id         => order.ship_address_id,
                                 :order_id           => order.id
                                 )
-        order_items.each do |item|
-          shipment.order_items.push(item)
+        if !order_items.all?{|order_item| order_item.shipment_id? }
+          order_items.each do |item|
+            shipment.order_items.push(item) unless item.shipment_id
+          end
+          shipment.prepare!
         end
-        shipment.prepare!
       end
     end
   end

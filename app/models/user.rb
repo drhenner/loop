@@ -368,6 +368,7 @@ class User < ActiveRecord::Base
       o = o.paginate({:page => params[:page],:per_page => params[:rows]}) if params
     end
     o = o.find(id) if id
+    o
   end
 
   def brand_ids

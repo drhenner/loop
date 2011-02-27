@@ -67,7 +67,7 @@ Hadean::Application.routes.draw do # |map|
           put :ship
         end
       end
-      resources :orders, :only => [:index, :show] do
+      resources :orders, :only => [:index, :show, :update] do
         resource :order_item, :only => [:show, :edit, :update]
       end
     end

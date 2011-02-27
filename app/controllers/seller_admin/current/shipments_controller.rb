@@ -1,6 +1,9 @@
 class SellerAdmin::Current::ShipmentsController < SellerAdmin::BaseController
   def index
     @shipments = Shipment.seller_shipments(current_user.brand_ids)
+    @shipments = Shipment.includes(:order_item => :variant).
+                          where(:shipment => {:state => 'ready_to_ship'}).
+                          where(:order_item => {:variant => {:brand_id => params[:brand_id]}}) if current_user.admin? && params[:brand_id]
   end
 
   def show

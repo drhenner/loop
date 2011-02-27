@@ -1,44 +1,105 @@
-<h1> Order (<%= @order.number %>) </h1>
+<h1>New shipment for Order # <%= @order.number %>  </h1>
 
 <% if @order.order_items.empty? %>
   No Items.
 <% else %>
-  <h3> Order User </h3>
-    <% if @order.user_id %>
-        Name: <%= @order.name %><br/>
-        Email: <%= @order.email %><br/>
-        <% if @order.user.email && @order.user.email != @order.email %>
-          User Email: <%= @order.user.email %><br/>
-        <% end %>
-    <% else %>
-        <%= @order.email %>
-    <% end %>
 
-  <h3> Order Address </h3>
-
-  <p>
-    <% if @order.ship_address_id %>
-      <%= render :partial => '/shared/compact_address', :locals => { :shopping_address => @order.ship_address } %>
-    <% else %>
-      No Address associated.  Please call Loop de Luxe to resolve this issue.
-    <% end %>
-  </p>
-
-  <h3> Order Items </h3>
-  <ul>
-    <% @order.order_items.each do |item| %>
-      <% if current_user.admin? || current_user.brand_ids.any?{|id| id == item.variant.brand_id } %>
-        <li>
-          <%= link_to item.variant.name_with_sku, seller_admin_current_order_item_path(item) %><br/>
-          Shipping #: <%= item.shipment.try(:number) %><br/>
-          Tracking #: <%= item.shipment.try(:tracking) %><br/>
-          Status: <%= item.shipment.try(:state) %>
-        </li>
-      <% end %>
-    <% end %>
-  </ul>
 <% end %>
+
+<div class='' >
+  Shipment for:<br/>
+
+  <% if @order.user_id %>
+      Name: <%= @order.name %><br/>
+      Email: <%= @order.email %><br/>
+      <% if @order.user.email && @order.user.email != @order.email %>
+        User Email: <%= @order.user.email %><br/>
+      <% end %>
+  <% else %>
+      <%= @order.email %>
+  <% end %>
+</div>
+<div class='clear'></div>
+<div id='order-shipment-items' class='span-8 last float-left'>
+<h4>Order Items</h4>
+  <% @order.order_items.each_with_index do |item,i| %>
+    <div  id='order-shipment-item<%= i %>'
+          class='span-7 rounded-4 line_item_yellow'>
+
+        <%= item.variant.product_name %> <%= item.variant.sku %> <%= number_to_currency item.variant.price %> <br/>
+        <% if item.shipped? %>
+          Shipped: <%= item.shipment.display_shipped_at %> => Shipping #: <%= item.shipment.number %>
+        <% else %>
+          Not Shipped Yet.
+          <%= item.shipping_rate.shipping_method.name %>
+        <% end %>
+
+    </div>
+  <% end %>
+</div>
+<div class='span-7 last float-left' >
+<h4>Shipping address</h4>
+  <div  id='order-ship-address'
+        class='span-6 rounded-10 line_item_yellow'>
+    <%= render :partial => '/shared/compact_address', :locals => {:shopping_address => @order.ship_address} %>
+  </div>
+</div>
+<div class='span-7 last float-left'>
+<h4>Shipment Details</h4>
+  <% if @order.shipments.empty? %>
+      <div  id='order-ship-address'
+            class='span-7 rounded-10 line_item_yellow'>
+        No Shipments have been made on this order.
+      </div>
+  <% else %>
+
+    <% @order.shipments.each do |shipment| %>
+        <div  id='order-shipment-items'
+              class='span-7 rounded-10 <%= cycle("line_item_yellow", "line_item_gray") %>'>
+            Shipping Method: <%= shipment.shipping_method.name %> <br/>
+            Shipping #: <%= shipment.number %> Tracking:<%= shipment.tracking %> State:<%= shipment.state %>
+        </div>
+    <% end %>
+    <div class='span-7 rounded-10 line_item_blue'>
+      <%= link_to 'View Shipments for this order.', admin_fulfillment_shipments_path(:number => @order.number) %>
+    </div>
+
+  <% end %>
+</div>
+<div class='clear'></div>
+Ask if you want to authorize full amount of partial with reason<br/>
+<div class='span-16 last' style='text-align:left;'>
+  <% @order.invoices.each do |invoice| %>
+    <div id='invoice-line-<%= invoice.id %>'>
+      <% if @order.invoices.last.id == invoice.id %>
+          <%= render :partial => '/admin/fulfillment/orders/invoice_details', :locals => { :invoice => @order.invoices.last } %>
+      <% else %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 <p>
-  <%#= link_to "Edit", edit_seller_admin_current_order_path(@order), :class => 'button' %> |
-  <%= link_to "View All", seller_admin_current_orders_path, :class => 'button' %>
+  <%#= link_to "Edit", edit_seller_admin_current_order_path(@order), :class => 'button' %>
+  <%= link_to "Back", seller_admin_current_orders_path, :class => 'button white-button medium-button' %>
 </p>
+
+<div id="dialog" title="Invoice">
+  <div id='dialog-message'>
+    <p>Are you sure you want to Cancel the Order and Shipment? </p>
+  </div>
+</div>
+
+<% content_for :head do -%>
+  <%= stylesheet_link_tag "cupertino/jquery-ui-1.8.5.custom" %>
+<% end %>
+
+<% content_for :bottom do -%>
+  <%= javascript_include_tag "seller_admin/fulfillment" %>
+  <script>
+    <% @order.invoices.each do |invoice| %>
+      Hadean.Utility.registerOnLoadHandler(Hadean.Fulfillment.initialize(<%= invoice.id %>, <%= @order.id %> ));
+    <% end %>
+  </script>
+<% end %>
+
+
