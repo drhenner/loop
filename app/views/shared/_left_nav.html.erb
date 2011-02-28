@@ -1,3 +1,9 @@
-  <div id="sub_header_wrapper" class='span-5 column' >
-    <%= render 'shared/main_product_tabs' %>
-  </div>
+
+<ul id="left_nav_wrapper" class='span-3 column' >
+  <%#= render 'shared/main_product_tabs' %>
+  <% left_tabs.each do |tab| %>
+    <li style='<%= "color:#{tab[:color]};" if tab[:color] %>'>
+      <%= link_to tab[:name], colors_url(tab[:params]), :style => "color:#{tab[:color]};"  %>
+    </li>
+  <% end %>
+</ul>

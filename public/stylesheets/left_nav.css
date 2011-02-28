@@ -1,0 +1,15 @@
+/* line 2, ../../app/stylesheets/left_nav.scss */
+#left_nav_wrapper li {
+  padding-top: 7px;
+  font: bold 14px Verdana;
+  color: #525252;
+  font-variant: small-caps;
+}
+/* line 8, ../../app/stylesheets/left_nav.scss */
+#left_nav_wrapper li a:visited {
+  color: #525252;
+}
+/* line 12, ../../app/stylesheets/left_nav.scss */
+#left_nav_wrapper li a:hover {
+  color: #CDC673;
+}

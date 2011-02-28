@@ -21,6 +21,9 @@
 
   <%= javascript_include_tag 'jquery-1.4.2.min', 'rails', 'jquery-ui-1.8.5.custom.min','application' %>
 
+  <% if left_tabs %>
+    <%= stylesheet_link_tag 'left_nav.css' %>
+  <% end %>
   <%= yield :head %>
 
 </head>
@@ -34,7 +37,9 @@
     <%= render 'shared/main_header' %>
 
     <div id='content_wrapper' class='container'>
-      <%#= render 'shared/left_nav' %>
+      <% if left_tabs %>
+        <%= render 'shared/left_nav' %>
+      <% end %>
       <%= yield %>
     </div>
 

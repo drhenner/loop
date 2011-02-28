@@ -25,7 +25,6 @@
   a[href$=".rss"],
   a[href$=".rdf"],
   a[href^="aim:"]          { @include link-icon-base; }
-  a[href^="http:"]         { @include link-icon("external.png", false); }
   a[href^="mailto:"]       { @include link-icon("email.png", false); }
   a[href^="http:"]:visited { @include link-icon("visited.png", false); }
   a[href$=".pdf"]          { @include link-icon("pdf.png", false); }

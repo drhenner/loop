@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
                 :session_cart,
                 :is_production_simulation,
                 :search_product,
-                :product_types
+                :product_types,
+                :left_tabs
 
   before_filter :secure_session
 
@@ -33,6 +34,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  # By default the left tabs have nothing, This method is over-written in the main controller
+  def left_tabs
+    nil
+  end
 
   def require_user
     redirect_to login_url and return if logged_out?

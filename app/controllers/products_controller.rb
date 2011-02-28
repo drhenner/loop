@@ -29,6 +29,13 @@ class ProductsController < ApplicationController
 
   private
 
+  def left_tabs
+    @product_types     ||= ProductType.all
+    @left_tabs  ||= @product_types.map do |c|
+      {:name => c.name, :params => {:product_type_id => c.id}, :color => nil }
+    end
+  end
+
   def form_info
     @cart_item = CartItem.new
   end
