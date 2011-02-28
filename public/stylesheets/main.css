@@ -6,7 +6,7 @@
 /* line 8, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header, #header_wrapper #seller_header {
   font-family: Arial,"Liberation Sans",FreeSans,sans-serif;
-  height: 89px;
+  height: 69px;
 }
 /* line 12, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header .container, #header_wrapper #seller_header .container {
@@ -200,7 +200,7 @@ a:visited {
 
 /* line 3, ../../app/stylesheets/_sub_header.scss */
 #sub_header_wrapper {
-  /* background: url("../../images/header/bg-header-wrap.png") repeat-x scroll center bottom #FFFFFF; */
+  background: url("../../images/header/bg-header-wrap.png") repeat-x scroll center bottom white;
   text-align: left;
   color: #B2B2B2;
 }
@@ -551,14 +551,14 @@ a:visited {
 
 /* line 1, ../../app/stylesheets/_main_product_tabs.scss */
 #main-product-type-tabs {
-  padding-top: 25px;
+  /* padding-top: 25px; */
   font-variant: small-caps;
   font-weight: bold;
   font-size: 106%;
 }
 /* line 8, ../../app/stylesheets/_main_product_tabs.scss */
 #main-product-type-tabs li {
-  /* display: inline; */
+  display: inline;
   list-style: none;
   color: #ADA663;
   padding: 3px;
@@ -570,7 +570,7 @@ a:visited {
 }
 /* line 17, ../../app/stylesheets/_main_product_tabs.scss */
 #main-product-type-tabs li a:hover {
-  color: #AA4444;
+  color: #ADA663;
 }
 /* line 20, ../../app/stylesheets/_main_product_tabs.scss */
 #main-product-type-tabs li .selected {
@@ -821,7 +821,7 @@ input.text, input.title, input[type="text"], input[type="password"] {
 
 /* line 155, ../../app/stylesheets/_app.scss */
 #content_wrapper {
-  padding-top: 7px;
+  padding-top: 22px;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
 }
 

@@ -335,7 +335,7 @@ input.text, input.title, input[type="text"], input[type="password"] {
 
 /* line 155, ../../app/stylesheets/_app.scss */
 #content_wrapper {
-  padding-top: 7px;
+  padding-top: 22px;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
 }
 

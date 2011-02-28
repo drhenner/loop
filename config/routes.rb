@@ -7,7 +7,13 @@ Hadean::Application.routes.draw do # |map|
   match 'logout'  => 'user_sessions#destroy'
   match 'signup'  => 'customer/registrations#new'
   match 'admin/merchandise' => 'admin/merchandise/summary#index'
-  resources :products, :only => [:index, :show, :create]
+
+  resources :brands,    :only => [:index, :show ]
+  match 'designers' => 'brands#index'
+  match 'designer'  => 'brands#show'
+
+  resources :colors,    :only => [:index, :show ]
+  resources :products,  :only => [:index, :show, :create ]
   resources :cart_items
   resources :wish_items
   resources :states,   :only => [:index]

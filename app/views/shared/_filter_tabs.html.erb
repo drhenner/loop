@@ -1,0 +1,15 @@
+<%
+  filter_tabs =[
+    { :name => 'Designer',  :url => designers_path },
+    { :name => 'Color',     :url => colors_path },
+    { :name => 'Category',  :url => products_path }#,
+    #{ :name => 'Color', :url => colors_path }
+  ]
+%>
+
+
+<ul id='main-product-type-tabs'>
+  <% filter_tabs.each do |f_tab| %>
+    <li> <%= link_to_unless_current f_tab[:name] , f_tab[:url] %> </li>
+  <% end %>
+</ul>
