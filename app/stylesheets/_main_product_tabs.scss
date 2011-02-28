@@ -1,14 +1,16 @@
 #main-product-type-tabs {
 
+  padding-top: 25px;
   font-variant: small-caps;
   font-weight:bold;
   font-size:106%;
 
   li {
-    display: inline;
+    /* display: inline; */
     list-style: none;
-    color: #AA5555;
+    color: #ADA663;
     padding: 3px;
+    padding-left: 20px;
     a {
       color: #828282;
     }
@@ -20,6 +22,6 @@
     }
   }
   li:hover {
-    color: #AA5555;
+    color: #ADA663;
   }
 }

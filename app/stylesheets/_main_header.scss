@@ -2,19 +2,18 @@
 
 #header_wrapper {
 
-  border-bottom: 1px solid #CCCCCC;
-  background: url("../../images/header/bg-header-wrap.png") repeat-x scroll center bottom #FFFFFF;
+  /* border-bottom: 1px solid #CCCCCC;
+  background: url("../../images/header/bg-header-wrap.png") repeat-x scroll center bottom #FFFFFF; */
 
   #header, #seller_header {
-    font-family: "Helvetica Neue",Helvetica,Arial,"Liberation Sans",FreeSans,sans-serif;
-    height:      59px;
+    font-family: Arial,"Liberation Sans",FreeSans,sans-serif;
+    height:      89px;
 
     .container {
       margin-left: auto;
       margin-right: auto;
     }
     form.search {
-      border-right: 1px solid #EEEEEE;
       display: inline;
       float:left;
       height: 29px;
@@ -28,9 +27,8 @@
       float: left;
       font-size: 24px;
       margin-bottom: 0;
-      margin-top: 5px;
+      margin-top: 15px;
       margin-left: 0px;
-      border-right: 1px solid #CCCCCC;
       width: 224px;
       height: 100%;
 
@@ -60,10 +58,9 @@
         display:inline-block;
         div {
           display: inline-block;
-          padding: 13px 9px;
-          border-right: 1px solid #CCCCCC;
+          padding: 13px 19px;
           strong {
-            color: #AA5555 !important;
+            color: #525252 !important;
             display: block;
             font-size: 12px;
             font-weight: bold;
@@ -86,15 +83,18 @@
 
         a {
           display: inline-block;
-          padding: 13px 7px;
-          border-right: 1px solid #CCCCCC;
+          padding: 23px 19px;
 
           strong {
-            color: #AA5555 !important;
+            color: #525252 !important;
             display: block;
-            font-size: 15px;
+            font-size: 18px;
             font-weight: bold;
             line-height: 15px;
+            text-transform: uppercase;
+          }
+          strong:hover {
+            color: #CDC673 !important;
           }
           span {
             color: #B2B2B2 !important;
@@ -106,7 +106,6 @@
           }
         }
         &.selected {
-          border-bottom: 1px solid #FFFFFF;
           border-color: #CCCCCC #CCCCCC #FFFFFF;
           z-index: 1;
 
@@ -176,7 +175,7 @@
 }
 
 a {
-  color: #AA5555;
+  color: #525252;
   text-decoration: none;
 }
 a:visited {

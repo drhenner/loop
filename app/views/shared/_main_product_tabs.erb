@@ -1,4 +1,4 @@
-<ul id='main-product-type-tabs'>
+<ul id='main-product-type-tabs' class='column'>
   <% product_types.each do |pt_tab| %>
   <%# product_types.root.self_and_siblings do |pt_tab| %>
     <li> <%= link_to_unless_current pt_tab.name, products_path(:product_type_id => pt_tab.id) %> </li>

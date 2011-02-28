@@ -5,26 +5,31 @@
     </h1>
     <ul id="menu-main">
       <li id="menu-main-discover">
-        <a href="/"> <strong> Flash Sales </strong> <span>Get it while it's hot</span> </a>
+        <a href="/"> <strong> Flash Sale </strong> </a>
       </li>
 
       <li class="" id="menu-main-cart">
         <% if current_user %>
           <%= link_to(myaccount_user_path, :id => 'cart_items_buttons') do %>
-              <strong> My Account </strong> <span> details</span>
+              <strong> My Info </strong>
           <% end %>
         <% else %>
           <%= link_to(shopping_cart_items_path, :id => 'cart_items_buttons') do %>
-              <strong> About Us </strong> <span> </span>
+              <strong> About Us </strong>
           <% end %>
         <% end %>
       </li>
-      <li class="" id="menu-main-wish">
+      <li class="" id="menu-main-philosophy">
           <%= link_to(wish_items_path, :id => 'wish_items_button') do %>
-              <strong> Philosophy </strong> <span> about us.</span>
+              <strong> Philosophy </strong>
           <% end %>
       </li>
 
+      <li class="" id="menu-main-contact">
+          <%= link_to(wish_items_path, :id => 'wish_items_button') do %>
+              <strong> Contact </strong>
+          <% end %>
+      </li>
       <li class="" id="menu-main-user">
         <div>
           <% unless most_likely_user %>
@@ -38,13 +43,5 @@
       </li>
 
     </ul>
-
-    <%= form_for search_product, :html => {:class => 'search'} do %>
-      <div class="field search">
-        <span class="icon-search"></span>
-        <%= text_field_tag 'q', nil , :class => 'input-search text', :id => 'term' %>
-        <%= submit_tag 'Go',          :class => 'button spade' %>
-      </div>
-    <% end %>
   </div>
 </div>

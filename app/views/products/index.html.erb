@@ -3,9 +3,9 @@
   <%= stylesheet_link_tag 'products_page.css' %>
 <% end %>
 
-<div id='featured_item' class='span-18'>
+<div id='featured_item' class='span-14'>
 
-  <div id='interesting_items' class='span-18'>
+  <div id='interesting_items' class='span-14'>
     <ol id='interesting_items-list'>
       <% @products.each_with_index do |product, i| %>
         <li id='interesting_product_<%= i %>' class='left-text padding-5'>
@@ -27,8 +27,8 @@
 
 </div>
 
-<div id='right_side_panel' class='span-6 last'>
-  <div id='right_side_panel_promo' class='span-6 last'>
+<div id='right_side_panel' class='span-5 last'>
+  <div id='right_side_panel_promo' class='span-5 last'>
     Join our web site and get additional Savings....  <%= image_tag "logos/#{Image::MAIN_LOGO}.png", :alt => 'hadean image.'%>
   </div>
 </div>
