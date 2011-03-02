@@ -9,4 +9,10 @@ class Brand < ActiveRecord::Base
                     #:format   => { :with => CustomValidators::Names.name_validator }
 
   accepts_nested_attributes_for :images, :reject_if => lambda { |t| t['photo'].nil? }
+
+  DEFAULT_BRAND_ID = 1
+
+  def self.default_brand_id
+    DEFAULT_BRAND_ID
+  end
 end
