@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
                 :is_production_simulation,
                 :search_product,
                 :product_types,
-                :left_tabs
+                :left_tabs,
+                :tab_path
 
   before_filter :secure_session
 
@@ -38,6 +39,10 @@ class ApplicationController < ActionController::Base
   # By default the left tabs have nothing, This method is over-written in the main controller
   def left_tabs
     nil
+  end
+
+  def tab_path(args)
+    colors_path(args)
   end
 
   def require_user

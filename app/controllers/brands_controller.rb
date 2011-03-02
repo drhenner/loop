@@ -7,6 +7,10 @@ class BrandsController < ApplicationController
 
   private
 
+  def tab_path(args)
+    brands_path(args)
+  end
+
   def left_tabs
     @brands     ||= Brand.all
     @left_tabs  ||= @brands.map do |c|
@@ -15,7 +19,7 @@ class BrandsController < ApplicationController
   end
 
   def brand_id
-    params[:id] ? params[:id] : Brand.default_brand_id
+    params[:brand_id] ? params[:brand_id] : Brand.default_brand_id
   end
 
   def form_info

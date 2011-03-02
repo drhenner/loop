@@ -17,8 +17,12 @@ class ColorsController < ApplicationController
     end
   end
 
+  def tab_path(args)
+    colors_path(args)
+  end
+
   def color_id
-    params[:id] ? params[:id] : Color.default_color_id
+    params[:color_id] ? params[:color_id] : Color.default_color_id
   end
 
   def form_info

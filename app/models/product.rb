@@ -178,11 +178,11 @@ class Product < ActiveRecord::Base
   end
 
   def self.find_all_with_color(color_id)
-    joins(:variants).where( :variants => { :color_id => color_id})
+    includes(:variants).where( :variants => { :color_id => color_id})
   end
 
   def self.find_all_with_brand(brand_id)
-    joins(:variants).where( :variants => { :brand_id => brand_id})
+    includes(:variants).where( :variants => { :brand_id => brand_id})
   end
 
   # paginated results from the admin products grid

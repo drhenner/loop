@@ -3,7 +3,7 @@
   <%#= render 'shared/main_product_tabs' %>
   <% left_tabs.each do |tab| %>
     <li style='<%= "color:#{tab[:color]};" if tab[:color] %>'>
-      <%= link_to tab[:name], colors_url(tab[:params]), :style => "color:#{tab[:color]};"  %>
+      <%= link_to tab[:name], tab_path(tab[:params]), :style => "color:#{tab[:color]};"  %>
     </li>
   <% end %>
 </ul>

@@ -36,6 +36,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def tab_path(args)
+    products_path(args)
+  end
+
   def form_info
     @cart_item = CartItem.new
   end
