@@ -8,11 +8,11 @@ Hadean::Application.routes.draw do # |map|
   match 'signup'  => 'customer/registrations#new'
   match 'admin/merchandise' => 'admin/merchandise/summary#index'
 
-  resources :brands,    :only => [:index, :show ]
+  resources :brands,    :only => [:index ]
   match 'designers' => 'brands#index'
   match 'designer'  => 'brands#show'
 
-  resources :colors,    :only => [:index, :show ]
+  resources :colors,    :only => [:index ]
   resources :products,  :only => [:index, :show, :create ]
   resources :cart_items
   resources :wish_items
