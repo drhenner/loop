@@ -1,6 +1,7 @@
 class Brand < ActiveRecord::Base
   belongs_to :company
   has_many :variants
+  has_many :tickets
   has_many :images, :as         => :imageable,
                     :order      => :position,
                     :dependent  => :destroy
