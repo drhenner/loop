@@ -1,0 +1,17 @@
+<h1> Tickets </h1>
+
+<table>
+  <tr>
+    <th>Subject</th>
+  </tr>
+  <% for ticket in @tickets %>
+    <tr>
+      <td><%= ticket.subject %></td>
+      <td><%= link_to "Show", seller_admin_issues_ticket_path(ticket) %></td>
+      <td><%= link_to "Edit", edit_seller_admin_issues_ticket_path(ticket) %></td>
+      <td><%= link_to "Destroy", seller_admin_issues_ticket_path(ticket), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Ticket", new_seller_admin_issues_ticket_path, :class => 'button' %></p>

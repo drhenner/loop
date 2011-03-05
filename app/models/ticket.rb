@@ -1,9 +1,11 @@
 class Ticket < ActiveRecord::Base
-  belongs_to :user_id
-  belongs_to :brand_id
+  belongs_to  :user
+  belongs_to  :brand
 
-  belongs_to :assigned_to, :class_name => 'User', :foreign_key => 'assigned_to_id'
-
+  belongs_to  :assigned_to, :class_name   => 'User',
+                            :foreign_key  => 'assigned_to_id'
+  has_many    :comments,    :dependent  => :destroy,
+                            :as         => :commentable
 
   validates :user_id,       :presence => true
   validates :subject,       :length => { :maximum => 255 }
@@ -26,6 +28,10 @@ class Ticket < ActiveRecord::Base
     end
     #before_transition :to => 'shipped', :do => [:set_to_shipped]
     #after_transition :to => 'shipped', :do => [:ship_inventory, :mark_order_as_shipped]
+  end
+
+  def inactive!
+    update_attribute(:active, false)
   end
 
   def not_new?

@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   has_one     :measurement
 
   has_many    :tickets
-  has_many    :assigned_tickets, :class_name => 'Ticket'
+  has_many    :assigned_tickets, :class_name => 'Ticket', :foreign_key => 'assigned_to_id'
 
   has_many    :orders
   has_many    :completed_orders,          :class_name => 'Order',

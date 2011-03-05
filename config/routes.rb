@@ -77,6 +77,11 @@ Hadean::Application.routes.draw do # |map|
         resource :order_item, :only => [:show, :edit, :update]
       end
     end
+
+    namespace :issues do
+      resources :tickets
+    end
+
   end
 
   namespace :admin do

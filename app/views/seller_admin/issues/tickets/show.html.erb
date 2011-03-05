@@ -1,0 +1,17 @@
+<h1> Ticket </h1>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @ticket.subject %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @ticket.details %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_seller_admin_issues_ticket_path(@ticket), :class => 'button' %> |
+  <%= link_to "Destroy", seller_admin_issues_ticket_path(@ticket), :confirm => 'Are you sure?', :method => :delete, :class => 'button' %> |
+  <%= link_to "All Tickets", seller_admin_issues_tickets_path, :class => 'button' %>
+</p>

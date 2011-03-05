@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215055052) do
+ActiveRecord::Schema.define(:version => 20110303063809) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",                                                           :null => false
@@ -591,6 +591,19 @@ ActiveRecord::Schema.define(:version => 20110215055052) do
 
   create_table "tax_statuses", :force => true do |t|
     t.string "name", :null => false
+  end
+
+  create_table "tickets", :force => true do |t|
+    t.string   "subject"
+    t.string   "status"
+    t.text     "details"
+    t.integer  "user_id"
+    t.integer  "assigned_to_id"
+    t.integer  "brand_id"
+    t.string   "issue_type"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "transaction_accounts", :force => true do |t|
