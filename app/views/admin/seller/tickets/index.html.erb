@@ -1,10 +1,8 @@
 <% content_for :head do -%>
   <%= stylesheet_link_tag 'tables.css' %>
 <% end %>
-<% content_for :right do -%>
-  <%= render :partial => '/seller_admin/issues/side_bar' %>
-<% end %>
 
+<%= render :partial => '/admin/seller/sub_header'%>
 
 <h1> Tickets </h1>
 
@@ -14,10 +12,10 @@
   <table class='pretty_table'>
     <thead>
     <tr>
-      <th><%= sortable "subject" %></th>
+      <th><%= sortable "subject"%></th>
       <th><%= sortable "status" %></th>
       <th>Assigned to</th>
-      <th colspan=2></th>
+      <th colspan=3></th>
     </tr>
     </thead>
     <% for ticket in @tickets %>
@@ -25,13 +23,9 @@
         <td><%= ticket.subject %></td>
         <td><%= ticket.status %></td>
         <td><%= ticket.assigned_name %></td>
-
-        <td><%= link_to "View", seller_admin_issues_ticket_path(ticket) %></td>
-        <td>
-          <% if ticket.can_destroy?(current_user) %>
-            <%= link_to "Delete", seller_admin_issues_ticket_path(ticket), :confirm => 'Are you sure?', :method => :delete %>
-          <% end %>
-        </td>
+        <td><%= link_to "Show", admin_seller_ticket_path(ticket) %></td>
+        <td><%= link_to "Edit", edit_admin_seller_ticket_path(ticket) %></td>
+        <td><%= link_to "Destroy", admin_seller_ticket_path(ticket), :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
     <% end %>
   </table>
@@ -39,4 +33,4 @@
 
 <%= will_paginate @tickets %>
 
-<p><%#= link_to "New Ticket", new_seller_admin_issues_ticket_path, :class => 'button white-button medium-button' %></p>
+<p><%= link_to "New Ticket", new_admin_seller_ticket_path, :class => 'button white-button medium-button' %></p>

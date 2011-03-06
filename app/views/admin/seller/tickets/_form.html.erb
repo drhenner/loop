@@ -1,0 +1,35 @@
+<% if @ticket.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+    <ul>
+    <% @ticket.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject %>
+  </div>
+
+  <div class="field wide-text_area">
+    <%= f.label :details, 'Describe the problem' %><br />
+    <%= f.text_area :details %>
+  </div>
+
+  <div class="field wide-text_area">
+    <%= f.label :brand_id, 'Brand' %><br />
+    <%= f.select :brand_id, @brands %>
+  </div>
+
+  <div class="field wide-text_area">
+    <%= f.label :assigned_to_id, 'Assigned To:' %><br />
+    <%= f.select :assigned_to_id, @admin_users.map{|u| [u.name, u.id]}, :include_blank => true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>

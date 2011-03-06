@@ -15,10 +15,10 @@
   border-left:1px solid #e5eff8;
   padding:.3em 1em;
   text-align:center;
-}
 
-.pretty_table td.left-align {
-  text-align: left;
+  .left-align {
+    text-align: left;
+  }
 }
 
 .pretty_table thead tr .column1_header {
@@ -58,3 +58,16 @@
   font-style: normal;
 }
 
+.pretty_table th {
+  .asc {
+    background-image: url(/images/link_icons/up_arrow.gif);
+  }
+  .desc {
+    background-image: url(/images/link_icons/down_arrow.gif);
+  }
+  .current {
+    padding-right: 21px;
+    background-repeat: no-repeat;
+    background-position: right center;
+  }
+}

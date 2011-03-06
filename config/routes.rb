@@ -95,6 +95,10 @@ Hadean::Application.routes.draw do # |map|
       resources :companies
       resources :owners
       resources :users
+      resources :tickets do
+        resources :comments
+      end
+
       namespace :images do
         resources :companies
         resources :owners

@@ -1,0 +1,9 @@
+<%= render :partial => '/admin/seller/sub_header'%>
+<h1> Edit Ticket </h1>
+
+<%= form_for(@ticket, :url => admin_seller_ticket_path(@ticket)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Show', admin_seller_ticket_path( @ticket ), :class => 'button white-button medium-button' %> |
+  <%= link_to 'View Tickets', admin_seller_tickets_path, :class => 'button white-button medium-button' %>

@@ -1,7 +1,4 @@
-<% content_for :right do -%>
-  <%= render :partial => '/seller_admin/issues/side_bar' %>
-<% end %>
-
+<%= render :partial => '/admin/seller/sub_header'%>
 <h1> Ticket </h1>
 
 <p>
@@ -18,15 +15,15 @@
   <strong>Assigned to:</strong>
   <%= @ticket.assigned_name %>
 </p>
-
 <p>
+  <%= link_to "Edit", edit_admin_seller_ticket_path(@ticket), :class => 'button white-button medium-button' %>
   <% if @ticket.can_destroy?(current_user) %>
-    <%= link_to "Delete", seller_admin_issues_ticket_path(@ticket),
+    <%= link_to "Delete", admin_seller_ticket_path(@ticket),
                             :confirm  => 'Are you sure?',
                             :method   => :delete,
                             :class    => 'button white-button medium-button' %>
   <% end %>
-  <%= link_to "All Tickets", seller_admin_issues_tickets_path, :class => 'button white-button medium-button' %>
+  <%= link_to "All Tickets", admin_seller_tickets_path, :class => 'button white-button medium-button' %>
 </p>
 
 <% @ticket.comments.each do |comment| %>
@@ -35,11 +32,15 @@
 
     Author: <%= comment.author.try(:name) %><br/>
     Comment: <%= comment.note %>
+    <%= link_to "Edit", edit_admin_seller_ticket_path(@ticket, comment), :class => 'button white-button medium-button' %>
+    <%= link_to "DELETE", admin_seller_ticket_comment_path(@ticket, comment),
+                          :confirm  => 'Are you sure?', :method   => :delete,
+                          :class => 'button white-button small-button' %>
   </p>
 <% end %>
 <hr>
 <h3> Add a Comment </h3>
-<%= form_for @comment, :url => seller_admin_issues_ticket_comments_path(@ticket) do |f| %>
+<%= form_for @comment, :url => admin_seller_ticket_comments_path(@ticket) do |f| %>
   <div class="field wide-text_area">
     <%= f.label :note, 'Make a Comment.' %><br />
     <%= f.text_area :note %>

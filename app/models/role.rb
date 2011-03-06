@@ -22,14 +22,18 @@ class Role < ActiveRecord::Base
   NON_ADMIN_ROLES = [ WAREHOUSE,
                       REPORT,
                       CUSTOMER_SERVICE]
-
+  ADMIN_ROLES = [ SUPER_ADMIN,
+                  ADMIN
+                ]
   SUPER_ADMIN_ID      = 1
   ADMIN_ID            = 2
   WAREHOUSE_ID        = 3
   REPORT_ID           = 4
   CUSTOMER_SERVICE_ID = 5
   SELLER_ADMIN_ID     = 6
-
+  ADMIN_ROLE_IDS = [ SUPER_ADMIN_ID,
+                     ADMIN_ID
+                    ]
   private
 
     def self.find_role_id(id)

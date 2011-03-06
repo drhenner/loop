@@ -1,0 +1,9 @@
+<%= render :partial => '/admin/seller/sub_header'%>
+<h1> Edit Comment </h1>
+
+<%= form_for(@comment, :url => admin_seller_ticket_comment_path(@ticket, @comment)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Show', admin_seller_ticket_comment_path(@ticket,  @comment ), :class => 'button white-button medium-button' %> |
+  <%= link_to 'View Ticket', admin_seller_ticket_url(@ticket), :class => 'button white-button medium-button' %>

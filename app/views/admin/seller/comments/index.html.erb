@@ -1,0 +1,18 @@
+<%= render :partial => '/admin/seller/sub_header'%>
+<h1> Comments </h1>
+
+<table>
+  <tr>
+    <th>Details</th>
+  </tr>
+  <% for comment in @comments %>
+    <tr>
+      <td><%= comment.note %></td>
+      <td><%= link_to "Show", admin_seller_ticket_comment_path(@ticket, comment) %></td>
+      <td><%= link_to "Edit", edit_admin_seller_ticket_comment_path(@ticket, comment) %></td>
+      <td><%= link_to "Destroy", admin_seller_ticket_comment_path(@ticket, comment), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Comment", new_admin_seller_ticket_comment_path(@ticket), :class => 'button white-button medium-button' %></p>
