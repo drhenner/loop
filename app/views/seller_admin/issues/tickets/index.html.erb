@@ -1,17 +1,42 @@
+<% content_for :head do -%>
+  <%= stylesheet_link_tag 'tables.css' %>
+<% end %>
+<% content_for :right do -%>
+  <%= render :partial => '/seller_admin/issues/side_bar' %>
+<% end %>
+
+
 <h1> Tickets </h1>
 
-<table>
-  <tr>
-    <th>Subject</th>
-  </tr>
-  <% for ticket in @tickets %>
+<% if @tickets.empty? %>
+  You Currently don't have an tickets!  Click 'New Ticket' if you have an issue.
+<% else %>
+  <table class='pretty_table'>
+    <thead>
     <tr>
-      <td><%= ticket.subject %></td>
-      <td><%= link_to "Show", seller_admin_issues_ticket_path(ticket) %></td>
-      <td><%= link_to "Edit", edit_seller_admin_issues_ticket_path(ticket) %></td>
-      <td><%= link_to "Destroy", seller_admin_issues_ticket_path(ticket), :confirm => 'Are you sure?', :method => :delete %></td>
+      <th>Subject</th>
+      <th>Status</th>
+      <th>Assigned to</th>
+      <th colspan=2></th>
     </tr>
-  <% end %>
-</table>
+    </thead>
+    <% for ticket in @tickets %>
+      <tr>
+        <td><%= ticket.subject %></td>
+        <td><%= ticket.status %></td>
+        <td><%= ticket.assigned_name %></td>
 
-<p><%= link_to "New Ticket", new_seller_admin_issues_ticket_path, :class => 'button' %></p>
+        <td><%= link_to "View", seller_admin_issues_ticket_path(ticket) %></td>
+        <td>
+          <% if ticket.can_destroy?(current_user) %>
+            <%= link_to "Delete", seller_admin_issues_ticket_path(ticket), :confirm => 'Are you sure?', :method => :delete %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<%= will_paginate @tickets %>
+
+<p><%#= link_to "New Ticket", new_seller_admin_issues_ticket_path, :class => 'button white-button medium-button' %></p>

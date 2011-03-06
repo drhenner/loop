@@ -8,7 +8,7 @@ class CreateTickets < ActiveRecord::Migration
       t.integer :assigned_to_id
       t.integer :brand_id
       t.string :issue_type
-      t.boolean :active
+      t.boolean :active, :default => true
 
       t.timestamps
     end

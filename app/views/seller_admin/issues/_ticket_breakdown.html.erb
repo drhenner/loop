@@ -1,0 +1,9 @@
+<% if ticket_summary %>
+  <% ticket_summary.each do |ticket| %>
+    <%= link_to(seller_admin_issues_ticket_bin_path(:id => ticket.status),
+                :id => "#{ticket.status}-item") do %>
+      <span class='ticket-count'><%= ticket.view_count %></span>
+      <span class='ticket-description'><%= ticket.status %> tickets</span>
+    <% end %><br/>
+  <% end %>
+<% end %>

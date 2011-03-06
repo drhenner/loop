@@ -1,7 +1,12 @@
+<% content_for :right do -%>
+  <%= render :partial => 'new_side_bar' %>
+<% end %>
+
 <h1> New Ticket </h1>
 
+<div style='padding-bottom:15px;'>
 <%= form_for(@ticket, :url => seller_admin_issues_tickets_path(@ticket)) do |f| %>
   <%= render :partial => 'form', :locals => {:f => f} %>
 <% end %>
-
-  <%= link_to 'Back to List', seller_admin_issues_tickets_path, :class => 'button' %>
+</div>
+  <%= link_to 'All Tickets', seller_admin_issues_tickets_path, :class => 'button white-button medium-button' %>

@@ -1,3 +1,7 @@
+<% content_for :right do -%>
+  <%= render :partial => '/seller_admin/issues/side_bar' %>
+<% end %>
+
 <h1> Ticket </h1>
 
 <p>
@@ -11,7 +15,32 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_seller_admin_issues_ticket_path(@ticket), :class => 'button' %> |
-  <%= link_to "Destroy", seller_admin_issues_ticket_path(@ticket), :confirm => 'Are you sure?', :method => :delete, :class => 'button' %> |
-  <%= link_to "All Tickets", seller_admin_issues_tickets_path, :class => 'button' %>
+  <% if @ticket.can_destroy?(current_user) %>
+    <%= link_to "Delete", seller_admin_issues_ticket_path(@ticket),
+                            :confirm  => 'Are you sure?',
+                            :method   => :delete,
+                            :class    => 'button white-button medium-button' %>
+  <% end %>
+  <%= link_to "All Tickets", seller_admin_issues_tickets_path, :class => 'button white-button medium-button' %>
 </p>
+
+<% @ticket.comments.each do |comment| %>
+  <hr>
+  <p>
+
+    Author: <%= comment.author.try(:name) %><br/>
+    Comment: <%= comment.note %>
+  </p>
+<% end %>
+<hr>
+<h3> Add a Comment </h3>
+<%= form_for @comment, :url => seller_admin_issues_ticket_comments_path(@ticket) do |f| %>
+  <div class="field wide-text_area">
+    <%= f.label :note, 'Make a Comment.' %><br />
+    <%= f.text_area :note %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

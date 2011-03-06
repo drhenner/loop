@@ -39,30 +39,30 @@ describe SellerAdmin::Issues::TicketsController do
     response.should redirect_to(seller_admin_issues_ticket_url(assigns[:ticket]))
   end
 
-  it "edit action should render edit template" do
-    @ticket = Factory(:ticket)
-    get :edit, :id => @ticket.id
-    response.should render_template(:edit)
-  end
-
-  it "update action should render edit template when model is invalid" do
-    @ticket = Factory(:ticket)
-    Ticket.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => @ticket.id
-    response.should render_template(:edit)
-  end
-
-  it "update action should redirect when model is valid" do
-    @ticket = Factory(:ticket)
-    Ticket.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => @ticket.id
-    response.should redirect_to(seller_admin_issues_ticket_url(assigns[:ticket]))
-  end
+ #it "edit action should render edit template" do
+ #  @ticket = Factory(:ticket)
+ #  get :edit, :id => @ticket.id
+ #  response.should render_template(:edit)
+ #end
+ #
+ #it "update action should render edit template when model is invalid" do
+ #  @ticket = Factory(:ticket)
+ #  Ticket.any_instance.stubs(:valid?).returns(false)
+ #  put :update, :id => @ticket.id
+ #  response.should render_template(:edit)
+ #end
+ #
+ #it "update action should redirect when model is valid" do
+ #  @ticket = Factory(:ticket)
+ #  Ticket.any_instance.stubs(:valid?).returns(true)
+ #  put :update, :id => @ticket.id
+ #  response.should redirect_to(seller_admin_issues_ticket_url(assigns[:ticket]))
+ #end
 
   it "destroy action should destroy model and redirect to index action" do
     @ticket = Factory(:ticket)
     delete :destroy, :id => @ticket.id
     response.should redirect_to(seller_admin_issues_tickets_url)
-    Ticket.exists?(@ticket.id).should be_false
+    Ticket.find(@ticket.id).active.should be_false
   end
 end

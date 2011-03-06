@@ -382,6 +382,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def brands
+    if company_id
+      company.brands
+    elsif admin?
+      Brand.all
+    end
+  end
+
   private
 
   def start_store_credits

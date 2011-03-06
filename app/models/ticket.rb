@@ -8,10 +8,15 @@ class Ticket < ActiveRecord::Base
                             :as         => :commentable
 
   validates :user_id,       :presence => true
-  validates :subject,       :length => { :maximum => 255 }
+  validates :subject,       :length => { :minimum => 5, :maximum => 255 }
   validates :assigned_to,   :presence => true, :if => :not_new?
-  validates :details,       :presence => true, :length => { :maximum => 1600 }
+  validates :details,       :presence => true, :length => { :minimum => 16, :maximum => 1600 }
   validates :issue_type,    :presence => true
+
+  accepts_nested_attributes_for :comments
+
+  SELLER_TICKET_ISSUE = 'seller_ticket'
+  ISSUE_TYPES = [SELLER_TICKET_ISSUE]
 
   state_machine :status, :initial => 'new' do
 
@@ -30,11 +35,27 @@ class Ticket < ActiveRecord::Base
     #after_transition :to => 'shipped', :do => [:ship_inventory, :mark_order_as_shipped]
   end
 
+  def can_destroy?(current_user)
+    (self.user_id == current_user.id) || current_user.admin?
+  end
+
+  def assigned_name
+    assigned_to_id ? assigned_to.name : 'not assigned'
+  end
+
   def inactive!
     update_attribute(:active, false)
   end
 
   def not_new?
-    !new?
+    !new? || status == nil
+  end
+
+  def self.summary(brand_ids)
+    #:select => "webpages.status, COUNT(webpage_hit.id) AS view_count",
+    Ticket.select('tickets.*, COUNT(status) AS view_count').
+           where(['tickets.brand_id IN (?)',brand_ids]).
+           where(['tickets.active = ?',true]).
+           group(:status)
   end
 end

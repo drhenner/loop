@@ -1,14 +1,20 @@
-class SellerAdmin::Issues::TicketsController < ApplicationController
+class SellerAdmin::Issues::TicketsController < SellerAdmin::Issues::BaseController
+
   def index
     params[:page] ||= 1
     params[:rows] ||= 20
     args = { :page => params[:page], :rows => params[:rows]}
-    @tickets = Ticket.where(['tickets.brand_id IN (?)', current_user.brand_ids]).
+    @tickets = Ticket.where(['tickets.brand_id IN (?) AND
+                              tickets.active <> ? AND
+                              tickets.issue_type = ?', current_user.brand_ids,
+                                                            false,
+                                                            Ticket::SELLER_TICKET_ISSUE]).
                       paginate({:page => params[:page],:per_page => params[:rows]})
   end
 
   def show
-    @ticket = Ticket.find(params[:id])
+    @ticket = Ticket.includes(:comments).find(params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -17,7 +23,8 @@ class SellerAdmin::Issues::TicketsController < ApplicationController
   end
 
   def create
-    @ticket = Ticket.new(params[:ticket])
+    @ticket = current_user.tickets.new(params[:ticket])
+    @ticket.issue_type = Ticket::SELLER_TICKET_ISSUE
     if @ticket.save
       flash[:notice] = "Successfully created ticket."
       redirect_to seller_admin_issues_ticket_url(@ticket)
@@ -29,7 +36,7 @@ class SellerAdmin::Issues::TicketsController < ApplicationController
 
   def edit
     form_info
-    @ticket = Ticket.find(params[:id])
+    @ticket = Ticket.includes(:comments).find(params[:id])
   end
 
   def update
@@ -45,7 +52,7 @@ class SellerAdmin::Issues::TicketsController < ApplicationController
 
   def destroy
     @ticket = Ticket.find(params[:id])
-    @ticket.destroy
+    @ticket.inactive!
     flash[:notice] = "Successfully destroyed ticket."
     redirect_to seller_admin_issues_tickets_url
   end
@@ -53,6 +60,7 @@ class SellerAdmin::Issues::TicketsController < ApplicationController
   private
 
   def form_info
-
+    @brands = current_user.brands.collect{|b| [b.name, b.id]}
   end
+
 end

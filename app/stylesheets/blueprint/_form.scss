@@ -37,7 +37,7 @@
 (
   $input_width: 300px,
   $textarea_width: 390px,
-  $textarea_height: 250px
+  $textarea_height: 100px
 ) {
   //input {
   //  &.text,
@@ -48,7 +48,16 @@
   input {
     &.ui-pg-input { width: 20px; }
   }
-  textarea { width: $textarea_width; height: $textarea_height; }
+  textarea {
+    width: $textarea_width;
+    height: $textarea_height;
+  }
+  .wide-text_area {
+    textarea {
+      width: 95%;
+      height: $textarea_height;
+    }
+  }
 }
 
 @mixin blueprint-form-borders

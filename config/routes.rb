@@ -79,7 +79,10 @@ Hadean::Application.routes.draw do # |map|
     end
 
     namespace :issues do
-      resources :tickets
+      resources :tickets do
+        resources :comments, :only => [:new, :create]
+      end
+      resources :ticket_bins, :only => [:show]
     end
 
   end

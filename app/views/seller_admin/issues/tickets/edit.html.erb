@@ -1,8 +1,0 @@
-<h1> <%= @ticket.subject %> </h1>
-
-<%= form_for(@ticket, :url => seller_admin_issues_ticket_path(@ticket)) do |f| %>
-  <%= render :partial => 'form', :locals => {:f => f} %>
-<% end %>
-
-  <%= link_to 'Show', seller_admin_issues_ticket_path( @ticket ), :class => 'button' %> |
-  <%= link_to 'View All', seller_admin_issues_tickets_path, :class => 'button' %>
