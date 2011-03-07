@@ -11,7 +11,8 @@ describe SellerAdmin::ProductsController do
 
   it "index action should render index template" do
     @product = Factory(:product)
-    User.any_instance.stubs(:seller_products).returns([@product])
+    @products = Product.paginate({:page => 1,:per_page => 5})
+    User.any_instance.stubs(:seller_products).returns(@products)
     get :index
     response.should render_template(:index)
   end
