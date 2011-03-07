@@ -1,0 +1,24 @@
+<% if @featured_item.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@featured_item.errors.count, "error") %> prohibited this featured_item from being saved:</h2>
+
+    <ul>
+    <% @featured_item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= f.label :product_id %><br />
+    <%= f.select :product_id, @products %>
+  </div>
+  <div class="field">
+    <%= f.label :starts_at %><br />
+    <%= f.date_select :starts_at %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>

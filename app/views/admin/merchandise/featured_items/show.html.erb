@@ -1,0 +1,23 @@
+<%= render :partial => '/admin/merchandise/sub_header'%>
+<h1> Featured Item </h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @featured_item.product_name %>
+</p>
+
+<p>
+  <strong>Starts:</strong>
+  <%= @featured_item.starts_at.to_s %>
+</p>
+
+<p>
+  <strong>Ends:</strong>
+  <%= @featured_item.ends_at.to_s %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_merchandise_featured_item_path(@featured_item), :class => 'button white-button medium-button' %> |
+  <%= link_to "Destroy", admin_merchandise_featured_item_path(@featured_item), :confirm => 'Are you sure?', :method => :delete, :class => 'button white-button medium-button' %> |
+  <%= link_to "View All", admin_merchandise_featured_items_path, :class => 'button white-button medium-button' %>
+</p>

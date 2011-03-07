@@ -1,0 +1,25 @@
+<%= render :partial => '/admin/merchandise/sub_header'%>
+<h1> Featured Items </h1>
+
+<table class='pretty_table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th><%= sortable 'starts_at' %></th>
+      <th>Ends at</th>
+      <th colspan=3></th>
+    </tr>
+  </thead>
+  <% for featured_item in @featured_items %>
+    <tr>
+      <td><%= featured_item.product_name %></td>
+      <td><%= featured_item.starts_at.to_s %></td>
+      <td><%= featured_item.ends_at.to_s %></td>
+      <td><%= link_to "Show", admin_merchandise_featured_item_path(featured_item) %></td>
+      <td><%= link_to "Edit", edit_admin_merchandise_featured_item_path(featured_item) %></td>
+      <td><%= link_to "Destroy", admin_merchandise_featured_item_path(featured_item), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @featured_items %>
+<p><%= link_to "New Featured Item", new_admin_merchandise_featured_item_path, :class => 'button white-button medium-button' %></p>

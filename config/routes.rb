@@ -168,6 +168,7 @@ Hadean::Application.routes.draw do # |map|
         resources :brands
         resources :variants
       end
+      resources :featured_items
       resources :properties
       resources :prototypes
       resources :brands

@@ -1,0 +1,8 @@
+<%= render :partial => '/admin/merchandise/sub_header'%>
+<h1> New Featured Item" </h1>
+
+<%= form_for(@featured_item, :url => admin_merchandise_featured_items_path(@featured_item)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Back to List', admin_merchandise_featured_items_path, :class => 'button white-button medium-button' %>

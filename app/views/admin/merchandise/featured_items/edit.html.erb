@@ -1,0 +1,9 @@
+<%= render :partial => '/admin/merchandise/sub_header'%>
+<h1> Edit <%= @featured_item.product_name %> </h1>
+
+<%= form_for(@featured_item, :url => admin_merchandise_featured_item_path(@featured_item)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Show', admin_merchandise_featured_item_path( @featured_item ), :class => 'button white-button medium-button' %> |
+  <%= link_to 'View All', admin_merchandise_featured_items_path, :class => 'button white-button medium-button' %>
