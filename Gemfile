@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ## Bundle rails:
-gem 'rails', '~> 3.0.3'
+gem 'rails', '~> 3.0.5'
 
 gem "activemerchant", '~> 1.7.2'#, :lib => 'active_merchant'
 gem 'nested_set', '~> 1.6.3'
