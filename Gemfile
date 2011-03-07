@@ -4,10 +4,9 @@ source 'http://rubygems.org'
 gem 'rails', '~> 3.0.3'
 
 gem "activemerchant", '~> 1.7.2'#, :lib => 'active_merchant'
-#gem 'acts_as_tree',    :git => 'git://github.com/parasew/acts_as_tree.git'
 gem 'nested_set', '~> 1.6.3'
 
-gem 'authlogic', "2.1.5"
+gem 'authlogic', "2.1.6", :git => 'git://github.com/bborn/authlogic.git'
 gem 'cancan', '~> 1.4.1'
 gem 'compass', "~> 0.10.6"
 
