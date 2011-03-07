@@ -11,11 +11,12 @@ class CreateShipments < ActiveRecord::Migration
       t.boolean  :active, :default => true, :null => false
       t.timestamps
     end
-    
+
     add_index :shipments, :shipping_method_id
     add_index :shipments, :address_id
     add_index :shipments, :order_id
     add_index :shipments, :number
+    #execute('CREATE INDEX shipments_number_ten ON shipments (number(10));')
   end
 
   def self.down

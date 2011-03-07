@@ -8,6 +8,7 @@ class CreateCompanies < ActiveRecord::Migration
 
       t.timestamps
     end
+    execute('CREATE INDEX companies_name_ten ON companies (name(9));')
   end
 
   def self.down

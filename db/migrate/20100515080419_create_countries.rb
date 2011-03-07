@@ -4,7 +4,8 @@ class CreateCountries < ActiveRecord::Migration
       t.string :name
       t.string :abbreviation, :limit => 5
     end
-    add_index :countries, :name
+    #add_index :countries, :name
+    execute('CREATE INDEX countries_name_ten ON countries (name(8));')
     if SETTINGS[:use_foreign_keys]
       execute "alter table states add constraint fk_states_countries foreign key (country_id) references countries(id)"
     end

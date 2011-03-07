@@ -19,10 +19,11 @@ class CreateAddresses < ActiveRecord::Migration
       t.boolean  'active',              :default => true
       t.timestamps
     end
-    
+
     add_index :addresses, :state_id
     add_index :addresses, :addressable_id
     add_index :addresses, :addressable_type
+    #execute('CREATE INDEX addresses_addressable_type_ten ON addresses (addressable_type(6));')
     execute "alter table addresses add constraint fk_addresses_countries foreign key (state_id) references states(id)" if SETTINGS[:use_foreign_keys]
   end
 

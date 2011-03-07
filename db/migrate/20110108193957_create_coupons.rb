@@ -13,8 +13,10 @@ class CreateCoupons < ActiveRecord::Migration
 
       t.timestamps
     end
-    
-    add_index :coupons, :code
+
+    #add_index :coupons, :code
+    execute('CREATE INDEX coupons_code_ten ON coupons (code(8));')
+    #execute('CREATE INDEX coupons_expires_at_ten ON coupons (expires_at(10));')
     add_index :coupons, :expires_at
 
   end

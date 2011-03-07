@@ -12,9 +12,11 @@ class CreatePurchaseOrders < ActiveRecord::Migration
 
       t.timestamps
     end
-    
+
     add_index :purchase_orders, :supplier_id
-    add_index :purchase_orders, :tracking_number
+    #add_index :purchase_orders, :tracking_number
+    execute('CREATE INDEX purchase_orders_invoice_number_ten ON purchase_orders (invoice_number(9));')
+    execute('CREATE INDEX purchase_orders_tracking_number_ten ON purchase_orders (tracking_number(9));')
   end
 
   def self.down
