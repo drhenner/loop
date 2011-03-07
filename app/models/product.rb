@@ -26,6 +26,7 @@ class Product < ActiveRecord::Base
   belongs_to :shipping_category
   belongs_to :tax_status
 
+  has_many :featured_items
   has_many :product_colors
   has_many :colors,          :through => :product_colors
 
@@ -173,7 +174,12 @@ class Product < ActiveRecord::Base
   # @param [none]
   # @return [ Product ]
   def self.featured
-    product = Product.where({ :products => {:featured => true} } ).includes(:images).first
+    featured_item = FeaturedItem.at(Time.zone.now).first
+    if featured_item
+      product = Product.includes(:images).find(featured_item.product_id )
+    else
+      product = Product.where({ :products => {:featured => true} } ).includes(:images).first
+    end
     product ? product : Product.includes(:images).where(['products.deleted_at IS NULL']).first
   end
 
