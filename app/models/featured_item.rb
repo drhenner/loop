@@ -11,6 +11,10 @@ class FeaturedItem < ActiveRecord::Base
     product.name
   end
 
+  def self.now
+    self.at
+  end
+
   def self.at(item_at = Time.zone.now)
     where(['featured_items.starts_at < ?', item_at ]).order('featured_items.starts_at DESC').limit(1)
   end

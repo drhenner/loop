@@ -3,6 +3,7 @@
 <% end %>
 
 <div id='featured_image' class=' ' >
-  <%= image_tag 'main_loop_image_bw.jpg', :style => 'width:954px; border: 3px #D3D3D3 solid;' %>
+  <%#= image_tag @featured_product.featured_image(:) , :style => 'width:954px; border: 3px #D3D3D3 solid;' %>
+  <%= image_tag @featured_product.featured_image(:large) , :style => ' border: 3px #D3D3D3 solid;' %>
 </div>
 

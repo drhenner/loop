@@ -174,9 +174,9 @@ class Product < ActiveRecord::Base
   # @param [none]
   # @return [ Product ]
   def self.featured
-    featured_item = FeaturedItem.at(Time.zone.now).first
+    featured_item = FeaturedItem.at(Time.zone.now).includes({:product => :images}).first
     if featured_item
-      product = Product.includes(:images).find(featured_item.product_id )
+      product = featured_item.product #Product.includes(:images).find(featured_item.product_id )
     else
       product = Product.where({ :products => {:featured => true} } ).includes(:images).first
     end
