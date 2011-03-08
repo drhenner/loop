@@ -75,6 +75,24 @@
 
         <% end %>
 
+        <% unless @wish_list_items.empty? %>
+          <tr>
+            <td>
+              <table width="100%" cellspacing="0" cellpadding="10">
+                <tbody>
+                  <tr valign="top" bgcolor="#eeeecc">
+                      <td bgcolor="#eeeecc" colspan="2"><a name="savedforlater"><b>Your Wish list</b></a></td>
+                      <td bgcolor="#eeeecc" colspan="2" class="small"><b>Price:</b></td>
+                  </tr>
+
+                  <%= render :partial => '/shopping/cart_items/wish_items' %>
+
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        <% end %>
+
       </tbody>
     </table>
   <% end %>

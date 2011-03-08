@@ -15,6 +15,14 @@
       </ul>
       <ul>
         <li>
+          <%= link_to 'Wish List',
+                        move_to_shopping_cart_item_path(item, :variant_id => item.variant_id,
+                                                        :item_type_id     => ItemType::WISH_LIST_ID),
+                                                        :method           => 'put' %>
+        </li>
+      </ul>
+      <ul>
+        <li>
           <%= link_to 'Delete', shopping_cart_item_path(item, :variant_id => item.variant_id),
                               :method => :delete %>
         </li>

@@ -5,6 +5,7 @@ class Shopping::CartItemsController < Shopping::BaseController
   def index
     @cart_items       = session_cart.shopping_cart_items
     @saved_cart_items = session_cart.saved_cart_items
+    @wish_list_items  = session_cart.wish_list_items
 
     respond_to do |format|
       format.html # index.html.erb
