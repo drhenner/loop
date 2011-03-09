@@ -93,6 +93,10 @@ class User < ActiveRecord::Base
   has_many    :payment_profiles
   has_many    :transaction_ledgers, :as => :accountable
 
+  has_many :user_referrals
+  #has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :referrals, :through => :user_referrals, :conditions => "referral_id <> NULL", :source => :referral
+
   has_many    :return_authorizations
   has_many    :authored_return_authorizations, :class_name => 'ReturnAuthorization', :foreign_key => 'author_id'
 
