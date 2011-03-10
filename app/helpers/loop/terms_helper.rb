@@ -1,2 +1,0 @@
-module Loop::TermsHelper
-end
