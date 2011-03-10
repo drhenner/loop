@@ -1,0 +1,16 @@
+
+
+<div  style='float:left;'
+          class='span-10  new_fields'>
+  <p class='field'>
+
+    <div class="field">
+      <%= label_tag :referral_email %><br />
+      <%= text_field_tag 'user_referrals[referral_email][]' %>
+
+      <div style='float:right;' class='button white-button small-button'>
+        <%= remove_child_link('remove', referral_form) %>
+      </div>
+    </div>
+  </p>
+</div>

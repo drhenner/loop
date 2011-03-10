@@ -11,6 +11,7 @@ EXAMPLE USAGE!!
   <p><%= add_child_link "New Property", :properties %></p>
   <%= new_child_fields_template(form, :properties, :partial => '/admin/merchandise/add_property')%>
 =end
+
   def site_name
     I18n.t(:company)
   end

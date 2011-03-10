@@ -1,0 +1,20 @@
+<h1> Referrals </h1>
+<div class='span-12'>
+  <table class='pretty_table'>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Signed Up?</th>
+        <th>Purchased?</th>
+      </tr>
+    </thead>
+    <% for referral in @user_referrals %>
+      <tr>
+        <td><%= referral.referral_email %></td>
+        <td><%= referral.signed_up %></td>
+        <td><%= referral.display_purchased %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<p><%= link_to "New Referral", new_myaccount_referral_path, :class => 'button white-button medium-button' %></p>

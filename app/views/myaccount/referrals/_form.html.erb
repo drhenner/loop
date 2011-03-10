@@ -1,0 +1,40 @@
+<% content_for :head do -%>
+  <%= javascript_include_tag 'application' %>
+<% end %>
+<% if @bad_referrals && !@bad_referrals.empty? %>
+  <% @bad_referrals.each do |referral| %>
+    <div id="error_explanation">
+      <ul>
+        <li> <%= referral.referral_email %> </li>
+      <% referral.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+  <fieldset id="admin-product-images" class='span-10'>
+    <legend>Referrals</legend>
+
+    <div id="user_referrals" class='span-10'>
+        <div class="referral_form left span-10 last">
+          <%#= f.fields_for :user_referrals, @referral do |referral_form|%>
+            <%= render :partial => 'user_referral', :locals => {:referral_form => f } %>
+          <%# end %>
+        </div>
+    </div>
+
+    <div class='span-10' style=''>
+
+      <p class='button white-button small-button'><%= add_child_link "Add", :user_referrals %> </p>
+    </div>
+    <%= new_child_fields_template f, :user_referrals , :form_builder_local => :referral_form %>
+
+  </fieldset>
+
+
+  <div class="actions">
+    <%= submit_tag 'Refer Friend' %>
+  </div>
+

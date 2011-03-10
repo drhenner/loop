@@ -16,17 +16,17 @@ if (document.getElementsByTagName) {
 }//basic DOM-happiness-check
 
 // This allows forms to have unobtrusive JS nested forms.
-$(function() {
-  $('form a.add_child').click(function() {
+$(document).ready(function() {
+  $('form a.add_child').live('click', function() {
     var assoc   = $(this).attr('data-association');
     var content = $('#' + assoc + '_fields_template').html();
     var regexp  = new RegExp('new_' + assoc, 'g');
     var new_id  = new Date().getTime();
-        
-    $(this).parent().before(content.replace(regexp, new_id));    
+
+    $(this).parent().before(content.replace(regexp, new_id));
     return false;
   });
-  
+
   $('form a.remove_child').live('click', function() {
     var hidden_field = $(this).prev('input[type=hidden]')[0];
     if(hidden_field) {

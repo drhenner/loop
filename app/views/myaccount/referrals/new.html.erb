@@ -1,0 +1,9 @@
+<h1> Refer a Friend </h1>
+
+<%= form_for(current_user, :url => myaccount_referral_path(current_user)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+<div style='margin-top:-25px;' class='prepend-8 float-left'>
+  <%= link_to 'Referrals', myaccount_referrals_path, :class => ' button white-button medium-button' %>
+</div>

@@ -1,4 +1,4 @@
-class CreateFriendships < ActiveRecord::Migration
+class CreateUserReferrals < ActiveRecord::Migration
   def self.up
     create_table :user_referrals do |t|
       t.integer :user_id

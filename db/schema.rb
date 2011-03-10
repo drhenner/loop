@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110307033844) do
+ActiveRecord::Schema.define(:version => 20110309054302) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",                                                           :null => false
@@ -442,6 +442,13 @@ ActiveRecord::Schema.define(:version => 20110307033844) do
   add_index "purchase_orders", ["supplier_id"], :name => "index_purchase_orders_on_supplier_id"
   add_index "purchase_orders", ["tracking_number"], :name => "index_purchase_orders_on_tracking_number"
 
+  create_table "referral_programs", :force => true do |t|
+    t.string   "name",                                                       :null => false
+    t.decimal  "gift_amount", :precision => 8, :scale => 2, :default => 1.0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "return_authorizations", :force => true do |t|
     t.string   "number"
     t.decimal  "amount",         :precision => 8, :scale => 2,                   :null => false
@@ -648,6 +655,22 @@ ActiveRecord::Schema.define(:version => 20110307033844) do
   end
 
   add_index "transactions", ["batch_id"], :name => "index_transactions_on_batch_id"
+
+  create_table "user_referrals", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "referral_id"
+    t.integer  "referral_program_id"
+    t.string   "referral_email"
+    t.datetime "purchased_at"
+    t.datetime "sent_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_referrals", ["referral_email"], :name => "user_referrals_referral_email_ten", :length => {"referral_email"=>9}
+  add_index "user_referrals", ["referral_id"], :name => "index_user_referrals_on_referral_id"
+  add_index "user_referrals", ["referral_program_id"], :name => "index_user_referrals_on_referral_program_id"
+  add_index "user_referrals", ["user_id"], :name => "index_user_referrals_on_user_id"
 
   create_table "user_roles", :force => true do |t|
     t.integer "role_id", :null => false

@@ -398,6 +398,18 @@ class User < ActiveRecord::Base
     reset_perishable_token!
     Notifier.password_reset_instructions(self).deliver
   end
+
+  def create_referrals(emails)
+    #errors = current_user.create_referrals(emails)
+    emails.inject([]) do |bad_referrals, email|
+      unless email.strip.blank?
+        ref = self.user_referrals.new(:referral_program_id => ReferralProgram.current_program_id, :referral_email => email)
+        bad_referrals << ref unless ref.save
+      end
+      bad_referrals
+    end
+  end
+
   private
 
   def start_store_credits
