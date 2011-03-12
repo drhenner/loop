@@ -2,7 +2,7 @@
 
 #Hadean::Application.config.session_store :cookie_store, :key => '_hadean_session'
 #Hadean::Application.config.session_store ::Ripple::SessionStore
-Hadean::Application.config.session_store :mem_cache_store, :key => '_hadean_session'
+Hadean::Application.config.session_store :mem_cache_store, :key => 'secure_loop_session_ugrdr6765745ce4vy67hnoomlkhsxzaqcnpalrmuhbv753efnhuntfctgbyhbdssxvbjkoiomhubvcxzwwrtresfqwertypoiulkjhgfdsafvtfrdf'
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
