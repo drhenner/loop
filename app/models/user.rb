@@ -399,14 +399,25 @@ class User < ActiveRecord::Base
     Notifier.password_reset_instructions(self).deliver
   end
 
+  def deliver_referrals(good_referrals)
+    good_referrals.each do |good_referral|
+      Notifier.friend_referral(self, good_referral).deliver
+    end
+  end
+
   def create_referrals(emails)
     #errors = current_user.create_referrals(emails)
+    good_referrals = []
     emails.inject([]) do |bad_referrals, email|
       unless email.strip.blank?
         ref = self.user_referrals.new(:referral_program_id => ReferralProgram.current_program_id, :referral_email => email)
-        bad_referrals << ref unless ref.save
+        if ref.save
+          good_referrals << ref
+        else
+          bad_referrals << ref
+        end
       end
-      bad_referrals
+      return bad_referrals, good_referrals
     end
   end
 

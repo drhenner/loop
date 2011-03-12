@@ -31,6 +31,10 @@ Factory.define :seller_admin_user, :parent => :user do |f|
   f.company   { Factory(:company)}
 end
 
+Factory.define :user_with_referral, :parent => :user do |f|
+  f.user_referrals     { [Factory(:user_referral, :user_id => f.id )] }
+end
+
 
 
 Factory.define :super_admin_user, :parent => :user do |f|

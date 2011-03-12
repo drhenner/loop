@@ -62,6 +62,7 @@ class Shopping::OrdersController < Shopping::BaseController
                                           {:email => @order.email, :billing_address=> address, :ip=> @order.ip_address },
                                           @order.amount_to_credit)
         if response.succeeded?
+          @order.deliver_confirmation
           ##  MARK items as purchased
           #CartItem.mark_items_purchased(session_cart, @order)
           @order.remove_user_store_credits

@@ -26,4 +26,20 @@ class Notifier < ActionMailer::Base
     mail(:to => user.email,
          :subject => "Loop de Luxe, Reset Password Instructions")
   end
+
+  def order_confirmation(order)
+    @order  = order
+    @user   = order.user
+    @url    = root_url
+    mail(:to => order.email,
+         :subject => "Loop de Luxe, Order Confirmation")
+  end
+
+  def friend_referral(user, user_referral)
+    @user = user
+    @user_referral = user_referral
+    @url  = root_url()
+    mail(:to => user_referral.referral_email,
+         :subject => "'Get in the Loop', at Loop de Luxe")
+  end
 end

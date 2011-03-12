@@ -36,7 +36,6 @@ Hadean::Application.routes.draw do # |map|
     resources :terms, :only => [:index]
     resource :customer_service, :only => [:show, :new, :create]
     resource :sell_here, :only => [:show, :new, :create]
-    resources :referrals , :only => [:index, :show, :new, :create]
   end
 
   namespace :myaccount do

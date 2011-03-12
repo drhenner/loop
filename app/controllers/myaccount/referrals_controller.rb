@@ -4,7 +4,7 @@ class Myaccount::ReferralsController < Myaccount::BaseController
   end
 
   def show
-    @referral = current_user.user_referrals.find(params[:id])
+    @user_referral = current_user.user_referrals.find(params[:id])
   end
 
   def new
@@ -14,8 +14,8 @@ class Myaccount::ReferralsController < Myaccount::BaseController
 
   def update
     emails = params[:user_referrals][:referral_email]
-    @bad_referrals = current_user.create_referrals(emails)
-
+    @bad_referrals, @good_referrals = current_user.create_referrals(emails)
+    current_user.deliver_referrals(@good_referrals) unless @good_referrals.empty?
     if @bad_referrals.empty?
       flash[:notice] = "Successfully created referral."
       redirect_to myaccount_referrals_url()

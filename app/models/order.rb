@@ -379,6 +379,10 @@ class Order < ActiveRecord::Base
     shipments_count > 0
   end
 
+  def deliver_confirmation
+    Notifier.order_confirmation(self).deliver
+  end
+
   def self.create_subscription_order(user)
     order = Order.new(
               :user   => user,
