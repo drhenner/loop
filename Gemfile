@@ -23,7 +23,7 @@ gem "jquery-rails"
 gem 'nokogiri',         '~> 1.4.4'
 gem 'memcache-client',  '~> 1.8.5'
 gem 'mysql2',           '~> 0.2.6'
-gem "nifty-generators", :git => 'git://github.com/drhenner/nifty-generators.git'
+
 gem 'paperclip',        '~> 2.3.8'
 gem 'prawn',            '~> 0.8.4'
 
@@ -50,7 +50,7 @@ end
 group :development do
   #gem 'awesome_print'
   gem "autotest-rails-pure"
-
+  gem "nifty-generators", :git => 'git://github.com/drhenner/nifty-generators.git'
   gem "rails-erd"
   gem "ruby-debug19"
   #gem "ruby-debug"
