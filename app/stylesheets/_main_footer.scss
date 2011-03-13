@@ -8,7 +8,7 @@
   background: url("../../images/header/bg-header-wrap.png") repeat-x scroll center bottom #FFFFFF;
   text-align: left;
 
-  margin-top:50px;
+  /*margin-top:50px;*/
 
   li {
     display: inline;
@@ -19,10 +19,10 @@
       color: #828282;
     }
     a:hover {
-      color: #AA4444;
+      color: #ADA663;
     }
     .selected {
-      color: #AA4444 !important;
+      color: #ADA663 !important;
     }
   }
   li:hover {

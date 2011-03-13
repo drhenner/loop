@@ -1,4 +1,22 @@
 
+/*LAYOUT*/
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+.main_wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em;
+}
+.footer_wrapper {
+  height: 4em;
+}
+/*END LAYOUT*/
+
 a {
   text-decoration: none;
 }

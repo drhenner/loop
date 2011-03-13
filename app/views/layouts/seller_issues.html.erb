@@ -20,25 +20,26 @@
   <%= yield :head %>
 </head>
 <body class="bp">
-  <div class="bp">
-    <%= raw "<p class='flash_notice'> #{notice}</p>"  if notice %>
-    <%= raw "<p class='flash_error'>#{alert}</p>"     if alert %>
-  </div>
-
-  <%= render 'shared/seller/header' %>
-
-  <div id='content_wrapper' class='container'>
-    <div class='span-19 column'>
-      <%= yield %>
+  <div class="main_wrapper">
+    <div class="bp">
+      <%= raw "<p class='flash_notice'> #{notice}</p>"  if notice %>
+      <%= raw "<p class='flash_error'>#{alert}</p>"     if alert %>
     </div>
-    <div class='span-5 column last'>
-        <%= yield :right %>
-        <%#= render :partial => 'seller_admin/issues/side_bar' %>
+
+    <%= render 'shared/seller/header' %>
+
+    <div id='content_wrapper' class='container'>
+      <div class='span-19 column'>
+        <%= yield %>
+      </div>
+      <div class='span-5 column last'>
+          <%= yield :right %>
+          <%#= render :partial => 'seller_admin/issues/side_bar' %>
+      </div>
     </div>
+
+    <%= yield :bottom %>
   </div>
-
-  <%= yield :bottom %>
-
   <script>
   jQuery(window).ready(
     function() {
