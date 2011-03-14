@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110309054302) do
+ActiveRecord::Schema.define(:version => 20110314011913) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",                                                           :null => false
@@ -238,9 +238,11 @@ ActiveRecord::Schema.define(:version => 20110309054302) do
     t.integer  "shipment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "paid_at"
   end
 
   add_index "order_items", ["order_id"], :name => "index_order_items_on_order_id"
+  add_index "order_items", ["paid_at"], :name => "index_order_items_on_paid_at"
   add_index "order_items", ["shipment_id"], :name => "index_order_items_on_shipment_id"
   add_index "order_items", ["shipping_rate_id"], :name => "index_order_items_on_shipping_rate_id"
   add_index "order_items", ["tax_rate_id"], :name => "index_order_items_on_tax_rate_id"
@@ -448,6 +450,19 @@ ActiveRecord::Schema.define(:version => 20110309054302) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "reports", :force => true do |t|
+    t.integer  "reportable_id"
+    t.string   "reportable_type"
+    t.string   "report_file_name"
+    t.string   "report_content_type"
+    t.integer  "report_file_size"
+    t.datetime "report_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reports", ["reportable_id"], :name => "index_reports_on_reportable_id"
 
   create_table "return_authorizations", :force => true do |t|
     t.string   "number"

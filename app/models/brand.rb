@@ -5,6 +5,7 @@ class Brand < ActiveRecord::Base
   has_many :images, :as         => :imageable,
                     :order      => :position,
                     :dependent  => :destroy
+  has_many :reports, :as        => :reportable
 
   validates :name,  :presence => true#,
                     #:format   => { :with => CustomValidators::Names.name_validator }

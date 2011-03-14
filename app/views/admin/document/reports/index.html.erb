@@ -1,0 +1,14 @@
+<h1> Reports </h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for report in @reports %>
+    <tr>
+      <td><%= report.name %></td>
+      <td><%= link_to "Show", admin_document_report_path(report) %></td>
+    </tr>
+  <% end %>
+</table>
+

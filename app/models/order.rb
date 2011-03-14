@@ -40,6 +40,7 @@ class Order < ActiveRecord::Base
     event :pay do
       transition :to => 'paid', :from => ['in_progress', 'complete']
     end
+    after_transition :to => 'paid', :do => [ :mark_order_items_paid]
   end
 
   #  This method is used when the session in admin orders is ready to authorize the credit card
@@ -142,8 +143,8 @@ class Order < ActiveRecord::Base
   # @return [Payment] payment object
   def capture_invoice(invoice)
     payment = invoice.capture_payment({})
+    self.pay! if payment && payment.success?
   end
-
 
   ## This method creates the invoice and payment method.  If the payment is not authorized the whole transaction is roled back
   def create_invoice(credit_card, charge_amount, args, credited_amount = 0.0)
@@ -409,8 +410,7 @@ class Order < ActiveRecord::Base
     params[:page] ||= 1
     params[:rows] ||= 25
 
-    grid = Order
-    grid = grid.includes([:user])
+    grid = Order.includes([:user])
     grid = grid.where({:active => true })                     unless  params[:show_all].present? &&
                                                                       params[:show_all] == 'true'
     grid = grid.where("orders.shipment_counter = ?", 0)             if params[:shipped].present? && params[:shipped] == 'true'
@@ -431,8 +431,7 @@ class Order < ActiveRecord::Base
     params[:page] ||= 1
     params[:rows] ||= 25
 
-    grid = Order
-    grid = grid.includes([:user])
+    grid = Order.includes([:user])
     grid = grid.where({:active => true })                     unless  params[:show_all].present? &&
                                                                       params[:show_all] == 'true'
     grid = grid.where({ :orders => {:shipped => false }} )
@@ -445,6 +444,10 @@ class Order < ActiveRecord::Base
   end
 
   private
+
+  def mark_order_items_paid
+    OrderItem.update_all(['paid_at = ?', Time.now.utc], "order_id = #{self.id}")
+  end
 
   # prices to charge of all items before taxes and coupons and shipping
   #

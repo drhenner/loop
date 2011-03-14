@@ -28,6 +28,13 @@ class OrderItem < ActiveRecord::Base
    #after_transition :to => 'complete', :do => [:update_inventory]
  end
 
+  def display_paid_at(format = :us_date)
+    paid_at ? I18n.localize(paid_at, :format => format) : 'not paid'
+  end
+
+  def order_number
+    order.number
+  end
  # if the order item has been shipped it will return true
  #
  # @param [none]

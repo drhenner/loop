@@ -18,6 +18,7 @@ CIM_TRANSACTION_KEY = HADEAN_CONFIG['authnet']['password']
 #CACHE = Riak::Client.new
 #CACHE.servers = 'localhost:9098'
 require File.expand_path('../../lib/printing/invoice_printer', __FILE__)
+require File.expand_path('../../lib/printing/brand_order_items_printer', __FILE__)
 
 Paperclip.options[:command_path] = "/usr/local/bin"
 

@@ -22,6 +22,7 @@ en:
     formats:
       us_date: "%m/%d/%Y"
       us_time: "%m/%d/%Y @ %I:%M %p"
+      file_us_time: "%m-%d-%Y_%I-%M-%p"
       long_date: "%B %d, %Y"
 
   helpers:

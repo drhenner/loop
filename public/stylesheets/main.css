@@ -230,21 +230,22 @@ a:visited {
   display: inline;
   list-style: none;
   color: #AA5555;
-  padding: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
-/* line 18, ../../app/stylesheets/_main_footer.scss */
+/* line 19, ../../app/stylesheets/_main_footer.scss */
 #footer_wrapper li a {
   color: #828282;
 }
-/* line 21, ../../app/stylesheets/_main_footer.scss */
+/* line 22, ../../app/stylesheets/_main_footer.scss */
 #footer_wrapper li a:hover {
   color: #ADA663;
 }
-/* line 24, ../../app/stylesheets/_main_footer.scss */
+/* line 25, ../../app/stylesheets/_main_footer.scss */
 #footer_wrapper li .selected {
   color: #ADA663 !important;
 }
-/* line 28, ../../app/stylesheets/_main_footer.scss */
+/* line 29, ../../app/stylesheets/_main_footer.scss */
 #footer_wrapper li:hover {
   color: #AA5555;
 }
