@@ -61,6 +61,7 @@ module Hadean
                                   :password_confirmation,
                                   :number,
                                   :cc_number,
+                                  :credit_card,
                                   :card_number,
                                   :verification_value]
   end

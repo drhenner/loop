@@ -3,18 +3,18 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:users) do |t|
       ##  THIS info goes into signup-info
       t.string :first_name, :length => 40
-      t.string :last_name,  :length => 40
+      t.string :encrypted_last_name,  :length => 200
       t.date   :birth_date
 
-      t.string :email
+      t.string :email,   :unique => true
       t.string :state
       t.integer :account_id
       t.string :customer_cim_id ## This is the ID returned from AUTH.NET
       t.string :password_salt
       t.string :crypted_password
-      t.string :perishable_token
-      t.string :persistence_token
-      t.string :access_token
+      t.string :perishable_token,   :unique => true
+      t.string :persistence_token,   :unique => true
+      t.string :access_token,   :unique => true
       t.integer :comments_count, :default => 0
 
       #t.database_authenticatable :null => false
@@ -31,11 +31,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
     #add_index :users, :first_name
     execute('CREATE INDEX users_first_name_ten ON users (first_name(8));')
-    execute('CREATE INDEX users_last_name_ten ON users (last_name(8));')
-    execute('CREATE UNIQUE INDEX users_email_ten ON users (email(10));')
-    execute('CREATE UNIQUE INDEX users_perishable_token_ten ON users (perishable_token(10));')
-    execute('CREATE UNIQUE INDEX users_persistence_token_ten ON users (persistence_token(10));')
-    execute('CREATE UNIQUE INDEX users_access_token_ten ON users (access_token(10));')
+    execute('CREATE INDEX users_last_name_ten ON users (encrypted_last_name(8));')
+    execute('CREATE INDEX users_email_ten ON users (email(20));')
+    execute('CREATE INDEX users_perishable_token_ten ON users (perishable_token(10));')
+    execute('CREATE INDEX users_persistence_token_ten ON users (persistence_token(10));')
+    execute('CREATE INDEX users_access_token_ten ON users (access_token(10));')
     #add_index :users, :last_name
     #add_index :users, :email,               :unique => true
     #add_index :users, :perishable_token,    :unique => true

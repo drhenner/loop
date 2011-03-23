@@ -2,7 +2,7 @@ Factory.sequence :name do |i|
   "Product Name #{i}"
 end
 Factory.sequence :permalink do |i|
-  "permalink  #{i}"
+  "permalink#{i}"
 end
 
 Factory.define :product do |u|

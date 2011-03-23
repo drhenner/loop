@@ -103,14 +103,16 @@ class User < ActiveRecord::Base
   validates :first_name,  :presence => true, :if => :registered_user?,
                           :format   => { :with => CustomValidators::Names.name_validator },
                           :length => { :maximum => 30 }
-  validates :last_name,   :presence => true, :if => :registered_user?,
-                          :format   => { :with => CustomValidators::Names.name_validator },
-                          :length => { :maximum => 35 }
+  validates :last_name,   :presence => true, :if => :registered_user?, #encrypted_
+                          :format   => { :with => CustomValidators::Names.name_validator }, :length => { :maximum => 35 }
+                          #:length => { :maximum => 200 }
   validates :email,       :presence => true,
                           :uniqueness => true,##  This should be done at the DB this is too expensive in rails
                           :format   => { :with => CustomValidators::Emails.email_validator },
                           :length => { :maximum => 255 }
   #validates :password,    :presence => { :if => :password_required? }, :confirmation => true
+
+  attr_encrypted :last_name,   :key =>  HADEAN_CONFIG['encryption_key']
 
   accepts_nested_attributes_for :addresses, :phones, :user_roles
 
@@ -245,7 +247,11 @@ class User < ActiveRecord::Base
   # @param [none]
   # @return [ String ]
   def name
-    (first_name? && last_name?) ? [first_name.capitalize, last_name.capitalize ].join(" ") : email
+    (first_name? && encrypted_last_name?) ? [first_name.capitalize, last_name.capitalize ].join(" ") : email
+  end
+
+  def last_name?
+    encrypted_last_name?
   end
 
   # gives the user's comany name or ''

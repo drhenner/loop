@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
   end
 
   add_index "brands", ["company_id"], :name => "index_brands_on_company_id"
+  add_index "brands", ["name"], :name => "brands_name_ten", :length => {"name"=>9}
 
   create_table "cart_items", :force => true do |t|
     t.integer  "user_id"
@@ -125,12 +126,14 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
     t.datetime "updated_at"
   end
 
+  add_index "companies", ["name"], :name => "companies_name_ten", :length => {"name"=>9}
+
   create_table "countries", :force => true do |t|
     t.string "name"
     t.string "abbreviation", :limit => 5
   end
 
-  add_index "countries", ["name"], :name => "index_countries_on_name"
+  add_index "countries", ["name"], :name => "countries_name_ten", :length => {"name"=>8}
 
   create_table "coupons", :force => true do |t|
     t.string   "type",                                                           :null => false
@@ -146,7 +149,7 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
     t.datetime "updated_at"
   end
 
-  add_index "coupons", ["code"], :name => "index_coupons_on_code"
+  add_index "coupons", ["code"], :name => "coupons_code_ten", :length => {"code"=>8}
   add_index "coupons", ["expires_at"], :name => "index_coupons_on_expires_at"
 
   create_table "featured_items", :force => true do |t|
@@ -269,8 +272,8 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
 
   add_index "orders", ["bill_address_id"], :name => "index_orders_on_bill_address_id"
   add_index "orders", ["coupon_id"], :name => "index_orders_on_coupon_id"
-  add_index "orders", ["email"], :name => "index_orders_on_email"
-  add_index "orders", ["number"], :name => "index_orders_on_number"
+  add_index "orders", ["email"], :name => "orders_email_ten", :length => {"email"=>10}
+  add_index "orders", ["number"], :name => "orders_number_ten", :unique => true, :length => {"number"=>10}
   add_index "orders", ["ship_address_id"], :name => "index_orders_on_ship_address_id"
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
 
@@ -293,12 +296,14 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "last_digits"
-    t.string   "month"
-    t.string   "year"
+    t.string   "encrypted_last_digits"
+    t.string   "encrypted_month"
+    t.string   "encrypted_year"
     t.string   "cc_type"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "encrypted_number"
+    t.string   "encrypted_first_name"
+    t.string   "encrypted_last_name"
+    t.string   "encrypted_cvv"
     t.string   "card_name"
   end
 
@@ -389,8 +394,8 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
     t.datetime "updated_at"
   end
 
-  add_index "products", ["name"], :name => "index_products_on_name"
-  add_index "products", ["permalink"], :name => "index_products_on_permalink", :unique => true
+  add_index "products", ["name"], :name => "products_name_ten", :length => {"name"=>9}
+  add_index "products", ["permalink"], :name => "products_permalink_ten", :length => {"permalink"=>15}
   add_index "products", ["product_type_id"], :name => "index_products_on_product_type_id"
   add_index "products", ["prototype_id"], :name => "index_products_on_prototype_id"
   add_index "products", ["shipping_category_id"], :name => "index_products_on_shipping_category_id"
@@ -441,8 +446,9 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
     t.decimal  "total_cost",           :precision => 8, :scale => 2, :default => 0.0, :null => false
   end
 
+  add_index "purchase_orders", ["invoice_number"], :name => "purchase_orders_invoice_number_ten", :length => {"invoice_number"=>9}
   add_index "purchase_orders", ["supplier_id"], :name => "index_purchase_orders_on_supplier_id"
-  add_index "purchase_orders", ["tracking_number"], :name => "index_purchase_orders_on_tracking_number"
+  add_index "purchase_orders", ["tracking_number"], :name => "purchase_orders_tracking_number_ten", :length => {"tracking_number"=>9}
 
   create_table "referral_programs", :force => true do |t|
     t.string   "name",                                                       :null => false
@@ -454,10 +460,10 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
   create_table "reports", :force => true do |t|
     t.integer  "reportable_id"
     t.string   "reportable_type"
-    t.string   "report_file_name"
-    t.string   "report_content_type"
-    t.integer  "report_file_size"
-    t.datetime "report_updated_at"
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -513,7 +519,7 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
     t.string "name", :limit => 30, :null => false
   end
 
-  add_index "roles", ["name"], :name => "index_roles_on_name"
+  add_index "roles", ["name"], :name => "roles_name_ten", :length => {"name"=>6}
 
   create_table "shipments", :force => true do |t|
     t.integer  "order_id"
@@ -592,7 +598,7 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
 
   add_index "states", ["abbreviation"], :name => "index_states_on_abbreviation"
   add_index "states", ["country_id"], :name => "index_states_on_country_id"
-  add_index "states", ["name"], :name => "index_states_on_name"
+  add_index "states", ["name"], :name => "states_name_ten", :length => {"name"=>8}
 
   create_table "store_credits", :force => true do |t|
     t.decimal  "amount",     :precision => 8, :scale => 2, :default => 0.0
@@ -638,6 +644,11 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "tickets", ["assigned_to_id"], :name => "index_tickets_on_assigned_to_id"
+  add_index "tickets", ["brand_id"], :name => "index_tickets_on_brand_id"
+  add_index "tickets", ["subject"], :name => "tickets_subject_ten", :length => {"subject"=>10}
+  add_index "tickets", ["user_id"], :name => "index_tickets_on_user_id"
 
   create_table "transaction_accounts", :force => true do |t|
     t.string   "name"
@@ -697,7 +708,7 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
 
   create_table "users", :force => true do |t|
     t.string   "first_name"
-    t.string   "last_name"
+    t.string   "encrypted_last_name"
     t.date     "birth_date"
     t.string   "email"
     t.string   "state"
@@ -708,19 +719,19 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
     t.string   "perishable_token"
     t.string   "persistence_token"
     t.string   "access_token"
-    t.integer  "comments_count",    :default => 0
+    t.integer  "comments_count",      :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "company_id"
   end
 
-  add_index "users", ["access_token"], :name => "index_users_on_access_token", :unique => true
+  add_index "users", ["access_token"], :name => "users_access_token_ten", :length => {"access_token"=>10}
   add_index "users", ["company_id"], :name => "index_users_on_company_id"
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["first_name"], :name => "index_users_on_first_name"
-  add_index "users", ["last_name"], :name => "index_users_on_last_name"
-  add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token", :unique => true
-  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token", :unique => true
+  add_index "users", ["email"], :name => "users_email_ten", :length => {"email"=>20}
+  add_index "users", ["encrypted_last_name"], :name => "users_last_name_ten", :length => {"encrypted_last_name"=>8}
+  add_index "users", ["first_name"], :name => "users_first_name_ten", :length => {"first_name"=>8}
+  add_index "users", ["perishable_token"], :name => "users_perishable_token_ten", :length => {"perishable_token"=>10}
+  add_index "users", ["persistence_token"], :name => "users_persistence_token_ten", :length => {"persistence_token"=>10}
 
   create_table "variant_properties", :force => true do |t|
     t.integer "variant_id",                     :null => false
@@ -767,6 +778,6 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
   add_index "variants", ["brand_id"], :name => "index_variants_on_brand_id"
   add_index "variants", ["color_id"], :name => "index_variants_on_color_id"
   add_index "variants", ["product_id"], :name => "index_variants_on_product_id"
-  add_index "variants", ["sku"], :name => "index_variants_on_sku"
+  add_index "variants", ["sku"], :name => "variants_sku_ten", :length => {"sku"=>10}
 
 end

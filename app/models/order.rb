@@ -144,6 +144,7 @@ class Order < ActiveRecord::Base
   def capture_invoice(invoice)
     payment = invoice.capture_payment({})
     self.pay! if payment && payment.success?
+    payment
   end
 
   ## This method creates the invoice and payment method.  If the payment is not authorized the whole transaction is roled back

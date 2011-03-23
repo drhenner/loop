@@ -5,6 +5,7 @@ gem 'rails', '~> 3.0.5'
 
 gem "activemerchant", '~> 1.7.2'#, :lib => 'active_merchant'
 gem 'nested_set',     '~> 1.6.3'
+gem 'attr_encrypted'
 
 gem 'authlogic',    "2.1.6", :git => 'git://github.com/bborn/authlogic.git'
 gem 'cancan',       '~> 1.4.1'

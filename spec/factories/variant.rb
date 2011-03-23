@@ -1,6 +1,11 @@
 
+Factory.sequence :sku do |i|
+  "345-98765-097#{i}"
+end
+
 Factory.define :variant do |f|
-  f.sku           '345-98765-0987'
+  #f.sku           '345-98765-0987'
+  f.sku         { Factory.next(:sku) }
   f.product       { |c| c.association(:product) }
   f.color       { |c| c.association(:color) }
   f.brand       { |c| c.association(:brand) }

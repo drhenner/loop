@@ -6,18 +6,33 @@
 # http://cookingandcoding.com/2010/01/14/using-activemerchant-with-authorize-net-and-authorize-cim/
 #
 class PaymentProfile < ActiveRecord::Base
-  include PaymentProfileCim
+  #include PaymentProfileCim
   belongs_to :user
   belongs_to :address
 
   attr_accessor       :request_ip, :credit_card
 
   validates :user_id,         :presence => true
-  validates :payment_cim_id,  :presence => true
+  #validates :payment_cim_id,  :presence => true
   validates :cc_type,         :presence => true, :length => { :maximum => 60 }
-  validates :last_digits,     :presence => true, :length => { :maximum => 10 }
-  validates :month,           :presence => true, :length => { :maximum => 6 }
-  validates :year,            :presence => true, :length => { :maximum => 6 }
+  validates :encrypted_last_digits,     :presence => true
+  validates :encrypted_month,           :presence => true
+  validates :encrypted_year,            :presence => true
+  validates :encrypted_first_name,      :presence => true
+  validates :encrypted_last_name,       :presence => true
+  validates :encrypted_number,          :presence => true
+  validates :encrypted_cvv,             :presence => true
+
+
+
+  attr_encrypted :first_name,   :key => proc { |profile| (profile.user.id ).to_s + HADEAN_CONFIG['encryption_key'] }
+  attr_encrypted :last_name,    :key => proc { |profile| (profile.user.id ).to_s + HADEAN_CONFIG['encryption_key'] }
+  attr_encrypted :last_digits,  :key => proc { |profile| (profile.user.id ).to_s + HADEAN_CONFIG['encryption_key'] }
+  attr_encrypted :year,         :key => proc { |profile| (profile.user.id ).to_s + HADEAN_CONFIG['encryption_key'] }
+  attr_encrypted :month,        :key => proc { |profile| (profile.user.id ).to_s + HADEAN_CONFIG['encryption_key'] }
+
+  attr_encrypted :number, :key => proc { |profile| (profile.user.id ).to_s + HADEAN_CONFIG['encryption_key'] }
+  attr_encrypted :cvv,    :key => proc { |profile| (profile.user.id ).to_s + HADEAN_CONFIG['encryption_key'] }
 
 
   validate            :validate_card
@@ -27,6 +42,17 @@ class PaymentProfile < ActiveRecord::Base
 
   def name
     [cc_type, last_digits].join(' - ')
+  end
+
+  def full_name
+    [first_name, last_name].join(' ')
+  end
+  def first_name?
+    encrypted_first_name?
+  end
+
+  def last_name?
+    encrypted_last_name?
   end
 
   def inactivate!
@@ -86,6 +112,16 @@ class PaymentProfile < ActiveRecord::Base
     )
   end
 
+  def cc_attributes
+    {:last_digits     => last_digits,
+    :month           => month      ,
+    :year            => year       ,
+    :first_name      => first_name ,
+    :last_name       => last_name  ,
+    :number          => number     ,
+    :cvv             => cvv}
+
+  end
   # -------------
   private
 
@@ -93,28 +129,30 @@ class PaymentProfile < ActiveRecord::Base
     self.last_digits  = card.last_digits
     self.month        = card.month
     self.year         = card.year
-    self.first_name   = card.first_name.strip   if card.first_name?
+    self.number       = card.number
+    #self.full_name   = card.full_name.strip   if card.full_name?
     self.last_name    = card.last_name.strip    if card.last_name?
+    self.first_name   = card.first_name.strip    if card.first_name?
     self.cc_type      = card.type
   end
 
   def validate_card
-    return true if !self.active
-    if credit_card.nil?
-      errors.add( :base, 'Credit Card is not present.')
-      return false
-    end
-    # first validate via ActiveMerchant local code
-    unless credit_card.valid?
-      # collect credit card error messages into the profile object
-      #errors.add(:credit_card, "must be valid")
-      credit_card.errors.full_messages.each do |message|
-        errors.add(:base, message)
-      end
-      return
-    end
-
-    true
+    #return true if !self.active
+    #if credit_card.nil?
+    #  errors.add( :base, 'Credit Card is not present.')
+    #  return false
+    #end
+    ## first validate via ActiveMerchant local code
+    #unless credit_card.valid?
+    #  # collect credit card error messages into the profile object
+    #  #errors.add(:credit_card, "must be valid")
+    #  credit_card.errors.full_messages.each do |message|
+    #    errors.add(:base, message)
+    #  end
+    #  return
+    #end
+    #
+    #true
   end
 
 end

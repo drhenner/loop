@@ -6,9 +6,13 @@ Factory.define :payment_profile do |u|
   u.default         true
   u.active          true
   u.cc_type         'visa'
+  u.number           '4916477365453955'
+  u.first_name           'john'
+  u.last_name           'fredricks'
   u.month           '05'
   u.year            '2013'
   u.last_digits     '3955'
+  u.cvv             '949'
   u.credit_card_info  { {
                           :number       => '4916477365453955',
                           :verification_value => '343',
@@ -19,5 +23,4 @@ Factory.define :payment_profile do |u|
                           :type         => 'visa'
                         }
                       }
-
 end

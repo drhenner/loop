@@ -9,7 +9,7 @@ class CreateProducts < ActiveRecord::Migration
       t.integer           :prototype_id
       t.integer           :shipping_category_id,  :null => false
       t.integer           :tax_status_id,         :null => false
-      t.string            :permalink,             :null => false
+      t.string            :permalink,             :null => false,   :unique => true
       t.datetime          :available_at
       t.datetime          :deleted_at
       t.string            :meta_keywords
@@ -25,7 +25,7 @@ class CreateProducts < ActiveRecord::Migration
       add_index :products, :shipping_category_id
       add_index :products, :prototype_id
       #add_index :products, :permalink,   :unique => true
-      execute('CREATE UNIQUE INDEX products_permalink_ten ON products (permalink(9));')
+      execute('CREATE INDEX products_permalink_ten ON products (permalink(15));')
   end
 
   def self.down

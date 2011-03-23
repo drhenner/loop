@@ -1,10 +1,10 @@
-class Admin::Document::ReportsController < ApplicationController
+class Admin::Document::ReportsController < Admin::BaseController
   def index
 
     params[:page] ||= 1
     params[:rows] ||= 20
-    args = { :page => params[:page], :rows => params[:rows]}
-    @reports = Report.paginate({:page => params[:page],:per_page => params[:rows]})
+    args = { :page => params[:page], :per_page => params[:rows]}
+    @reports = Report.paginate(args)
   end
 
   def show
@@ -17,13 +17,13 @@ class Admin::Document::ReportsController < ApplicationController
   def create
     brand = Brand.joins([:variants]).find(params[:report][:brand_id])
     @order_items = OrderItem.includes([{:shipping_rate => :shipping_method}, {:variant => :product}]).
-                            where(["order_items.variant_id IN (?)", brand.variant_ids)
+                            where(["order_items.variant_id IN (?)", brand.variant_ids])
     #args = params[:report]
     #@invoice = Report.save_pdf(args[:brand_id], args[:starts_at], args[:ends_at])
 
     respond_to do |format|
       #format.pdf { render :layout => false }
-      format.pdf { prawnto :prawn=>{:skip_page_creation=>true}}
+      format.pdf { prawnto :prawn=> {:skip_page_creation=>true} }
     end
   end
 

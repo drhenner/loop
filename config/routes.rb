@@ -184,6 +184,7 @@ Hadean::Application.routes.draw do # |map|
     end
     namespace :document do
       resources :invoices
+      resources :reports
     end
   end
 

@@ -11,9 +11,41 @@
 <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
   </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :number %><br />
+    <%= f.password_field :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_id %><br />
+    <%= f.select :address_id, @addresses %>
+  </div>
+
+  <div class="field">
+    <%= f.label :month %><br />
+    <%= f.text_field :month %>
+  </div>
+
+  <div class="field">
+    <%= f.label :year %><br />
+    <%= f.text_field :year %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cc_type %><br />
+    <%= f.text_field :cc_type %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+
