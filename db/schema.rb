@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110314011913) do
+ActiveRecord::Schema.define(:version => 20110323074402) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",                                                           :null => false
@@ -96,6 +96,17 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
 
   add_index "carts", ["user_id"], :name => "index_carts_on_user_id"
 
+  create_table "cities", :force => true do |t|
+    t.string   "name",                                      :null => false
+    t.integer  "state_id",                                  :null => false
+    t.decimal  "latitude",   :precision => 10, :scale => 0
+    t.decimal  "longitude",  :precision => 10, :scale => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cities", ["state_id"], :name => "index_cities_on_state_id"
+
   create_table "colors", :force => true do |t|
     t.string  "name",       :limit => 80,                   :null => false
     t.string  "css_color",  :limit => 20
@@ -124,8 +135,10 @@ ActiveRecord::Schema.define(:version => 20110314011913) do
     t.text     "full_description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "city_id"
   end
 
+  add_index "companies", ["city_id"], :name => "index_companies_on_city_id"
   add_index "companies", ["name"], :name => "companies_name_ten", :length => {"name"=>9}
 
   create_table "countries", :force => true do |t|

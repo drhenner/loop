@@ -1,0 +1,8 @@
+<h1> Edit City </h1>
+
+<%= form_for(@city, :url => admin_seller_city_path(@city)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Show', admin_seller_city_path( @city ), :class => 'button' %> |
+  <%= link_to 'View All', admin_seller_cities_path, :class => 'button' %>

@@ -1,0 +1,22 @@
+<h1> Cities </h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>State</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% for city in @cities %>
+    <tr>
+      <td><%= city.name %></td>
+      <td><%= city.state_name %></td>
+      <td><%= link_to "Show", admin_seller_city_path(city) %></td>
+      <td><%= link_to "Edit", edit_admin_seller_city_path(city) %></td>
+      <td><%= link_to "Destroy", admin_seller_city_path(city), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New City", new_admin_seller_city_path, :class => 'button' %></p>

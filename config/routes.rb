@@ -95,6 +95,7 @@ Hadean::Application.routes.draw do # |map|
 
     namespace :seller do
       resources :companies
+      resources :cities
       resources :owners
       resources :users
       resources :tickets do
