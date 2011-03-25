@@ -23,7 +23,7 @@ class Color < ActiveRecord::Base
 
   DEFAULT_COLOR = '#E8E8E8'
 
-  validates :name,  :presence => true
+  validates :name,  :presence => true, :uniqueness => true
 
   def display_css_color
     css_color? ? css_color : DEFAULT_COLOR
