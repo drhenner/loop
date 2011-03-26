@@ -1,30 +1,31 @@
 /* line 3, ../../app/stylesheets/_main_header.scss */
 #header_wrapper {
-  /* border-bottom: 1px solid #CCCCCC;
-  background: url("../../images/header/bg-header-wrap.png") repeat-x scroll center bottom #FFFFFF; */
+  border-bottom: 1px solid #E6E6E6;
+  background: url("../../images/header/bg-header-wrap.png") repeat-x scroll center bottom white;
+  background-color: #FFFFFF;
 }
-/* line 8, ../../app/stylesheets/_main_header.scss */
+/* line 9, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header, #header_wrapper #seller_header {
   font-family: Arial,"Liberation Sans",FreeSans,sans-serif;
   height: 69px;
 }
-/* line 12, ../../app/stylesheets/_main_header.scss */
+/* line 13, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header .container, #header_wrapper #seller_header .container {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 16, ../../app/stylesheets/_main_header.scss */
+/* line 17, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header form.search, #header_wrapper #seller_header form.search {
   display: inline;
   float: left;
   height: 29px;
   padding: 17px 15px 13px;
 }
-/* line 21, ../../app/stylesheets/_main_header.scss */
+/* line 22, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header form.search.input-search, #header_wrapper #seller_header form.search.input-search {
   width: 230px;
 }
-/* line 25, ../../app/stylesheets/_main_header.scss */
+/* line 26, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #logo, #header_wrapper #seller_header #logo {
   display: inline;
   float: left;
@@ -35,12 +36,12 @@
   width: 224px;
   height: 100%;
 }
-/* line 35, ../../app/stylesheets/_main_header.scss */
+/* line 36, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #logo a, #header_wrapper #seller_header #logo a {
   display: block;
   padding: 0px;
 }
-/* line 39, ../../app/stylesheets/_main_header.scss */
+/* line 40, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #logo a span, #header_wrapper #seller_header #logo a span {
   -moz-box-orient: vertical;
   display: block;
@@ -49,7 +50,7 @@
   vertical-align: middle;
   width: 160px;
 }
-/* line 50, ../../app/stylesheets/_main_header.scss */
+/* line 51, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-main, #header_wrapper #seller_header #menu-main {
   font-size: 0;
   list-style-type: none;
@@ -57,16 +58,16 @@
   margin: 0;
   overflow: hidden;
 }
-/* line 57, ../../app/stylesheets/_main_header.scss */
+/* line 58, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-main li#menu-main-user, #header_wrapper #seller_header #menu-main li#menu-main-user {
   display: inline-block;
 }
-/* line 59, ../../app/stylesheets/_main_header.scss */
+/* line 60, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-main li#menu-main-user div, #header_wrapper #seller_header #menu-main li#menu-main-user div {
   display: inline-block;
   padding: 13px 19px;
 }
-/* line 62, ../../app/stylesheets/_main_header.scss */
+/* line 63, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-main li#menu-main-user div strong, #header_wrapper #seller_header #menu-main li#menu-main-user div strong {
   color: #525252 !important;
   display: block;
@@ -74,27 +75,27 @@
   font-weight: bold;
   line-height: 15px;
 }
-/* line 69, ../../app/stylesheets/_main_header.scss */
+/* line 70, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-main li#menu-main-user div span, #header_wrapper #seller_header #menu-main li#menu-main-user div span {
   color: #B2B2B2 !important;
   font-size: 12px;
 }
-/* line 73, ../../app/stylesheets/_main_header.scss */
+/* line 74, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-main li#menu-main-user div a, #header_wrapper #seller_header #menu-main li#menu-main-user div a {
   padding: 0px 0px;
   border-right: none;
 }
-/* line 80, ../../app/stylesheets/_main_header.scss */
+/* line 81, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-main li, #header_wrapper #seller_header #menu-main li {
   margin-left: 0;
   display: inline-block;
 }
-/* line 84, ../../app/stylesheets/_main_header.scss */
+/* line 85, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-main li a, #header_wrapper #seller_header #menu-main li a {
   display: inline-block;
   padding: 23px 19px;
 }
-/* line 88, ../../app/stylesheets/_main_header.scss */
+/* line 89, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-main li a strong, #header_wrapper #seller_header #menu-main li a strong {
   color: #525252 !important;
   display: block;
@@ -103,29 +104,29 @@
   line-height: 15px;
   text-transform: uppercase;
 }
-/* line 96, ../../app/stylesheets/_main_header.scss */
+/* line 97, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-main li a strong:hover, #header_wrapper #seller_header #menu-main li a strong:hover {
   color: #CDC673 !important;
 }
-/* line 99, ../../app/stylesheets/_main_header.scss */
+/* line 100, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-main li a span, #header_wrapper #seller_header #menu-main li a span {
   color: #B2B2B2 !important;
   font-size: 12px;
 }
-/* line 104, ../../app/stylesheets/_main_header.scss */
+/* line 105, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-main li a #menu-main-fund, #header_wrapper #seller_header #menu-main li a #menu-main-fund {
   margin-left: -1px;
 }
-/* line 108, ../../app/stylesheets/_main_header.scss */
+/* line 109, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-main li.selected, #header_wrapper #seller_header #menu-main li.selected {
   border-color: #CCCCCC #CCCCCC #FFFFFF;
   z-index: 1;
 }
-/* line 112, ../../app/stylesheets/_main_header.scss */
+/* line 113, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-main li.selected a, #header_wrapper #seller_header #menu-main li.selected a {
   background: none repeat scroll 0 0 #FFFFFF;
 }
-/* line 119, ../../app/stylesheets/_main_header.scss */
+/* line 120, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-sub, #header_wrapper #seller_header #menu-sub {
   border: 0 none;
   display: inline;
@@ -135,7 +136,7 @@
   overflow: visible;
   padding: 0 0 0 8px;
 }
-/* line 128, ../../app/stylesheets/_main_header.scss */
+/* line 129, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-sub li, #header_wrapper #seller_header #menu-sub li {
   display: inline;
   float: left;
@@ -146,22 +147,22 @@
   padding-right: 0;
   white-space: nowrap;
 }
-/* line 138, ../../app/stylesheets/_main_header.scss */
+/* line 139, ../../app/stylesheets/_main_header.scss */
 #header_wrapper #header #menu-sub li:first-child, #header_wrapper #header #menu-sub li.first, #header_wrapper #seller_header #menu-sub li:first-child, #header_wrapper #seller_header #menu-sub li.first {
   padding-left: 0;
 }
 
-/* line 145, ../../app/stylesheets/_main_header.scss */
+/* line 146, ../../app/stylesheets/_main_header.scss */
 .field.search {
   position: relative;
 }
-/* line 147, ../../app/stylesheets/_main_header.scss */
+/* line 148, ../../app/stylesheets/_main_header.scss */
 .field.search .icon-search {
   left: 8px;
   position: absolute;
   top: 5px;
 }
-/* line 152, ../../app/stylesheets/_main_header.scss */
+/* line 153, ../../app/stylesheets/_main_header.scss */
 .field.search input.text {
   -moz-border-radius: 11px;
   -webkit-border-radius: 11px;
@@ -177,7 +178,7 @@
   width: 225px;
 }
 
-/* line 166, ../../app/stylesheets/_main_header.scss */
+/* line 167, ../../app/stylesheets/_main_header.scss */
 .icon-search {
   -moz-box-orient: vertical;
   display: inline-block;
@@ -187,13 +188,13 @@
   width: 14px;
 }
 
-/* line 177, ../../app/stylesheets/_main_header.scss */
+/* line 178, ../../app/stylesheets/_main_header.scss */
 a {
   color: #525252;
   text-decoration: none;
 }
 
-/* line 181, ../../app/stylesheets/_main_header.scss */
+/* line 182, ../../app/stylesheets/_main_header.scss */
 a:visited {
   color: #994444;
 }
