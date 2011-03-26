@@ -20,6 +20,14 @@ class Notifier < ActionMailer::Base
 
   end
 
+  def coming_soon(user)
+    @user = user
+
+    mail(:to => recipient.email_address_with_name,
+         :subject => "Loop de Luxe: Coming Soon.")
+
+  end
+
   def password_reset_instructions(user)
     @user = user
     @url  = edit_customer_password_reset_url(:id => user.perishable_token)

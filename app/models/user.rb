@@ -405,6 +405,10 @@ class User < ActiveRecord::Base
     Notifier.password_reset_instructions(self).deliver
   end
 
+  def deliver_coming_soon_message!
+    Notifier.coming_soon(self).deliver
+  end
+
   def deliver_referrals(good_referrals)
     good_referrals.each do |good_referral|
       Notifier.friend_referral(self, good_referral).deliver
