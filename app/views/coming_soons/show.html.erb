@@ -1,0 +1,65 @@
+
+<% content_for :head do -%>
+  <%= stylesheet_link_tag 'login.css' %>
+<% end %>
+<% content_for :head do -%>
+  <%#= formtastic_stylesheet_link_tag  %>
+  <%#= stylesheet_link_tag 'signup.css' %>
+  <%= stylesheet_link_tag 'cupertino/jquery-ui-1.8.5.custom' %>
+<% end %>
+
+<% content_for :bottom do -%>
+  <%= javascript_include_tag 'jquery.datePicker-2.1.2', 'datePickerInitialize' %>
+<% end %>
+
+<h1> Coming Soon </h1>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited you from applying: </h2>
+
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<div id='signup' style='width:300px;'>
+  <%= form_for @user, :url => coming_soon_path(@user)  do |form| %>
+    <h3>We are busy building <%= site_name %></h3>
+    <p>Apply for a membership and be the first to join our Beta shopping boutique. </p>
+    <fieldset>
+       <ol id='registration_form'>
+            <li>
+                <%=form.label :first_name, 'First name*' %>
+                <%= form.text_field :first_name %>
+            </li>
+            <li>
+                <%=form.label :last_name %>
+                <%= form.text_field :last_name %>
+            </li>
+            <li>
+                <%=form.label :email, 'Email' %>
+                <%= form.text_field :email %>
+            <li>
+                <%=form.label :birth_date %>
+                <%= form.text_field :birth_date, :class => 'ui-yearpicker' %>
+            </li>
+            <li>
+                <%=form.label :password, 'Password' %>
+                <%= form.password_field :password %>
+            </li>
+            <li>
+                <%=form.label :password_confirmation, 'Confirm' %>
+                <%= form.password_field :password_confirmation %>
+            </li>
+       </ol>
+    <%#= form.buttons do %>
+      <%= form.submit "Register" %>
+    <%# end %>
+    </fieldset>
+  <% end %>
+</div>

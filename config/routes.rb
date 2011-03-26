@@ -17,6 +17,8 @@ Hadean::Application.routes.draw do # |map|
   resources :cart_items
   resources :wish_items
   resources :states,   :only => [:index]
+  resource :coming_soon, :only => [:show, :create]
+  resource :philosophy, :only => [:show]
 
   #devise_for :admins
   #devise_for :admins, :controllers => { :sessions => "admin/sessions" }
