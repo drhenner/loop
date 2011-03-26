@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110323074402) do
+ActiveRecord::Schema.define(:version => 20110326084414) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",                                                           :null => false
@@ -140,6 +140,17 @@ ActiveRecord::Schema.define(:version => 20110323074402) do
 
   add_index "companies", ["city_id"], :name => "index_companies_on_city_id"
   add_index "companies", ["name"], :name => "companies_name_ten", :length => {"name"=>9}
+
+  create_table "contracts", :force => true do |t|
+    t.string   "name"
+    t.integer  "brand_id"
+    t.decimal  "flash_percent", :precision => 10, :scale => 0
+    t.decimal  "store_percent", :precision => 10, :scale => 0
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "countries", :force => true do |t|
     t.string "name"
