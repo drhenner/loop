@@ -1,5 +1,6 @@
 body {
-  background:#F4F4F4;
+  /*background:#F4F4F4;*/
+  background:#FFFFFF;
 }
 
 #register-wrapper, #login-wrapper {
@@ -14,6 +15,7 @@ div #login {
 div #signup, div #login {
   text-align:left;
   padding: 17px;
+  margin-bottom: 20px;
   display: inline;
   float: left;
   width: 280px;
