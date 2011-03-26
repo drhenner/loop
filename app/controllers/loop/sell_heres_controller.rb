@@ -1,4 +1,4 @@
-class Loop::SellHeresController < ApplicationController
+class Loop::SellHeresController < Loop::BaseController
   def show
     @feedback = SellerFeedback.new
     form_info

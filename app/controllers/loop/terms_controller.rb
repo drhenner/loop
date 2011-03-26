@@ -1,4 +1,4 @@
-class Loop::TermsController < ApplicationController
+class Loop::TermsController < Loop::BaseController
   def index
 
   end

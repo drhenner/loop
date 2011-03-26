@@ -1,4 +1,4 @@
-class Loop::AboutsController < ApplicationController
+class Loop::AboutsController < Loop::BaseController
   def show
 
   end

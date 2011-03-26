@@ -1,7 +1,7 @@
 class UserSessionsController < ApplicationController
-
+  skip_before_filter :redirect_to_coming_soon
   #layout 'session'
-
+layout 'coming_soon'
   def new
     @user_session = UserSession.new
     @user = User.new

@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
                 :tab_path
 
   before_filter :secure_session
+  before_filter :redirect_to_coming_soon
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied."
@@ -24,6 +25,10 @@ class ApplicationController < ActionController::Base
       flash[:alert] = 'Sorry you are not allowed to do that.'
       redirect_to root_url
     end
+  end
+
+  def redirect_to_coming_soon
+    redirect_to coming_soon_url and return unless current_user && current_user.admin?
   end
 
   def current_ability
