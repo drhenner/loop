@@ -10,10 +10,14 @@ html, body {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -4em;
+  margin: 0 auto -2em;
 }
-.footer_wrapper {
-  height: 4em;
+#footer_wrapper {
+  height: 1.8em;
+
+  ul, ol {
+    margin: 0 -2px -2px 0;
+  }
 }
 /*END LAYOUT*/
 
@@ -183,7 +187,8 @@ input.text, input.title, input[type="text"], input[type="password"] {
 }
 
 #content_wrapper {
-  padding-top: 22px;
+  padding-top: 2em;
+  padding-bottom: 1em;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
 }
 

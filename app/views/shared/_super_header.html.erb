@@ -14,20 +14,20 @@
               <strong> My Info </strong>
           <% end %>
         <% else %>
-          <%= link_to(shopping_cart_items_path, :id => 'cart_items_buttons') do %>
+          <%= link_to(loop_about_path, :id => 'cart_items_buttons') do %>
               <strong> About Us </strong>
           <% end %>
         <% end %>
       </li>
       <li class="" id="menu-main-philosophy">
-          <%= link_to(philosophy_path, :id => 'philosophy_button') do %>
-              <strong> Philosophy </strong>
+          <%= link_to(shopping_cart_items_path, :id => 'cart_items_buttons') do %>
+              <strong> Cart </strong>
           <% end %>
       </li>
 
       <li class="" id="menu-main-contact">
           <%= link_to(wish_items_path, :id => 'wish_items_button') do %>
-              <strong> Contact </strong>
+              <strong> Wish </strong>
           <% end %>
       </li>
       <li class="" id="menu-main-user">

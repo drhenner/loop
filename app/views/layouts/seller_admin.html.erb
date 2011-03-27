@@ -21,17 +21,17 @@
 </head>
 <body class="bp">
   <div class="main_wrapper">
-  <div class="bp">
-    <%= raw "<p class='flash_notice'> #{notice}</p>"  if notice %>
-    <%= raw "<p class='flash_error'>#{alert}</p>"     if alert %>
+    <div class="bp">
+      <%= raw "<p class='flash_notice'> #{notice}</p>"  if notice %>
+      <%= raw "<p class='flash_error'>#{alert}</p>"     if alert %>
+    </div>
+
+    <%= render 'shared/seller/header' %>
+
+    <div id='content_wrapper' class='container'>
+      <%= yield %>
+    </div>
   </div>
-
-  <%= render 'shared/seller/header' %>
-
-  <div id='content_wrapper' class='container'>
-    <%= yield %>
-  </div>
-
   <%= yield :bottom %>
 
   <script>
