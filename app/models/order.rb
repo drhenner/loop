@@ -126,6 +126,7 @@ class Order < ActiveRecord::Base
               item = OrderItem.new( :variant        => hash[:variant],
                                     :tax_rate       => hash[:tax_rate],
                                     :price          => hash[:variant].price,
+                                    :cost           => hash[:variant].cost,
                                     :total          => hash[:total],
                                     :shipping_rate  => hash[:shipping_rate]
                                 )
@@ -318,7 +319,11 @@ class Order < ActiveRecord::Base
     self.save! if self.new_record?
     tax_rate_id = state_id ? variant.product.tax_rate(state_id) : nil
     quantity.times do
-      self.order_items.push(OrderItem.create(:order => self,:variant_id => variant.id, :price => variant.price, :tax_rate_id => tax_rate_id))
+      self.order_items.push(OrderItem.create( :order        => self,
+                                              :variant_id   => variant.id,
+                                              :price        => variant.price,
+                                              :cost         => variant.cost,
+                                              :tax_rate_id  => tax_rate_id))
     end
   end
 

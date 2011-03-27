@@ -22,7 +22,6 @@ describe SellerAdmin::Payments::OrderItemsController do
 
   it "show action should render show template" do
     brand     = Factory(:brand)
-    contract  = Factory(:contract, :start_date => Date.new(2007, 11, 10), :brand => brand)
 
     variant     = Factory(:variant, :brand => brand)
     order       = Factory(:order, :completed_at => Time.now)

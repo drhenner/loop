@@ -9,16 +9,10 @@
     </tr>
     <% for order_item in @order_items %>
       <tr>
-        seller_percentage(variant)
-        <% contract = @contracts.sort_by(&:start_date).detect do |c|
-                  (c.start_date < order_item.order.completed_at &&
-                   (c.end_date == nil || c.end_date >= order_item.order.completed_at))
-           end
-        %>
         <td><%= order_item.order_number %></td>
         <td><%= order_item.total %></td>
         <td><%= order_item.tax_amount %></td>
-        <td><%= order_item.seller_amount(contract) %></td>
+        <td><%= order_item.cost %></td>
         <td><%= link_to "Show", seller_admin_payments_order_items_path(order_item) %></td>
       </tr>
     <% end %>

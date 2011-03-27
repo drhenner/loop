@@ -1,6 +1,7 @@
 
 Factory.define :order_item do |u|
   u.price         3.00
+  u.cost          2.00
   u.total         3.15
   u.order         { |c| c.association(:order) }
   u.variant       { |c| c.association(:variant) }

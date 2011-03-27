@@ -13,6 +13,8 @@ class OrderItem < ActiveRecord::Base
 
   validates :variant_id,  :presence => true
   validates :order_id,    :presence => true
+  validates :price,       :presence => true
+  validates :cost,        :presence => true
 
   delegate :brand_id, :to => :variant
 
@@ -162,12 +164,4 @@ class OrderItem < ActiveRecord::Base
     amount.round_at(2)
   end
 
-  def seller_amount(contract)
-    contract ||= Contract.where(['start_date < ? AND
-                                  (end_date IS NULL OR end_date >= ?) ',
-                                  order.completed_at, order.completed_at ]).
-                          order('start_date ASC').first
-
-    (total - tax_amount) * contract.seller_percentage(variant)
-  end
 end

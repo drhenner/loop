@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110327052515) do
+ActiveRecord::Schema.define(:version => 20110327185826) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",                                                           :null => false
@@ -266,6 +266,7 @@ ActiveRecord::Schema.define(:version => 20110327052515) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "paid_at"
+    t.decimal  "cost",             :precision => 8, :scale => 2
   end
 
   add_index "order_items", ["order_id"], :name => "index_order_items_on_order_id"
