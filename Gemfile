@@ -22,7 +22,7 @@ gem "jquery-rails"
 
 
 gem 'nokogiri',         '~> 1.4.4'
-gem 'memcache-client',  '~> 1.8.5'
+#gem 'memcache-client',  '~> 1.8.5'
 gem 'mysql2',           '~> 0.2.6'
 
 gem 'paperclip',        '~> 2.3.8'
@@ -39,6 +39,10 @@ gem 'state_machine',      '~> 0.9.4'
 gem 'will_paginate',      '~> 3.0.pre2'
 #gem 'validation_reflection',      :branch => "rails-3"
 gem 'yajl-ruby' # Faster JSON
+
+#group :production do
+gem 'dalli', '~> 1.0.2'
+#end
 
 ## ADD stuff here if you need them
 platforms :ruby_19 do
