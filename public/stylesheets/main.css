@@ -872,7 +872,7 @@ input.text, input.title, input[type="text"], input[type="password"] {
 /* line 189, ../../app/stylesheets/_app.scss */
 #content_wrapper {
   padding-top: 2em;
-  padding-bottom: 1em;
+  padding-bottom: 2em;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
 }
 
