@@ -24,8 +24,9 @@ class Variant < ActiveRecord::Base
   validates :sku,         :presence => true
 
   accepts_nested_attributes_for :variant_properties
-
   accepts_nested_attributes_for :images, :reject_if => lambda { |t| t['photo'].nil? }
+
+  delegate :product_type, :to => :product
 
   OUT_OF_STOCK_QTY    = 2
   LOW_STOCK_QTY       = 6

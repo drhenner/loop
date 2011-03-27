@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110326084414) do
+ActiveRecord::Schema.define(:version => 20110327052515) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",                                                           :null => false
@@ -400,15 +400,15 @@ ActiveRecord::Schema.define(:version => 20110326084414) do
   add_index "product_types", ["rgt"], :name => "index_product_types_on_rgt"
 
   create_table "products", :force => true do |t|
-    t.string   "name",                                    :null => false
+    t.string   "name",                                         :null => false
     t.text     "description"
     t.text     "product_keywords"
     t.integer  "tax_category_id"
-    t.integer  "product_type_id",                         :null => false
+    t.integer  "product_type_id",                              :null => false
     t.integer  "prototype_id"
-    t.integer  "shipping_category_id",                    :null => false
-    t.integer  "tax_status_id",                           :null => false
-    t.string   "permalink",                               :null => false
+    t.integer  "shipping_category_id",                         :null => false
+    t.integer  "tax_status_id",                                :null => false
+    t.string   "permalink",                                    :null => false
     t.datetime "available_at"
     t.datetime "deleted_at"
     t.string   "meta_keywords"
@@ -416,6 +416,7 @@ ActiveRecord::Schema.define(:version => 20110326084414) do
     t.boolean  "featured",             :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "product_type",         :default => "boutique"
   end
 
   add_index "products", ["name"], :name => "products_name_ten", :length => {"name"=>9}

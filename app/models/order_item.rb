@@ -146,8 +146,28 @@ class OrderItem < ActiveRecord::Base
   #
   # @param [none]
   # @return [Float] tax charge on the item.
-  def tax_charge
+  def tax_charge(coupon = nil)
     tax_percentage = tax_rate.try(:percentage) ? tax_rate.try(:percentage) : 0.0
-    adjusted_price * tax_percentage / 100.0
+    adjusted_price(coupon) * tax_percentage / 100.0
+  end
+
+  # This is the amount some has been taxed.  This is not used for calculating tax.
+  # => Rather it is used to determine what someone was taxed after the order is complete
+  #
+  # param [none]
+  # @return [Float] tax charged on the item.
+  def tax_amount
+    tax_percentage = tax_rate.try(:percentage) ? tax_rate.try(:percentage) : 0.0
+    amount = self.total * (100.0 / (tax_percentage + 100.0))
+    amount.round_at(2)
+  end
+
+  def seller_amount(contract)
+    contract ||= Contract.where(['start_date < ? AND
+                                  (end_date IS NULL OR end_date >= ?) ',
+                                  order.completed_at, order.completed_at ]).
+                          order('start_date ASC').first
+
+    (total - tax_amount) * contract.seller_percentage(variant)
   end
 end

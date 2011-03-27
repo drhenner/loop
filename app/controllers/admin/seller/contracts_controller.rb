@@ -2,7 +2,8 @@ class Admin::Seller::ContractsController < Admin::Seller::BaseController
   def index
     params[:page] ||= 1
     params[:rows] ||= 20
-    @contracts = Contract.where('end_date IS NULL').paginate({:page => params[:page],:per_page => params[:rows]})
+    @contracts = Contract.where('end_date IS NULL').
+                          paginate({:page => params[:page],:per_page => params[:rows]})
   end
 
   def show
@@ -11,7 +12,7 @@ class Admin::Seller::ContractsController < Admin::Seller::BaseController
 
   def new
     form_info
-    @contract = Contract.new
+    @contract = Contract.new(:flash_percent => 10.0, :store_percent => 27.7)
   end
 
   def create

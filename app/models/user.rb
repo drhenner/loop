@@ -350,6 +350,22 @@ class User < ActiveRecord::Base
   #
   # @param [none]
   # @return [ Array[Product] ] Array of seller's products
+  def seller_variants
+    Variant.where(["variants.brand_id IN (?)", company.brand_ids] )
+  end
+
+  # results from the seller_admin's products
+  #
+  # @param [none]
+  # @return [ Array[Product] ] Array of seller's products
+  def seller_variant_ids
+    seller_variants.select(:id).map(&:id)
+  end
+
+  # results from the seller_admin's products
+  #
+  # @param [none]
+  # @return [ Array[Product] ] Array of seller's products
   def seller_products(params = {})
     params[:page] ||= 1
     params[:rows] ||= 20

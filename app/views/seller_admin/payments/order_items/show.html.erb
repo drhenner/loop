@@ -1,0 +1,25 @@
+<h1> Order Items </h1>
+
+<p>
+  <strong>Order #:</strong>
+  <%= @order_item.order_number %>
+</p>
+
+<p>
+  <strong>Item total:</strong>
+  <%= @order_item.total %>
+</p>
+
+<p>
+  <strong>Taxes:</strong>
+  <%= @order_item.tax_amount %>
+</p>
+
+<p>
+  <strong>Amount to Collect:</strong>
+  <%= @order_item.seller_amount(nil) %>
+</p>
+
+<p>
+  <%= link_to "View All", seller_admin_payments_order_items_path, :class => 'button white-button medium-button' %>
+</p>

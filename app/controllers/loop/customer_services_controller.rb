@@ -1,4 +1,9 @@
 class Loop::CustomerServicesController < Loop::BaseController
+
+  def faq
+
+  end
+
   def show
     form_info
     @customer_services = CustomerServiceFeedback.new

@@ -230,7 +230,7 @@ class Order < ActiveRecord::Base
   # @param [none] the param is not used right now
   # @return [none]  Sets sub_total and total for the object
   def find_total(force = false)
-    calculate_totals if self.calculated_at.nil? || order_items.any? {|item| (item.updated_at > self.calculated_at) }
+    calculate_totals if force || self.calculated_at.nil? || order_items.any? {|item| (item.updated_at > self.calculated_at) }
     self.total = 0.0
     order_items.each do |item|
       self.total = self.total + item.item_total

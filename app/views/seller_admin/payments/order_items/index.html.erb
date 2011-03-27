@@ -1,0 +1,44 @@
+<h1> Order Items </h1>
+<% if @contracts %>
+  <table>
+    <tr>
+      <th>Order #</th>
+      <th>Total</th>
+      <th>Tax</th>
+      <th>Your Amount</th>
+    </tr>
+    <% for order_item in @order_items %>
+      <tr>
+        seller_percentage(variant)
+        <% contract = @contracts.sort_by(&:start_date).detect do |c|
+                  (c.start_date < order_item.order.completed_at &&
+                   (c.end_date == nil || c.end_date >= order_item.order.completed_at))
+           end
+        %>
+        <td><%= order_item.order_number %></td>
+        <td><%= order_item.total %></td>
+        <td><%= order_item.tax_amount %></td>
+        <td><%= order_item.seller_amount(contract) %></td>
+        <td><%= link_to "Show", seller_admin_payments_order_items_path(order_item) %></td>
+      </tr>
+    <% end %>
+  </table>
+
+<%= will_paginate @order_items %>
+<% else %>
+  You must select a brand.
+
+  <%= select(:company, :brand_id,  current_user.brands.map{|b| [b.name, b.id]}, { :include_blank => true }, {:id => 'select_brand_id'} ) %>
+
+  <script>
+    jQuery(window).ready(
+      jQuery('#select_brand_id').bind('change', function () {
+        //alert(jQuery('#select_brand_id option:selected').val() );
+        if (jQuery('#select_brand_id option:selected').val() != '') {
+          window.location.href = 'seller_admin/payments/order_items?brand_id='+jQuery('#select_brand_id option:selected').val();
+        }
+      })
+      )
+  </script>
+
+<% end %>

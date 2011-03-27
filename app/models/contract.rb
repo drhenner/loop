@@ -6,4 +6,13 @@ class Contract < ActiveRecord::Base
   validates :store_percent, :presence => true
   validates :flash_percent, :presence => true
 
+  def seller_percentage(variant)
+    case variant.product_type
+    when 'flash'
+      100.0 - flash_percent
+    else
+      100.0 - store_percent
+    end
+  end
+
 end
