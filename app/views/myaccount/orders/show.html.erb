@@ -28,11 +28,16 @@
     </tr>
 
     <tr>
-      <td COLSPAN=2> Items </td>
+      <td> Items </td><td> Tracking </td>
     </tr>
     <% @order.order_items.each do |item| %>
       <tr>
-        <td class='left-align' COLSPAN=2> <%= item.variant.product_name %> </td>
+        <td class='left-align'> <%= item.variant.product_name %> </td>
+        <td class='left-align'>
+          <% if item.shipment.try(:tracking) %>
+            <%= link_to item.shipment.try(:tracking), "http://www.google.de/search?q=#{item.shipment.try(:tracking)}", :target => "_blank" %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>
