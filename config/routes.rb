@@ -36,7 +36,11 @@ Hadean::Application.routes.draw do # |map|
   namespace :loop do
     resource  :about, :only => [:show]
     resources :terms, :only => [:index]
-    resource :customer_service, :only => [:show, :new, :create]
+    resource :customer_service, :only => [:show, :new, :create, :faq] do
+      member do
+        get :faq
+      end
+    end
     resource :sell_here, :only => [:show, :new, :create]
   end
 
@@ -71,6 +75,10 @@ Hadean::Application.routes.draw do # |map|
   namespace :seller_admin do
     resource  :overview, :only => [:show]
     resources :products, :only => [:index, :show]
+
+    namespace :payments do
+      resources :order_items, :only => [:index, :show]
+    end
     namespace :current do
       resources :shipments, :only => [:index, :show, :edit, :update, :ship] do
         member do
