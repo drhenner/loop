@@ -1,4 +1,4 @@
-class Admin::Seller::ContractsController < ApplicationController
+class Admin::Seller::ContractsController < Admin::Seller::BaseController
   def index
     params[:page] ||= 1
     params[:rows] ||= 20
