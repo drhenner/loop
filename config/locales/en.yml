@@ -31,6 +31,10 @@ en:
 
   helpers:
     submit:
-      myaccount:
-        user:
-          update: "Change"
+      user:
+        update: "Change"
+      seller_feedback:
+        create: 'Send Feedback'
+      customer_service_feedback:
+        create: 'Send Feedback'
+
