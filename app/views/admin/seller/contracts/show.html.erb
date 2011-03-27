@@ -1,0 +1,31 @@
+<h1> Contract </h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @contract.name %>
+</p>
+<p>
+  <strong>Brand:</strong>
+  <%= @contract.brand_id %>
+</p>
+<p>
+  <strong>Flash Percent:</strong>
+  <%= @contract.flash_percent %>
+</p>
+<p>
+  <strong>Store Percent:</strong>
+  <%= @contract.store_percent %>
+</p>
+<p>
+  <strong>Start Date:</strong>
+  <%= @contract.start_date %>
+</p>
+<p>
+  <strong>End Date:</strong>
+  <%= @contract.end_date %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_seller_contract_path(@contract), :class => 'button white-button medium-button' %> |
+  <%= link_to "View All", admin_seller_contracts_path, :class => 'button white-button medium-button' %>
+</p>

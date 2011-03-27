@@ -1,0 +1,28 @@
+<h1> Contracts </h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Brand</th>
+    <th>Flash Percent</th>
+    <th>Store Percent</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+  </tr>
+  <% for contract in @contracts %>
+    <tr>
+      <td><%= contract.name %></td>
+      <td><%= contract.brand_id %></td>
+      <td><%= contract.flash_percent %></td>
+      <td><%= contract.store_percent %></td>
+      <td><%= contract.start_date %></td>
+      <td><%= contract.end_date %></td>
+      <td><%= link_to "Show", admin_seller_contract_path(contract) %></td>
+      <td><%= link_to "Edit", edit_admin_seller_contract_path(contract) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @contracts %>
+
+<p><%= link_to "New Contract", new_admin_seller_contract_path, :class => 'button white-button medium-button' %></p>

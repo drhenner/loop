@@ -1,0 +1,39 @@
+<% if @contract.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
+
+    <ul>
+    <% @contract.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :brand_id %><br />
+    <%= f.select :brand_id, @brands %>
+  </div>
+  <div class="field">
+    <%= f.label :flash_percent %><br />
+    <%= f.select :flash_percent, @percentages %>
+  </div>
+  <div class="field">
+    <%= f.label :store_percent %><br />
+    <%= f.select :store_percent, @percentages %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br />
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%#= f.label :end_date %><br />
+    <%#= f.date_select :end_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>

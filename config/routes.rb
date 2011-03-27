@@ -100,6 +100,7 @@ Hadean::Application.routes.draw do # |map|
       resources :cities
       resources :owners
       resources :users
+      resources :contracts
       resources :tickets do
         resources :comments
       end

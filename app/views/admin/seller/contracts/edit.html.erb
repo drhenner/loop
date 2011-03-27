@@ -1,0 +1,8 @@
+<h1> Edit Contract </h1>
+
+<%= form_for(@contract, :url => admin_seller_contract_path(@contract)) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+  <%= link_to 'Show', admin_seller_contract_path( @contract ), :class => 'button white-button medium-button' %> |
+  <%= link_to 'View All', admin_seller_contracts_path, :class => 'button white-button medium-button' %>
