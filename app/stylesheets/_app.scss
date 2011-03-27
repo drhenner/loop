@@ -113,6 +113,18 @@ a:hover {
   display: inline;
   text-align: left;
 }
+.disc-list li {
+  list-style: disc;
+}
+.circle-list li {
+  list-style: circle;
+}
+.alpha-list li {
+  list-style: upper-alpha;
+}
+.numbered-list li {
+  list-style: decimal;
+}
 .roman-list li {
   list-style: upper-roman;
 }
