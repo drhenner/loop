@@ -1,10 +1,11 @@
 class ProductsController < ApplicationController
 
   def index
-    products = Product.includes(:variants)
-    product_type = ProductType.find_by_id(params[:product_type_id])
+    products      = Product.includes(:variants)
+    product_type  = ProductType.find_by_id(params[:product_type_id])
     product_types = product_type ? product_type.self_and_descendants.collect{|p| p.id} : nil
-    @products = products.where('product_type_id IN (?)', product_types || featured_product_types)
+    products      = products.where('(deleted_at IS NULL OR deleted_at < ?) AND (available_at > ? OR available_at IS NULL)', Time.zone.now, Time.zone.now)
+    @products     = products.where('product_type_id IN (?)', product_types || featured_product_types)
   end
 
   def create
