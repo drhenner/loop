@@ -143,10 +143,10 @@ ActiveRecord::Schema.define(:version => 20110327185826) do
 
   create_table "contracts", :force => true do |t|
     t.string   "name"
-    t.integer  "brand_id"
-    t.decimal  "flash_percent", :precision => 10, :scale => 0
-    t.decimal  "store_percent", :precision => 10, :scale => 0
-    t.date     "start_date"
+    t.integer  "brand_id",                                    :null => false
+    t.decimal  "flash_percent", :precision => 8, :scale => 2, :null => false
+    t.decimal  "store_percent", :precision => 8, :scale => 2, :null => false
+    t.date     "start_date",                                  :null => false
     t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"

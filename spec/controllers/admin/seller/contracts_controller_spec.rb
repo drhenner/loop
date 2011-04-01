@@ -53,7 +53,7 @@ describe Admin::Seller::ContractsController do
   it "update action should redirect when model is valid" do
     @contract = Factory(:contract)
     Contract.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => @contract.id
+    put :update, :id => @contract.id, :contract => { :brand_id => '1', :flash_percent => '10.7', :store_percent => '23.7', :start_date => '2011-04-01' }
     response.should redirect_to(admin_seller_contract_url(assigns[:contract]))
   end
 
