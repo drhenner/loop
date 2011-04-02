@@ -23,7 +23,7 @@ class Notifier < ActionMailer::Base
   def coming_soon(user)
     @user = user
 
-    mail(:to => recipient.email_address_with_name,
+    mail(:to => user.email_address_with_name,
          :subject => "Loop de Luxe: Coming Soon.")
 
   end
