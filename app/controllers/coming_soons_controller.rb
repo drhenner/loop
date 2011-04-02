@@ -16,7 +16,8 @@ class ComingSoonsController < ApplicationController
       if @user.save_without_session_maintenance
         @user.deliver_coming_soon_message!
         flash[:notice] = "You will be notified when the business doors open!"
-        render :show
+        #render :show
+        render :template => '/philosophies/show'
       else
         flash[:error] = "Oops,  Something went wrong."
         render :action => :show
