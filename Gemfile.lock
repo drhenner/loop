@@ -211,7 +211,6 @@ DEPENDENCIES
   autotest-growl
   autotest-rails-pure
   cancan (~> 1.4.1)
-  compass (~> 0.10.6)
   dalli (~> 1.0.2)
   email_spec
   factory_girl_rails
