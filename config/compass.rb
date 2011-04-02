@@ -1,4 +1,3 @@
-=begin
 # This configuration file works with both the Compass command line tool and within Rails.
 # Require any additional compass plugins here.
 project_type = :rails
@@ -16,4 +15,3 @@ environment = Compass::AppIntegration::Rails.env
 # relative_assets = true
 preferred_syntax = :scss
 require 'fancy-buttons'
-=end
