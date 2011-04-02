@@ -17,7 +17,8 @@ class ComingSoonsController < ApplicationController
         @user.deliver_coming_soon_message!
         flash[:notice] = "You will be notified when the business doors open!"
         #render :show
-        render :template => '/philosophies/show'
+        #render :template => '/philosophies/show'
+        redirect_to loop_about_url
       else
         flash[:error] = "Oops,  Something went wrong."
         render :action => :show
