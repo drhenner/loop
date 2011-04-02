@@ -46,8 +46,6 @@ GEM
       encryptor (>= 1.1.1)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
-    autotest-fsevent (0.2.5)
-      sys-uname
     autotest-growl (0.2.9)
     autotest-rails-pure (4.1.2)
     babosa (0.3.2)
@@ -185,7 +183,6 @@ GEM
     sunspot_rails (1.2.1)
       nokogiri
       sunspot (= 1.2.1)
-    sys-uname (0.8.5)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
@@ -201,7 +198,6 @@ DEPENDENCIES
   attr_encrypted
   authlogic (= 2.1.6)!
   autotest
-  autotest-fsevent
   autotest-growl
   autotest-rails-pure
   cancan (~> 1.4.1)
