@@ -9,7 +9,7 @@ gem 'attr_encrypted'
 
 gem 'authlogic',    "2.1.6", :git => 'git://github.com/bborn/authlogic.git'
 gem 'cancan',       '~> 1.4.1'
-#gem 'compass',      "~> 0.10.6"
+gem 'compass',      "~> 0.10.6"
 
 #gem 'curb' # Faster HTTP
 #gem 'dalli',       '~> 1.0.0'
