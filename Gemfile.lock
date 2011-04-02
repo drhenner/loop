@@ -5,12 +5,6 @@ GIT
     authlogic (2.1.6)
       activesupport
 
-GIT
-  remote: git://github.com/drhenner/nifty-generators.git
-  revision: fd658e6d67251d7c714ac6a32edfd3b7807f7475
-  specs:
-    nifty-generators (0.4.2)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -224,7 +218,6 @@ DEPENDENCIES
   mocha
   mysql2 (~> 0.2.6)
   nested_set (~> 1.6.3)
-  nifty-generators!
   nokogiri (~> 1.4.4)
   paperclip (~> 2.3.8)
   prawn (~> 0.8.4)
