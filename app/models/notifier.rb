@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default :from => "system@loopdeluxe.com"
+  default :from => "info@loopdeluxe.com"
 
   # Simple Welcome mailer
   # => CUSTOMIZE FOR YOUR OWN APP
