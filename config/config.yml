@@ -30,7 +30,7 @@ development: &non_production_settings
 test:
   <<: *non_production_settings
 production:
-  encryption_key: someRandomBINARYKEY
+  encryption_key: \202\006\226\031\300\307/\030\214\230w\r\350\352\322\bv\314\137\347\356\346\016\243Y\242m\004P\351\257\266
   mailer:
     server: mail.example.com
     username: someLOGIN
