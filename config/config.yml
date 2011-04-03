@@ -24,6 +24,8 @@ development: &non_production_settings
   authnet:
     login:      3K669qe93V5
     password:   3akPe983x3cEPK5X
+  s3_key:       blah
+  s3_secret:    blow
 
 test:
   <<: *non_production_settings
@@ -41,3 +43,5 @@ production:
   authnet:
     login:      someLOGIN
     password:   somePASSWORD
+  s3_key:       AKIAI53LF6HKA2JFL3BA
+  s3_secret:    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
