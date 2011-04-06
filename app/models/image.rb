@@ -2,7 +2,7 @@ require 'paperclip'
 
 class Image < ActiveRecord::Base
   belongs_to :imageable, :polymorphic => true
-  has_attached_file :photo, IMAGE_PAPERCLIP_OPTIONS
+  has_attached_file :photo, ::IMAGE_PAPERCLIP_OPTIONS
 
 #image_tag @product.photo.url(:small)
   validates_attachment_presence :photo

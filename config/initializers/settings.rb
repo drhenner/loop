@@ -11,7 +11,7 @@ SETTINGS = {
 
 APP_CONFIG = YAML.load_file(File.join(Rails.root, "config", "config.yml"))
 
-if RAILS_ENV == "development"
+if RAILS_ENV != "production"
   IMAGE_PAPERCLIP_OPTIONS = {
                               :styles         => {  :mini     => '48x48>',
                                                     :small    => '100x100>',
