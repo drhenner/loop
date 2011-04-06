@@ -5,7 +5,7 @@ project_path = Compass::AppIntegration::Rails.root
 # Set this to the root of your project when deployed:
 http_path = "/"
 
-if Rails.env == "production"
+if ::Rails.env == "production"
   css_dir   = 'tmp/stylesheets'
   sass_dir  = 'app/views/stylesheets'
 else

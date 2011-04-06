@@ -11,7 +11,7 @@ SETTINGS = {
 
 APP_CONFIG = YAML.load_file(File.join(Rails.root, "config", "config.yml"))
 
-if RAILS_ENV != "production"
+if ::Rails.env != "production"
   IMAGE_PAPERCLIP_OPTIONS = {
                               :styles         => {  :mini     => '48x48>',
                                                     :small    => '100x100>',
@@ -22,7 +22,7 @@ if RAILS_ENV != "production"
                               :url            => "/assets/products/:id/:style/:basename.:extension",
                               :path           => ":rails_root/public/assets/products/:id/:style/:basename.:extension"
                             }
-elsif RAILS_ENV == "production"
+elsif ::Rails.env == "production"
   IMAGE_PAPERCLIP_OPTIONS = { :storage        => :s3,
                               :styles         => {  :mini     => '48x48>',
                                                     :small    => '100x100>',
