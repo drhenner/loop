@@ -28,7 +28,9 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_coming_soon
-    #redirect_to coming_soon_url and return unless current_user && current_user.admin?
+    if ::Rails.env == "production"
+      redirect_to coming_soon_url and return unless current_user && current_user.admin?
+    end
   end
 
   def current_ability
