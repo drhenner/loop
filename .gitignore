@@ -10,6 +10,8 @@ tmp
 tmp/**/*
 tmp/**/**/*
 tmp/*
+ssl-cert
+ssl-cert/*
 log/*
 .project
 nbproject
