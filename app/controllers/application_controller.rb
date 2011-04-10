@@ -15,6 +15,9 @@ class ApplicationController < ActionController::Base
 
   before_filter :secure_session
   before_filter :redirect_to_coming_soon
+  before_filter :ensure_domain
+
+  APP_DOMAIN = 'secure.loopdeluxe.com'
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied."
@@ -27,6 +30,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def ensure_domain
+    if ::Rails.env == "production" && request.env['HTTP_HOST'] != APP_DOMAIN
+      # HTTP 301 is a "permanent" redirect
+      redirect_to "https://#{APP_DOMAIN}/#{request.request_uri}", :status => 301
+    end
+  end
   def redirect_to_coming_soon
     if ::Rails.env == "production"
       redirect_to coming_soon_url and return unless current_user && current_user.admin?
