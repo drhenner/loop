@@ -37,13 +37,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def default_url_options
-    if Rails.env.production?
-      {:host => "secure.loopdeluxe.com"}
-    else
-      {}
-    end
-  end
+  #def default_url_options
+  #  if Rails.env.production?
+  #    {:host => "secure.loopdeluxe.com"}
+  #  else
+  #    {}
+  #  end
+  #end
 
   def redirect_to_coming_soon
     if ::Rails.env == "production"
