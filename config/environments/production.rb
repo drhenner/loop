@@ -4,7 +4,7 @@ require 'rack/ssl-enforcer'
 Hadean::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
-  config.middleware.use Rack::SslEnforcer#, :redirect_to => 'https://secure.loopdeluxe.com'
+  config.middleware.use Rack::SslEnforcer, :redirect_to => 'https://secure.loopdeluxe.com'
   #config.middleware.use Rack::SSL
   #config.middleware.insert_before ActionDispatch::Cookies, Rack::SSL
 
