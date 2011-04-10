@@ -1,4 +1,5 @@
-require 'rack/ssl'
+#require 'rack/ssl'
+require 'rack/ssl-enforcer'
 
 Hadean::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
