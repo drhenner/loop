@@ -36,6 +36,15 @@ class ApplicationController < ActionController::Base
       redirect_to "https://#{APP_DOMAIN}/#{request.request_uri}", :status => 301
     end
   end
+
+  def default_url_options
+    if Rails.env.production?
+      {:host => "secure.loopdeluxe.com"}
+    else
+      {}
+    end
+  end
+
   def redirect_to_coming_soon
     if ::Rails.env == "production"
       redirect_to coming_soon_url and return unless current_user && current_user.admin?
