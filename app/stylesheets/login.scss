@@ -1,7 +1,10 @@
 body {
   /*background:#F4F4F4;*/
-  background:#FFFFFF;
+  background:#fff;
+ 
 }
+
+
 
 #register-wrapper, #login-wrapper {
   padding-top:26px;
@@ -52,3 +55,13 @@ input.text, input.title, input[type="text"], input[type="password"] {
   font-size: 13px;
   padding: 6px 5px;
 }
+
+/* Welcome Splash Image */
+
+#welcomeImage{
+width: 500px;
+height: 325px;
+background: url('/images/logos/splash.jpg') no-repeat;
+float: right;
+}
+
